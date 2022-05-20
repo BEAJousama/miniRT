@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include "mlx.h"
 
 typedef struct s_mlx_ptr
@@ -65,5 +66,6 @@ bool	check_tuple(char *tuple, int type, bool signe, bool dot);
 void	parse_ratio(char *ratio, double *var_ptr);
 void	parse_tuple_rgb(char *tuple, int *var_ptr);
 void	parse_tuple_cogo(char *tuple, t_cogo *var_ptr);
+void    display(t_elements *elem, t_mlx_ptr *gfx);
 
 #endif

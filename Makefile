@@ -25,6 +25,7 @@ OBJECT_PATH = ./object_files/
 LIBFT_PATH = ./libft
 SRC_PATH = ./src/
 PARSE_PATH = ./parsing/
+DISPLAY_PATH = ./display/
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -35,10 +36,11 @@ SRC =  	minirt.c         		\
 		read_map.c				\
 		read_map_utils.c 		\
 		check_A_C_L_elements.c		\
-		check_pl_sp_cy_elements.c		\
+		check_pl_sp_cy_elements.c	\
 		check_elements_utils.c	\
 		print_error_msg.c		\
 		parse_elements_utils.c	\
+		display.c				\
 		
 
 
@@ -59,6 +61,9 @@ $(OBJECT_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(OBJECT_PATH)%.o: $(SRC_PATH)$(PARSE_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJECT_PATH)%.o: $(SRC_PATH)$(DISPLAY_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(FOBJ_SRC) : 

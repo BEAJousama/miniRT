@@ -63,22 +63,9 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		map_invalid(INVALID_N_ARGS);
 	read_map(&elem, av[1]);
+	display(&elem, &gfx);
 	print_info(elem);
-	gfx.mlx = mlx_init();
-	gfx.win = mlx_new_window(gfx.mlx, 500, 500, NAME_W);
-	int x = 0, y = 0;
-	while (y < 500)
-	{
-		x = 0;
-		while (x < 500)
-		{
-			mlx_pixel_put (gfx.mlx , gfx.win, x, y, 1111);
-			x++;
-		}
-		y++;
-	}
 	mlx_hook(gfx.win, 17, 0L, close_win, &gfx);
-	// display();
 	mlx_loop(gfx.mlx);
 	free_elements(&elem);
 	return (0);
