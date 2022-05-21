@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_intersection.c                              :+:      :+:    :+:   */
+/*   vector_utils1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 09:09:19 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/21 10:36:22 by obeaj            ###   ########.fr       */
+/*   Created: 2022/05/20 14:42:35 by obeaj             #+#    #+#             */
+/*   Updated: 2022/05/20 16:17:37 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "utils.h"
 
-int sphere_intersection(t_elements *elem, t_cogo ray)
+double	magnitude(t_vector *v)
 {
-	double	delta;
-	t_cogo	p_c;
+	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
+}
 
-	add_sub_vectors(&p_c, elem->c->pos, elem->sp->pos, -1);
-	delta = pow(2 * dot(ray, p_c), 2) - (4 * dot(ray, ray) * (dot(p_c, p_c) - pow(elem->sp->diameter / 2, 2)));
+t_vector	*normalize(t_vector *v)
+{
+	return (elong(v, 1 / (magnitude(v))));
+}
 
-	if (delta < 0)
-		return (0);
-	else
-		return (1);
+void	translation(t_point *p, t_vector *v)
+{
+	p->x += v->x;
+	p->y += v->y;
+	p->z += v->z;
+}
+
+t_vector	*negate(t_vector *v)
+{
+	t_vector	*v1;
+
+	v1->x = -v->x;
+	v1->y = -v->y;
+	v1->z = -v->z;
+	return (v1);
 }

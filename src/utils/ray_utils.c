@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_intersection.c                              :+:      :+:    :+:   */
+/*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 09:09:19 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/21 10:36:22 by obeaj            ###   ########.fr       */
+/*   Created: 2022/05/20 14:48:51 by obeaj             #+#    #+#             */
+/*   Updated: 2022/05/20 16:49:55 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "utils.h"
 
-int sphere_intersection(t_elements *elem, t_cogo ray)
+t_ray	*create_ray(t_point *p, t_vector *v)
 {
-	double	delta;
-	t_cogo	p_c;
+	t_ray	*ray;
 
-	add_sub_vectors(&p_c, elem->c->pos, elem->sp->pos, -1);
-	delta = pow(2 * dot(ray, p_c), 2) - (4 * dot(ray, ray) * (dot(p_c, p_c) - pow(elem->sp->diameter / 2, 2)));
-
-	if (delta < 0)
-		return (0);
-	else
-		return (1);
+	ray->v = vec_copy(v);
+	ray->p = (t_point *)vec_copy(v);
+	return (ray);
 }
