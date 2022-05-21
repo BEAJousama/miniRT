@@ -42,8 +42,8 @@ char	check_element(t_elements *elem, char *element, char iden)
 		check_sphere_element(elem, &iden, param);
 	else if (!ft_strncmp(param[0], "cy\0", 3))
 		check_cylinder_element(elem, &iden, param);
-	// else
-	// 	return (free_2d(param), '4');
+	else
+		return (free_2d(param), '4');
 	free_2d(param);
 	return (iden);
 }

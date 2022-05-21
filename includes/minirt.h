@@ -67,5 +67,10 @@ void	parse_ratio(char *ratio, double *var_ptr);
 void	parse_tuple_rgb(char *tuple, int *var_ptr);
 void	parse_tuple_cogo(char *tuple, t_cogo *var_ptr);
 void    display(t_elements *elem, t_mlx_ptr *gfx);
+void	update_cogo_element(t_cogo *pos, t_cogo camera_pos);
+void	move_origin_to_camera(t_elements *elem);
+double	dot(t_cogo	v_one, t_cogo v_two);
+void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
+int		sphere_intersection(t_elements *elem, t_cogo ray);
 
 #endif
