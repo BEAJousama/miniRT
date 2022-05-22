@@ -39,7 +39,17 @@ typedef struct s_elements
 	t_sphere	*sp;
 	t_cylinder	*cy;
 	t_elem_nbr	elem_nbr;
+	t_cogo		origin;
 }	t_elements;
+
+typedef	struct s_close_inter
+{
+	double	t;
+	double	t_hol;
+	int		index;
+	char	object;
+}	t_close_inter;
+
 
 void	free_2d(char **strs);
 void	free_elements(t_elements *elem);
@@ -71,9 +81,11 @@ void	update_cogo_element(t_cogo *pos, t_cogo camera_pos);
 void	move_origin_to_camera(t_elements *elem);
 double	mag_vector(t_cogo vec);
 double	dot(t_cogo	v_one, t_cogo v_two);
-t_cogo	scaler_multiplication(t_cogo *vec, double scaler);
+void	scaler_multiplication(t_cogo *vec, double scaler);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
-int		plane_intersection(t_elements *elem, t_cogo ray);
+int		plane_intersection(t_elements *elem, t_cogo ray, size_t index);
+
+double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
 
 #endif

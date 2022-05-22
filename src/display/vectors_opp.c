@@ -29,14 +29,11 @@ double	mag_vector(t_cogo vec)
 	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)));
 }
 
-t_cogo	scaler_multiplication(t_cogo *vec, double scaler)
+void	scaler_multiplication(t_cogo *vec, double scaler)
 {
-	t_cogo	v;
-
-	v.x = scaler * vec->x;
-	v.y = scaler * vec->y;
-	v.z = scaler * vec->z;
-	return (v);
+	vec->x = scaler * vec->x;
+	vec->y = scaler * vec->y;
+	vec->z = scaler * vec->z;
 }
 
 t_cogo	cross_product(t_cogo *v1, t_cogo *v2)
