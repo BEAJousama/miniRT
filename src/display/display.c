@@ -14,8 +14,15 @@
 
 int	check_intersection(t_elements *elem ,t_cogo ray)
 {
-	if (sphere_intersection(elem, ray))
-		return (elem->sp->rgb);
+	size_t	i;
+
+	i = 0;
+	while (i < elem->elem_nbr.sp_nbr)
+	{
+		if (sphere_intersection(elem, ray, i))
+			return (elem->sp[i].rgb);
+		i++;
+	}
 	return (0);
 }
 
@@ -32,10 +39,10 @@ void    display(t_elements *elem, t_mlx_ptr *gfx)
     gfx->mlx = mlx_init();
 	gfx->win = mlx_new_window(gfx->mlx, 1000, 1000, NAME_W);
 	move_origin_to_camera(elem);
-	ray.x = -tan((elem->c->fov / 2) * (3.14 / 180));
+	ray.x = -tan((elem->c->fov / 2) * (M_PI / 180));
 	ray.y = -ray.x;
 	ray.z = 1;
-	pixel_step = fabs(ray.x * 2) / 500;
+	pixel_step = fabs(ray.x * 2) / 1000;
 	x_ray_hol = ray.x;
 	while (y < 1000)
 	{
@@ -48,7 +55,7 @@ void    display(t_elements *elem, t_mlx_ptr *gfx)
 			mlx_pixel_put (gfx->mlx , gfx->win, x, y, color);
 			x++;
 		}
-		ray.y -= pixel_step;
+		ray.y = ray.y - pixel_step;
 		y++;
 	}
 }
