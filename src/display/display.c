@@ -14,14 +14,13 @@
 
 int	check_intersection(t_elements *elem ,t_cogo ray)
 {
-	size_t	i;
+	int	i;
 
-	i = 0;
-	while (i < elem->elem_nbr.sp_nbr)
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.sp_nbr)
 	{
-		if (sphere_intersection(elem, ray, i))
+		if (sphere_intersection(elem, ray, (size_t)i) > 0)
 			return (elem->sp[i].rgb);
-		i++;
 	}
 	return (0);
 }

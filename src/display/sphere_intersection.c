@@ -12,17 +12,22 @@
 
 #include "../../includes/minirt.h"
 
-int sphere_intersection(t_elements *elem, t_cogo ray, size_t index)
+double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index)
 {
-	double	delta;
 	t_cogo	p_c;
-	int		i;
+	double	delta;
 
 	add_sub_vectors(&p_c, elem->c->pos, elem->sp[index].pos, -1);
-	delta = pow(2 * dot(ray, p_c), 2) - (4 * dot(ray, ray) * (dot(p_c, p_c) - pow(elem->sp[index].diameter / 2, 2)));
+	delta = pow(2 * dot(ray, p_c), 2) - (4 * dot(ray, ray)
+		* (dot(p_c, p_c) - pow(elem->sp[index].diameter / 2, 2)));
 	
-	if (delta < 0)
-		return (0);
+	if (delta >= 0)
+	{
+		if (mag_vector(p_c) > (elem->sp[index].diameter / 2))
+			return (((-2 * dot(ray, p_c)) - sqrt(delta)) / (2 * dot(ray, ray)));
+		else
+			return (((-2 * dot(ray, p_c)) + sqrt(delta)) / (2 * dot(ray, ray)));
+	}
 	else
-		return (1);
+		return (0);
 }

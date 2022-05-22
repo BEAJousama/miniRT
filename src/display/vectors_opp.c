@@ -23,3 +23,8 @@ void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe)
 	v_res->y = v_one.y + (signe * v_two.y);
 	v_res->z = v_one.z + (signe * v_two.z);
 }
+
+double	mag_vector(t_cogo vec)
+{
+	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)));
+}

@@ -61,6 +61,7 @@ typedef struct s_plane
 {
 	t_cogo	pos;
 	t_cogo	orient;
+	t_cogo	limits;
 	int		rgb;
 }	t_plane;
 
