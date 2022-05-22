@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/17 11:44:16 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/05/21 14:25:25 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	move_origin_to_camera(t_elements *elem);
 double	dot(t_cogo	v_one, t_cogo v_two);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 int		sphere_intersection(t_elements *elem, t_cogo ray);
+int		plane_intersection(t_elements *elem, t_cogo ray);
 
 #endif
