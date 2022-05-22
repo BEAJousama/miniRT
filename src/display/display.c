@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:15:20 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/17 15:15:21 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/05/22 14:45:58 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 		if (sphere_intersection(elem, ray, (size_t)i) > 0)
 			return (elem->sp[i].rgb);
 	}
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.pl_nbr)
+	{
+		if (plane_intersection(elem, ray))
+			return (elem->pl->rgb);
+	}
 	return (0);
 }
 
-void    display(t_elements *elem, t_mlx_ptr *gfx)
+void	display(t_elements *elem, t_mlx_ptr *gfx)
 {
     int x = 0;
     int y = 0;

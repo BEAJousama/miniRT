@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/05/12 10:39:17 by eabdelha         ###   ########.fr        #
+#    Updated: 2022/05/22 14:24:55 by obeaj            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =  	minirt.c         		\
 		vectors_opp.c			\
 		cogo_manipulations.c	\
 		sphere_intersection.c	\
+		plane_intersection.c    \
 		
 
 
