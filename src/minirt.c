@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 		map_invalid(INVALID_N_ARGS);
 	read_map(&elem, av[1]);
 	display(&elem, &gfx);
-	// print_info(elem);
+	print_info(elem);
 	mlx_hook(gfx.win, 17, 0L, close_win, &gfx);
 	mlx_loop(gfx.mlx);
 	free_elements(&elem);

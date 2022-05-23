@@ -12,9 +12,9 @@
 
 #include "../../includes/minirt.h"
 
-int		plane_intersection(t_elements *elem, t_cogo ray, size_t index)
+double	plane_intersection(t_elements *elem, t_cogo ray, size_t index)
 {
-	int		scaler;
+	double	scaler;
 
 	if (elem->pl[index].orient.x == 0 && elem->pl[index].orient.y == 0
 		&& elem->pl[index].orient.z == 0)
@@ -23,10 +23,9 @@ int		plane_intersection(t_elements *elem, t_cogo ray, size_t index)
 	{
 		scaler = dot(elem->pl[index].pos, elem->pl[index].orient) / dot(ray,
 				elem->pl[index].orient);
-		scaler_multiplication(&ray, scaler);
-		if (ray.z >= 0 && scaler > 0)
+		scaler_multiplication(&ray, ray, scaler);
+		if (scaler > 0)
 			return (scaler);
-		else
-			return (0);
 	}
+	return (0);
 }

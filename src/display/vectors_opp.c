@@ -29,11 +29,11 @@ double	mag_vector(t_cogo vec)
 	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)));
 }
 
-void	scaler_multiplication(t_cogo *vec, double scaler)
+void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler)
 {
-	vec->x = scaler * vec->x;
-	vec->y = scaler * vec->y;
-	vec->z = scaler * vec->z;
+	vec->x = scaler * v.x;
+	vec->y = scaler * v.y;
+	vec->z = scaler * v.z;
 }
 
 t_cogo	cross_product(t_cogo *v1, t_cogo *v2)
@@ -46,12 +46,22 @@ t_cogo	cross_product(t_cogo *v1, t_cogo *v2)
 	return (v);
 }
 
-t_cogo	vec_create(t_cogo a, t_cogo b)
-{
-	t_cogo	v;
+// t_cogo	vec_create(t_cogo a, t_cogo b)
+// {
+// 	t_cogo	v;
 
-	v.x = b.x - a.x;
-	v.y = b.y - a.y;
-	v.z = b.z - a.z;
-	return (v);
+// 	v.x = b.x - a.x;
+// 	v.y = b.y - a.y;
+// 	v.z = b.z - a.z;
+// 	return (v);
+// }
+
+void	resize_vec(t_cogo *vec, t_cogo v, double len)
+{
+	double	hol_mag;
+
+	hol_mag = mag_vector(v);
+	vec->x = (len / hol_mag) * v.x;
+	vec->y = (len / hol_mag) * v.y;
+	vec->z = (len / hol_mag) * v.z;
 }

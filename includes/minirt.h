@@ -44,9 +44,9 @@ typedef struct s_elements
 
 typedef	struct s_close_inter
 {
+	int		i;
 	double	t;
 	double	t_hol;
-	int		index;
 	char	object;
 }	t_close_inter;
 
@@ -81,11 +81,17 @@ void	update_cogo_element(t_cogo *pos, t_cogo camera_pos);
 void	move_origin_to_camera(t_elements *elem);
 double	mag_vector(t_cogo vec);
 double	dot(t_cogo	v_one, t_cogo v_two);
-void	scaler_multiplication(t_cogo *vec, double scaler);
+void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
-double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
-int		plane_intersection(t_elements *elem, t_cogo ray, size_t index);
+void	resize_vec(t_cogo *vec, t_cogo v, double len);
 
-double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
+int		check_intersection(t_elements *elem ,t_cogo ray);
+double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
+double	plane_intersection(t_elements *elem, t_cogo ray, size_t index);
+int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+
+int calculate_rgb(int rgb_obj, int rgb_light, double ratio);
 
 #endif
