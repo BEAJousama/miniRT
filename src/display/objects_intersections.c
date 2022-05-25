@@ -51,7 +51,7 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
 		fill_info_obj(plane_intersection(elem, ray, (size_t)i), &info, i, 'p');
 	scaler_multiplication(&elem->origin, ray, info.t);
-	elem->origin.y *= 0.999999999999;
-	elem->origin.x *= 0.999999999999;
+	// elem->origin.y *= 0.9999999;
+	// elem->origin.x *= 0.9999999;
 	return (extract_color(&info, elem, ray));
 }

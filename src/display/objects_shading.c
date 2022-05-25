@@ -21,14 +21,14 @@ bool	check_sh_ray(t_elements *elem, t_cogo sh_ray)
 	while ((size_t)++i < elem->elem_nbr.sp_nbr)
     {
 		t_hol = sphere_intersection(elem, sh_ray, (size_t)i);
-        if (t_hol > 0.001 && t_hol < 1)
+        if (t_hol > 0.000000001 && t_hol < 1)
             return (0);
     }
     i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
     {
 		t_hol = plane_intersection(elem, sh_ray, (size_t)i);
-        if (t_hol > 0 && t_hol < 1)
+        if (t_hol > 0.000000001 && t_hol < 1)
             return (0);
     }
 	return (1);

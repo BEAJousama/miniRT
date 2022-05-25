@@ -14,6 +14,7 @@
 
 double	plane_intersection(t_elements *elem, t_cogo ray, size_t index)
 {
+	t_cogo	c_p;
 	double	scaler;
 
 	if (elem->pl[index].orient.x == 0 && elem->pl[index].orient.y == 0
@@ -21,7 +22,8 @@ double	plane_intersection(t_elements *elem, t_cogo ray, size_t index)
 		return (0);
 	else
 	{
-		scaler = dot(elem->pl[index].pos, elem->pl[index].orient) / dot(ray,
+		add_sub_vectors(&c_p, elem->pl[index].pos, elem->origin, -1);
+		scaler = dot(c_p, elem->pl[index].orient) / dot(ray,
 				elem->pl[index].orient);
 		scaler_multiplication(&ray, ray, scaler);
 		if (scaler > 0)

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_intersection.c                              :+:      :+:    :+:   */
+/*   cylinder_intersection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 09:09:19 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:23:43 by obeaj            ###   ########.fr       */
+/*   Created: 2022/05/23 18:19:30 by eabdelha          #+#    #+#             */
+/*   Updated: 2022/05/23 18:19:32 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../../includes/minirt.h"
 
-double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index)
+double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t index)
 {
 	t_cogo	p_c;
 	double	delta;
@@ -22,7 +23,7 @@ double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index)
 		* (dot(p_c, p_c) - pow(elem->sp[index].diameter / 2, 2)));
 	if (delta >= 0)
 	{
-		if (mag_vector(p_c) >= (elem->sp[index].diameter / 2))
+		if (mag_vector(p_c) > (elem->sp[index].diameter / 2))
 			return (((-2 * dot(ray, p_c)) - sqrt(delta)) / (2 * dot(ray, ray)));
 		else 
 			return (((-2 * dot(ray, p_c)) + sqrt(delta)) / (2 * dot(ray, ray)));

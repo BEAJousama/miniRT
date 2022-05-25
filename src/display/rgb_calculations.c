@@ -22,7 +22,7 @@ int calculate_rgb(int rgb_obj, int rgb_light, double ratio)
     unsigned char   g_l = rgb_light >> 8;
     unsigned char   r_l = rgb_light;
 
-    return ((int)(r + (r_l * ratio)) | (int)(g + (g_l * ratio)) << 8 | (int)(b + (b_l * ratio)) << 16);
+    return ((int)((r + r_l) * ratio) | (int)((g + g_l) * ratio) << 8 | (int)((b + b_l) * ratio) << 16);
 }
 
 
