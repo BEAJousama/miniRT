@@ -77,13 +77,18 @@ void	parse_ratio(char *ratio, double *var_ptr);
 void	parse_tuple_rgb(char *tuple, int *var_ptr);
 void	parse_tuple_cogo(char *tuple, t_cogo *var_ptr);
 void	display(t_elements *elem, t_mlx_ptr *gfx);
-// void	update_cogo_element(t_cogo *pos, int **t_pos);
 void	move_origin_to_camera(t_elements *elem);
 double	mag_vector(t_cogo vec);
 double	dot(t_cogo	v_one, t_cogo v_two);
 void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 void	resize_vec(t_cogo *vec, t_cogo v, double len);
+
+double  **alloc_matrix(double **matrix, int size);
+double  **select_matrix(double **r, int row, int col, int size);
+double	det_matrix(double **mtx, int size);
+void	trans_matrix(double **matrix, int size);
+void	adjoint_matrix(double **adjoint, double **matrix, int size);
 
 int		check_intersection(t_elements *elem ,t_cogo ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
@@ -92,6 +97,6 @@ int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
-int calculate_rgb(int rgb_obj, int rgb_light, double ratio);
+int		calculate_rgb(int rgb_obj, int rgb_light, double ratio);
 
 #endif

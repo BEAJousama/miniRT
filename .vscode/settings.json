@@ -2,6 +2,7 @@
     "files.associations": {
         "minirt.h": "c",
         "unistd.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "algorithm": "c"
     }
 }
