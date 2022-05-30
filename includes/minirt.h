@@ -88,7 +88,7 @@ double  **alloc_matrix(double **matrix, int size);
 double  **select_matrix(double **r, int row, int col, int size);
 double	det_matrix(double **mtx, int size);
 void	trans_matrix(double **matrix, int size);
-void	adjoint_matrix(double **adjoint, double **matrix, int size);
+void	inverse_matrix(double **adjoint, double **matrix, int size);
 
 int		check_intersection(t_elements *elem ,t_cogo ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
@@ -98,5 +98,8 @@ int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
 int		calculate_rgb(int rgb_obj, int rgb_light, double ratio);
+int add_rgb(int rgb_obj, int rgb_light);
+
+double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
 
 #endif

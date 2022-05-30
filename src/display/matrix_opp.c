@@ -104,8 +104,7 @@ void	trans_matrix(double **matrix, int size)
     }
 }
 
-
-void  adjoint_matrix(double **adjoint, double **matrix, int size)
+void  inverse_matrix(double **adjoint, double **matrix, int size)
 {
     double  **m_sel;
     double  det_2;

@@ -92,7 +92,6 @@ void    fill_main_matrix(double **t_pos, double **t_y, double **t_x)
     }
 }
 
-
 void	move_origin_to_camera(t_elements *elem)
 {
     double  **t_pos_y;
@@ -113,7 +112,7 @@ void	move_origin_to_camera(t_elements *elem)
     t_pos[0][3] = elem->c->pos.x;
     t_pos[1][3] = elem->c->pos.y;
     t_pos[2][3] = elem->c->pos.z; 
-    adjoint_matrix(m_pos, t_pos, 4);
+    inverse_matrix(m_pos, t_pos, 4);
     update_cogo(elem, m_pos);
     free(t_pos_y);
     free(t_pos_x);

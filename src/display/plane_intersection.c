@@ -25,8 +25,8 @@ double	plane_intersection(t_elements *elem, t_cogo ray, size_t index)
 		add_sub_vectors(&c_p, elem->pl[index].pos, elem->origin, -1);
 		scaler = dot(c_p, elem->pl[index].orient) / dot(ray,
 				elem->pl[index].orient);
-		scaler_multiplication(&ray, ray, scaler);
-		if (scaler > 0)
+		// scaler_multiplication(&ray, ray, scaler);
+		// if (scaler > 0)
 			return (scaler);
 	}
 	return (0);
