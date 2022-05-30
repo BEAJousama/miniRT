@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects_intersections.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/23 12:44:06 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:06:08 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
 	if (info->object == 'p')
         return (plane_shading(elem, info, sh_ray));
 	if (info->object == 'c')
-		return (cylinder_shading(elem, info, sh_ray));
+		return (cylinder_shading(elem, info, sh_ray, ray));
 	return (0);
 }
 
@@ -50,6 +50,9 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
 		fill_info_obj(plane_intersection(elem, ray, (size_t)i), &info, i, 'p');
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		fill_info_obj(cylindre_inter(elem, ray, (size_t)i, 0), &info, i, 'c');
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem, ray));
 }

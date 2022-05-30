@@ -6,7 +6,7 @@
 /*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:23:29 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/05/30 15:02:31 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ typedef struct s_elements
 	t_cogo		origin;
 }	t_elements;
 
-typedef	struct s_close_inter
+typedef struct s_close_inter
 {
 	int		i;
 	double	t;
 	double	t_hol;
 	char	object;
 }	t_close_inter;
-
 
 void	free_2d(char **strs);
 void	free_elements(t_elements *elem);
@@ -83,22 +82,25 @@ double	dot(t_cogo	v_one, t_cogo v_two);
 void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 void	resize_vec(t_cogo *vec, t_cogo v, double len);
-
-double  **alloc_matrix(double **matrix, int size);
-double  **select_matrix(double **r, int row, int col, int size);
+t_cogo	cross_product(t_cogo v1, t_cogo v2);
+t_cogo	vec_create(t_cogo a, t_cogo b);
+double	**alloc_matrix(double **matrix, int size);
+double	**select_matrix(double **r, int row, int col, int size);
 double	det_matrix(double **mtx, int size);
 void	trans_matrix(double **matrix, int size);
 void	inverse_matrix(double **adjoint, double **matrix, int size);
 
-int		check_intersection(t_elements *elem ,t_cogo ray);
+int		check_intersection(t_elements *elem, t_cogo ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	plane_intersection(t_elements *elem, t_cogo ray, size_t index);
 int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
-int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray,
+			t_cogo ray);
+double	cylindre_inter(t_elements *elem, t_cogo ray, int index, int isshadow);
 
 int		calculate_rgb(int rgb_obj, int rgb_light, double ratio);
-int add_rgb(int rgb_obj, int rgb_light);
+int		add_rgb(int rgb_obj, int rgb_light);
 
 double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
 

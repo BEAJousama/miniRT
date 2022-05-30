@@ -6,7 +6,7 @@
 #    By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/05/22 14:24:55 by obeaj            ###   ########.fr        #
+#    Updated: 2022/05/30 15:04:28 by obeaj            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC =  	minirt.c         		\
 		rgb_calculations.c		\
 		objects_shading.c		\
 		objects_intersections.c \
+		cylinder_intersection.c \
 
 		
 
