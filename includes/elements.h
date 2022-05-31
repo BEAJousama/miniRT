@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:59 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/17 11:42:58 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:57:56 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_plane
 {
 	t_cogo	pos;
 	t_cogo	orient;
+	t_cogo	limits;
 	int		rgb;
 }	t_plane;
 
@@ -72,5 +73,13 @@ typedef struct s_cylinder
 	double	height;
 	int		rgb;
 }	t_cylinder;
+
+typedef struct s_disk
+{
+	t_cogo	pos;
+	t_cogo	orient;
+	int		rgb;
+	double	rayon;
+}	t_disk;
 
 #endif

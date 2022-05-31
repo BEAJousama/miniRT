@@ -6,7 +6,7 @@
 #    By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/05/21 14:27:42 by obeaj            ###   ########.fr        #
+#    Updated: 2022/05/30 15:04:28 by obeaj            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,15 @@ SRC =  	minirt.c         		\
 		parse_elements_utils.c	\
 		display.c				\
 		vectors_opp.c			\
+		matrix_opp.c			\
 		cogo_manipulations.c	\
 		sphere_intersection.c	\
-		plane_intersection.c   \
+		plane_intersection.c    \
+		rgb_calculations.c		\
+		objects_shading.c		\
+		objects_intersections.c \
+		cylinder_intersection.c \
+
 		
 
 

@@ -23,7 +23,7 @@ void	parse_ratio(char *ratio, double *var_ptr)
 	if (strlen_2d(ratio_splited) == 2)
 	{
 		hol = (double)ft_atoi(ratio_splited[1]);
-		while (hol > 1)
+		while (hol >= 1)
 			hol /= 10;
 		if (ratio_splited[0][0] == '-')
 			*var_ptr += -hol;
