@@ -83,6 +83,8 @@ double	dot(t_cogo	v_one, t_cogo v_two);
 void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 void	resize_vec(t_cogo *vec, t_cogo v, double len);
+t_cogo	cross_product(t_cogo v1, t_cogo v2);
+t_cogo	vec_create(t_cogo a, t_cogo b);
 
 void    fill_sub_matrix(t_elements *elem, double **t_y, double **t_x);
 void    fill_main_matrix(double **t_pos, double **t_y, double **t_x);
@@ -95,6 +97,7 @@ void	inverse_matrix(double **adjoint, double **matrix, int size);
 int		check_intersection(t_elements *elem ,t_cogo ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	plane_intersection(t_elements *elem, t_cogo ray, size_t index);
+double	cylinder_intersection(t_elements *elem, t_cogo ray, int index, int isshadow);
 int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);

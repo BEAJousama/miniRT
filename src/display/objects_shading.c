@@ -62,6 +62,13 @@ bool	check_sh_ray(t_elements *elem, t_cogo sh_ray)
         if (t_hol > epsilon && t_hol < 1)
             return (0);
     }
+    i = -1;
+    while ((size_t)++i < elem->elem_nbr.cy_nbr)
+    {
+		t_hol = cylinder_intersection(elem, sh_ray, (size_t)i, 1);
+        if (t_hol > epsilon && t_hol < 1)
+            return (0);
+    }
 	return (1);
 }
 
@@ -105,7 +112,17 @@ int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 
 int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
+    int     rgb_h;
+
+    rgb_h = 0;
+    if (elem->a)
+        rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
     if (check_sh_ray(elem, sh_ray))
-		return (elem->cy[info->i].rgb);
+    {
+        resize_vec(&sh_ray, sh_ray, 1);
+        resize_vec(&elem->cy->orient, elem->cy->orient, 1);
+        rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
+        fabs(dot(sh_ray, elem->cy->orient)) * elem->l->bright), rgb_h);
+    }
 	return (multi_rgb(elem->a->rgb, elem->cy[info->i].rgb, elem->a->ratio));
 }

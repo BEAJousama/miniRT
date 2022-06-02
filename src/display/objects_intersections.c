@@ -50,6 +50,9 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
 		fill_info_obj(plane_intersection(elem, ray, (size_t)i), &info, i, 'p');
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		fill_info_obj(cylinder_intersection(elem, ray, (size_t)i, 0), &info, i, 'p');
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem, ray));
 }

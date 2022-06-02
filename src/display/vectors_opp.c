@@ -36,25 +36,25 @@ void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler)
 	vec->z = scaler * v.z;
 }
 
-t_cogo	cross_product(t_cogo *v1, t_cogo *v2)
+t_cogo	cross_product(t_cogo v1, t_cogo v2)
 {
 	t_cogo	v;
 
-	v.x = v1->y * v2->z - v1->z * v2->y;
-	v.y = v2->x * v1->z - v1->x * v2->z;
-	v.z = v1->x * v2->y - v1->y * v2->x;
+	v.x = (v1.y * v2.z) - (v1.z * v2.y);
+	v.y = (v2.x * v1.z) - (v1.x * v2.z);
+	v.z = (v1.x * v2.y) - (v1.y * v2.x);
 	return (v);
 }
 
-// t_cogo	vec_create(t_cogo a, t_cogo b)
-// {
-// 	t_cogo	v;
+t_cogo	vec_create(t_cogo a, t_cogo b)
+{
+	t_cogo	v;
 
-// 	v.x = b.x - a.x;
-// 	v.y = b.y - a.y;
-// 	v.z = b.z - a.z;
-// 	return (v);
-// }
+	v.x = b.x - a.x;
+	v.y = b.y - a.y;
+	v.z = b.z - a.z;
+	return (v);
+}
 
 void	resize_vec(t_cogo *vec, t_cogo v, double len)
 {

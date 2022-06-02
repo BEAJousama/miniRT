@@ -47,6 +47,7 @@ SRC =  	minirt.c         		\
 		cogo_manipulations.c	\
 		sphere_intersection.c	\
 		plane_intersection.c    \
+		cylinder_intersection.c \
 		rgb_calculations.c		\
 		objects_shading.c		\
 		objects_intersections.c \
