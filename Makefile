@@ -42,6 +42,7 @@ SRC =  	minirt.c         		\
 		parse_elements_utils.c	\
 		display.c				\
 		vectors_opp.c			\
+		fill_matrix.c			\
 		matrix_opp.c			\
 		cogo_manipulations.c	\
 		sphere_intersection.c	\

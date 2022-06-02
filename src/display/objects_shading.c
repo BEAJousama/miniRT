@@ -19,8 +19,10 @@ double  epsilon_sphere(t_elements *elem, int index)
 
     add_sub_vectors(&c_c, elem->c->pos, elem->sp[index].pos, -1);
 	add_sub_vectors(&l_c, elem->l->pos, elem->sp[index].pos, -1);
-    if ((mag_vector(c_c) < (elem->sp[index].diameter / 2) && mag_vector(l_c) > (elem->sp[index].diameter / 2))
-    || (mag_vector(c_c) > (elem->sp[index].diameter / 2) && mag_vector(l_c) < (elem->sp[index].diameter / 2)))
+    if ((mag_vector(c_c) < (elem->sp[index].diameter / 2) \
+    && mag_vector(l_c) > (elem->sp[index].diameter / 2))
+    || (mag_vector(c_c) > (elem->sp[index].diameter / 2) \
+    && mag_vector(l_c) < (elem->sp[index].diameter / 2)))
 			return (-0.00001);
     return (0.00001);
 }
@@ -32,7 +34,7 @@ double  epsilon_plane(t_elements *elem)
 
     add_sub_vectors(&c_c, elem->c->pos, elem->origin, -1);
 	add_sub_vectors(&l_c, elem->l->pos, elem->origin, -1);
-    if ((dot(c_c, elem->pl->orient) * dot(l_c, elem->pl->orient)) >= 0)
+    if ((dot(c_c, elem->pl->orient) * dot(l_c, elem->pl->orient)) > 0)
         return (0.00001);
     return (-0.00001);
 }
@@ -66,40 +68,44 @@ bool	check_sh_ray(t_elements *elem, t_cogo sh_ray)
 int sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
     t_cogo  p_c;
-    int     rgb_hol;
+    int     rgb_h;
 
+    rgb_h = 0;
+    if (elem->a)
+        rgb_h = multi_rgb(elem->sp[info->i].rgb, elem->a->rgb, elem->a->ratio);
     if (check_sh_ray(elem, sh_ray))
     {
         resize_vec(&sh_ray, sh_ray, 1);
         add_sub_vectors(&p_c, elem->origin, elem->sp[info->i].pos, -1);
         resize_vec(&p_c, p_c, 1);
-        rgb_hol = calculate_rgb(elem->l->rgb, elem->sp[info->i].rgb , fabs(dot(sh_ray, p_c)));
-        rgb_hol = add_rgb(calculate_rgb(elem->a->rgb, elem->sp[info->i].rgb, elem->a->ratio), rgb_hol);
-        return (rgb_hol);
-        // return (elem->sp[info->i].rgb);
+        rgb_h = add_rgb(multi_rgb(elem->sp[info->i].rgb, elem->l->rgb, \
+        fabs(dot(sh_ray, p_c) * elem->l->bright)), rgb_h);
+        return (rgb_h);
     }
-    return (calculate_rgb(elem->a->rgb, elem->sp[info->i].rgb , elem->a->ratio));
+    return (rgb_h);
 }
 
 int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-    // t_cogo  p_c;
-    int     rgb_hol;
+    int     rgb_h;
 
+    rgb_h = 0;
+    if (elem->a)
+        rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
     if (check_sh_ray(elem, sh_ray))
     {
         resize_vec(&sh_ray, sh_ray, 1);
         resize_vec(&elem->pl->orient, elem->pl->orient, 1);
-        rgb_hol = calculate_rgb(elem->l->rgb, elem->pl[info->i].rgb , fabs(dot(sh_ray, elem->pl->orient)));
-        rgb_hol = add_rgb(calculate_rgb(elem->a->rgb, elem->pl[info->i].rgb, elem->a->ratio), rgb_hol);
-		return (rgb_hol);
+        rgb_h = add_rgb(multi_rgb(elem->pl[info->i].rgb, elem->l->rgb, \
+        fabs(dot(sh_ray, elem->pl->orient)) * elem->l->bright), rgb_h);
+		return (rgb_h);
     }
-	return (calculate_rgb(elem->a->rgb, elem->pl[info->i].rgb , elem->a->ratio));
+	return (rgb_h);
 }
 
 int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
     if (check_sh_ray(elem, sh_ray))
 		return (elem->cy[info->i].rgb);
-	return (calculate_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio));
+	return (multi_rgb(elem->a->rgb, elem->cy[info->i].rgb, elem->a->ratio));
 }

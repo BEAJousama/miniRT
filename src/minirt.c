@@ -18,13 +18,13 @@ void    print_info(t_elements elem)
     
     i = -1;
     while (++i < (int)elem.elem_nbr.a_nbr)
-        printf(" A: %-10.1f %d\n", elem.a[i].ratio, elem.a[i].rgb);
+        printf(" A: %-10.5f %d\n", elem.a[i].ratio, elem.a[i].rgb);
     i = -1;
     while (++i < (int)elem.elem_nbr.c_nbr)
         printf(" C: %.1f,%.1f,%-10.1f %.1f,%.1f,%.1f       %.1f\n", elem.c[i].pos.x, elem.c[i].pos.y, elem.c[i].pos.z,  elem.c[i].orient.x, elem.c[i].orient.y, elem.c[i].orient.z, elem.c[i].fov);
     i = -1;
     while (++i < (int)elem.elem_nbr.l_nbr)    
-        printf(" L: %.1f,%.1f,%-10.1f %.1f               %d\n",elem.l[i].pos.x, elem.l[i].pos.y, elem.l[i].pos.z,   elem.l[i].bright, elem.l[i].rgb);
+        printf(" L: %.1f,%.1f,%-10.f %.5f               %d\n",elem.l[i].pos.x, elem.l[i].pos.y, elem.l[i].pos.z,   elem.l[i].bright, elem.l[i].rgb);
     i = -1;
     while (++i < (int)elem.elem_nbr.pl_nbr)
         printf("pl: %.1f,%.1f,%-10.1f   %.1f,%.1f,%.1f       %d\n",  elem.pl[i].pos.x, elem.pl[i].pos.y, elem.pl[i].pos.z,  elem.pl[i].orient.x, elem.pl[i].orient.y, elem.pl[i].orient.z, elem.pl[i].rgb);

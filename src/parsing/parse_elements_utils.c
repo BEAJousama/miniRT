@@ -12,9 +12,25 @@
 
 #include "../../includes/minirt.h"
 
+int	calculate_0(char *str)
+{
+	int	i;
+	int nbr_0;
+
+	i = 0;
+	nbr_0 = 0;
+	while (str[i] && str[i] == '0')
+	{
+		i++;
+		nbr_0++;
+	}
+	return (nbr_0);
+}
+
 void	parse_ratio(char *ratio, double *var_ptr)
 {
 	char	**ratio_splited;
+	int		nbr_0;
 	double	hol;
 
 	ratio_splited = ft_split(ratio, '.');
@@ -22,9 +38,11 @@ void	parse_ratio(char *ratio, double *var_ptr)
 	*var_ptr = hol;
 	if (strlen_2d(ratio_splited) == 2)
 	{
+		nbr_0 = calculate_0(ratio_splited[1]);
 		hol = (double)ft_atoi(ratio_splited[1]);
 		while (hol >= 1)
 			hol /= 10;
+		hol /= pow(10, nbr_0);
 		if (ratio_splited[0][0] == '-')
 			*var_ptr += -hol;
 		else
