@@ -80,7 +80,7 @@ int sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
     rgb_h = 0;
     if (elem->a)
         rgb_h = multi_rgb(elem->sp[info->i].rgb, elem->a->rgb, elem->a->ratio);
-    if (check_sh_ray(elem, sh_ray))
+    if (elem->elem_nbr.l_nbr && check_sh_ray(elem, sh_ray))
     {
         resize_vec(&sh_ray, sh_ray, 1);
         add_sub_vectors(&p_c, elem->origin, elem->sp[info->i].pos, -1);
@@ -99,7 +99,7 @@ int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
     rgb_h = 0;
     if (elem->a)
         rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
-    if (check_sh_ray(elem, sh_ray))
+    if (elem->elem_nbr.l_nbr && check_sh_ray(elem, sh_ray))
     {
         resize_vec(&sh_ray, sh_ray, 1);
         resize_vec(&elem->pl->orient, elem->pl->orient, 1);
@@ -117,7 +117,7 @@ int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
     rgb_h = 0;
     if (elem->a)
         rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
-    if (check_sh_ray(elem, sh_ray))
+    if (elem->elem_nbr.l_nbr && check_sh_ray(elem, sh_ray))
     {
         resize_vec(&sh_ray, sh_ray, 1);
         resize_vec(&elem->cy->orient, elem->cy->orient, 1);

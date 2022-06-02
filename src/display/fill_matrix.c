@@ -38,8 +38,8 @@ void    fill_sub_matrix(t_elements *elem, double **t_y, double **t_x)
     double  beta=0;
 
     if (elem->c->orient.x || elem->c->orient.z)
-        teta = (acos(fabs(elem->c->orient.z) / sqrt(pow(elem->c->orient.z, 2)
-            + pow(elem->c->orient.x, 2))));
+        teta = acos(fabs(elem->c->orient.z) / sqrt(pow(elem->c->orient.z, 2)
+            + pow(elem->c->orient.x, 2)));
     comlete_rotation_y(elem->c->orient.x, elem->c->orient.z, &teta);
     t_y[0][0] = cos(teta);
     t_y[0][2] = sin(teta);
@@ -48,8 +48,8 @@ void    fill_sub_matrix(t_elements *elem, double **t_y, double **t_x)
     t_y[2][2] = cos(teta);
     t_y[3][3] = 1;
     elem->c->orient.z = fabs(elem->c->orient.z);
-    beta =  (acos(sqrt(pow(mag_vector(elem->c->orient),2)
-        - pow(elem->c->orient.y, 2)) / mag_vector(elem->c->orient)));
+    beta =  acos(sqrt(pow(mag_vector(elem->c->orient),2)
+        - pow(elem->c->orient.y, 2)) / mag_vector(elem->c->orient));
     comlete_rotation_x(elem->c->orient.y, elem->c->orient.z, &beta);
     t_x[0][0] = 1;
     t_x[1][1] = cos(beta);

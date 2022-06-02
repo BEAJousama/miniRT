@@ -15,14 +15,18 @@
 void	map_invalid(char iden)
 {
 	ft_putendl_fd("Erorr", 2);
+	if (print_error_orient_vec(iden))
+		exit (1);
 	if (print_error_msg_map(iden))
 		exit (1);
-	if (print_error_msg_a_c(iden))
+	else if (print_error_msg_a_c(iden))
 		exit (1);
 	else if (print_error_msg_l_pl(iden))
 		exit (1);
 	else if (print_error_msg_sp_cy(iden))
 		exit(1);
+	ft_putendl_fd("Camera not found in the map!", 2);
+	exit(1);
 }
 
 char	check_element(t_elements *elem, char *element, char iden)
@@ -42,7 +46,7 @@ char	check_element(t_elements *elem, char *element, char iden)
 		check_sphere_element(elem, &iden, param);
 	else if (!ft_strncmp(param[0], "cy\0", 3))
 		check_cylinder_element(elem, &iden, param);
-	else
+	else if (param[0])
 		return (free_2d(param), '4');
 	free_2d(param);
 	return (iden);
@@ -73,6 +77,7 @@ void	check_map(t_elements *elem, char **map)
 	i = 0;
 	while (map[i])
 	{
+	printf("ok\n");
 		iden = check_element(elem, map[i], 'x');
 		if (iden != 'x')
 		{
@@ -83,13 +88,13 @@ void	check_map(t_elements *elem, char **map)
 	}
 	if (check_double_elements_a_c(elem->elem_nbr, &iden)
 		|| !allocate_elements(elem))
-		return (map_invalid(iden), free_2d(map), free_elements(elem), exit(1));
-	i = 0;
-	while (map[i])
-	{
+		return (free_2d(map), free_elements(elem), map_invalid(iden));
+	i = -1;
+	while (map[++i])
 		check_element(elem, map[i], 'X');
-		i++;
-	}
+	iden = check_valid_orient_vec(elem);
+	if (iden || !elem->elem_nbr.c_nbr)
+		return (free_2d(map), free_elements(elem), map_invalid(iden));
 }
 
 void	read_map(t_elements *elem, char *f_map)

@@ -79,3 +79,29 @@ bool	check_tuple(char *tuple, int type, bool signe, bool dot)
 	}
 	return (free(tuple_splited), 0);
 }
+
+bool	check_three_null(t_cogo v)
+{
+	if (!v.x && !v.y && !v.z)
+		return (1);
+	return (0);
+}
+
+int	check_valid_orient_vec(t_elements *elem)
+{
+	int	i;
+
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.c_nbr)
+		if (check_three_null(elem->c->orient))
+			return (1);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.pl_nbr)
+		if (check_three_null(elem->pl->orient))
+			return (2);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		if (check_three_null(elem->cy->orient))
+			return (3);
+	return (0);
+}

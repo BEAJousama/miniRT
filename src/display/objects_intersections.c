@@ -27,7 +27,8 @@ int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
 	t_cogo	sh_ray;
 	(void)ray;
 
-	add_sub_vectors(&sh_ray, elem->l->pos, elem->origin, -1);
+	if (elem->elem_nbr.l_nbr)
+		add_sub_vectors(&sh_ray, elem->l->pos, elem->origin, -1);
 	if (info->object == 's')
         return (sphere_shading(elem, info, sh_ray));
 	if (info->object == 'p')

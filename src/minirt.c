@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 {
 	t_elements	elem;
 	t_mlx_ptr	gfx;
-
+	(void)av;
 	elem = (t_elements){};
 	gfx = (t_mlx_ptr){};
 	if (ac != 2)
