@@ -79,7 +79,7 @@ void	parse_ratio(char *ratio, double *var_ptr);
 void	parse_tuple_rgb(char *tuple, int *var_ptr);
 void	parse_tuple_cogo(char *tuple, t_cogo *var_ptr);
 void	display(t_elements *elem, t_mlx_ptr *gfx);
-void	move_reference_origin(t_elements *elem, t_cogo *v_orient, t_cogo v_pos);
+void	move_reference_origin(t_elements *elem, t_cogo v_orient, t_cogo v_pos);
 double	mag_vector(t_cogo vec);
 double	dot(t_cogo	v_one, t_cogo v_two);
 void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
@@ -88,7 +88,7 @@ void	resize_vec(t_cogo *vec, t_cogo v, double len);
 t_cogo	cross_product(t_cogo v1, t_cogo v2);
 t_cogo	vec_create(t_cogo a, t_cogo b);
 
-void    fill_sub_matrix(t_elements *elem, t_cogo *v, double **t_y, double **t_x);
+void    fill_sub_matrix(t_elements *elem, t_cogo v, double **t_y, double **t_x);
 void    fill_main_matrix(double **t_pos, double **t_y, double **t_x);
 double  **alloc_matrix(double **matrix, int size);
 double  **select_matrix(double **r, int row, int col, int size);

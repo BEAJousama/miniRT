@@ -32,25 +32,25 @@ void    comlete_rotation_x(double y, double z, double *ang)
         (*ang) =   M_PI - (*ang);
 }
 
-void    fill_sub_matrix(t_elements *elem, t_cogo *v, double **t_y, double **t_x)
+void    fill_sub_matrix(t_elements *elem, t_cogo v, double **t_y, double **t_x)
 {
     double  teta=0;
     double  beta=0;
 
-    if (v->x || v->z)
-        teta = acos(fabs(v->z) / sqrt(pow(v->z, 2)
-            + pow(v->x, 2)));
-    comlete_rotation_y(v->x, v->z, &teta);
+    if (v.x || v.z)
+        teta = acos(fabs(v.z) / sqrt(pow(v.z, 2)
+            + pow(v.x, 2)));
+    comlete_rotation_y(v.x, v.z, &teta);
     t_y[0][0] = cos(teta);
     t_y[0][2] = sin(teta);
     t_y[1][1] = 1;
     t_y[2][0] = -sin(teta);
     t_y[2][2] = cos(teta);
     t_y[3][3] = 1;
-    v->z = fabs(v->z);
+    v.z = fabs(v.z);
     beta =  acos(sqrt(pow(mag_vector(elem->c->orient),2)
-        - pow(v->y, 2)) / mag_vector(elem->c->orient));
-    comlete_rotation_x(v->y, v->z, &beta);
+        - pow(v.y, 2)) / mag_vector(elem->c->orient));
+    comlete_rotation_x(v.y, v.z, &beta);
     t_x[0][0] = 1;
     t_x[1][1] = cos(beta);
     t_x[1][2] = -sin(beta);

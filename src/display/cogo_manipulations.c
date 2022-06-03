@@ -62,7 +62,7 @@ void	update_cogo(t_elements *elem, double **m_pos)
     update_cogo_element(&(elem->c->pos), m_pos);
 }
 
-void	move_reference_origin(t_elements *elem, t_cogo *v_orient, t_cogo v_pos)
+void	move_reference_origin(t_elements *elem, t_cogo v_orient, t_cogo v_pos)
 {
     double  **t_pos_y;
 	double  **t_pos_x;

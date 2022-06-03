@@ -27,14 +27,14 @@ double  epsilon_sphere(t_elements *elem, int index)
 	return (0.00001);
 }
 
-double  epsilon_plane(t_elements *elem)
+double  epsilon_plane(t_elements *elem, int index)
 {
 	t_cogo	c_c;
 	t_cogo	l_c;
 
 	add_sub_vectors(&c_c, elem->c->pos, elem->origin, -1);
 	add_sub_vectors(&l_c, elem->l->pos, elem->origin, -1);
-	if ((dot(c_c, elem->pl->orient) * dot(l_c, elem->pl->orient)) > 0)
+	if ((dot(c_c, elem->pl[index].orient) * dot(l_c, elem->pl[index].orient)) > 0)
 		return (0.00001);
 	return (-0.00001);
 }
@@ -81,7 +81,7 @@ bool	check_sh_ray(t_elements *elem, t_cogo sh_ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
 	{
-		epsilon = epsilon_plane(elem);
+		epsilon = epsilon_plane(elem, i);
 		t_hol = plane_intersection(elem, sh_ray, (size_t)i);
 		if (t_hol > epsilon && t_hol < 1)
 			return (0);
@@ -127,9 +127,9 @@ int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	if (elem->elem_nbr.l_nbr && check_sh_ray(elem, sh_ray))
 	{
 		resize_vec(&sh_ray, sh_ray, 1);
-		resize_vec(&elem->pl->orient, elem->pl->orient, 1);
+		resize_vec(&elem->pl[info->i].orient, elem->pl[info->i].orient, 1);
 		rgb_h = add_rgb(multi_rgb(elem->pl[info->i].rgb, elem->l->rgb, \
-		fabs(dot(sh_ray, elem->pl->orient)) * elem->l->bright), rgb_h);
+		fabs(dot(sh_ray, elem->pl[info->i].orient)) * elem->l->bright), rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
