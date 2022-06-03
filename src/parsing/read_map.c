@@ -25,8 +25,6 @@ void	map_invalid(char iden)
 		exit (1);
 	else if (print_error_msg_sp_cy(iden))
 		exit(1);
-	ft_putendl_fd("Camera not found in the map!", 2);
-	exit(1);
 }
 
 char	check_element(t_elements *elem, char *element, char iden)
@@ -77,7 +75,6 @@ void	check_map(t_elements *elem, char **map)
 	i = 0;
 	while (map[i])
 	{
-	printf("ok\n");
 		iden = check_element(elem, map[i], 'x');
 		if (iden != 'x')
 		{
@@ -86,14 +83,16 @@ void	check_map(t_elements *elem, char **map)
 		}
 		i++;
 	}
-	if (check_double_elements_a_c(elem->elem_nbr, &iden)
+	if (check_double_elements_a_c_l(elem->elem_nbr, &iden)
 		|| !allocate_elements(elem))
 		return (free_2d(map), free_elements(elem), map_invalid(iden));
 	i = -1;
 	while (map[++i])
 		check_element(elem, map[i], 'X');
 	iden = check_valid_orient_vec(elem);
-	if (iden || !elem->elem_nbr.c_nbr)
+	if (!elem->elem_nbr.c_nbr)
+		iden = 'U';
+	if (iden)
 		return (free_2d(map), free_elements(elem), map_invalid(iden));
 }
 

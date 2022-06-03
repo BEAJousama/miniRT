@@ -26,8 +26,8 @@
 
 typedef struct s_mlx_ptr
 {
-	void	*win;
-	void	*mlx;
+	void		*win;
+	void		*mlx;
 }	t_mlx_ptr;
 
 typedef struct s_elements
@@ -70,7 +70,7 @@ void	check_light_element(t_elements *elem, char *iden, char **param);
 void	check_plane_element(t_elements *elem, char *iden, char **param);
 void	check_sphere_element(t_elements *elem, char *iden, char **param);
 void	check_cylinder_element(t_elements *elem, char *iden, char **param);
-bool	check_double_elements_a_c(t_elem_nbr elem_nbr, char *iden);
+bool	check_double_elements_a_c_l(t_elem_nbr elem_nbr, char *iden);
 bool	check_limit(char *ratio, double min, double max);
 bool	check_dot(char *ratio, bool signe, bool dot);
 bool	check_tuple(char *tuple, int type, bool signe, bool dot);

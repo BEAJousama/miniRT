@@ -3,6 +3,12 @@
         "minirt.h": "c",
         "unistd.h": "c",
         "stdio.h": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "__bit_reference": "c",
+        "__string": "c",
+        "ios": "c",
+        "memory": "c",
+        "string": "c",
+        "type_traits": "c"
     }
 }

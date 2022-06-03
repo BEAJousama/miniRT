@@ -36,12 +36,23 @@ void    print_info(t_elements elem)
         printf("cy: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d\n",elem.cy[i].pos.x, elem.cy[i].pos.y, elem.cy[i].pos.z,  elem.cy[i].orient.x, elem.cy[i].orient.y, elem.cy[i].orient.z, elem.cy[i].diameter, elem.cy[i].height,  elem.cy[i].rgb);
 }
 
-int	close_win(t_mlx_ptr *gfx)
+int	close_win(t_elements *elem)
 {
-	(void)gfx;
+	free_elements(elem);
 	exit(0);
 	return (0);
 }
+
+int	close_win_esc(int keycode, t_elements *elem)
+{
+	if (keycode == ESC_KEY)
+	{
+		free_elements(elem);
+		exit(0);
+	}
+	return (0);
+}
+
 
 void	free_elements(t_elements *elem)
 {
@@ -57,6 +68,7 @@ int	main(int ac, char **av)
 {
 	t_elements	elem;
 	t_mlx_ptr	gfx;
+
 	(void)av;
 	elem = (t_elements){};
 	gfx = (t_mlx_ptr){};
@@ -65,7 +77,8 @@ int	main(int ac, char **av)
 	read_map(&elem, av[1]);
 	display(&elem, &gfx);
 	print_info(elem);
-	mlx_hook(gfx.win, 17, 0L, close_win, &gfx);
+	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
+	mlx_hook(gfx.win, 17, 0L, close_win, &elem);
 	mlx_loop(gfx.mlx);
 	free_elements(&elem);
 	return (0);

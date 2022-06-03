@@ -14,6 +14,7 @@
 # define DEFINES_H
 
 # define NAME_W "miniRT"
+# define ESC_KEY 53
 
 # define EMPTY_MAP '1'
 # define INVALID_N_ARGS '2'
@@ -25,6 +26,7 @@
 # define A_RGB 'b'
 # define A_DOUBLE 'N'
 
+# define C_NOT_FOUND 'U'
 # define C_NBR_INFO 'C'
 # define C_COGO 'D'
 # define C_ORIENT 'E'
@@ -35,6 +37,7 @@
 # define L_COGO 'l'
 # define L_RATIO 'm'
 # define L_RGB 'n'
+# define L_DOUBLE 'o'
 
 # define PL_NBR_INFO 'P'
 # define PL_COGO 'p'
