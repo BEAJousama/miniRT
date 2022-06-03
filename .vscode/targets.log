@@ -6,8 +6,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Mon May 30 21:43:44 2022
+# Make data base, printed on Fri Jun  3 11:46:47 2022
+ 
 
 # Variables
 
@@ -17,8 +19,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 MLX_INCLUDE = /usr/local/include
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # makefile (from `Makefile', line 35)
-SRC = minirt.c read_map.c read_map_utils.c check_A_C_L_elements.c check_pl_sp_cy_elements.c check_elements_utils.c print_error_msg.c parse_elements_utils.c display.c vectors_opp.c matrix_opp.c cogo_manipulations.c sphere_intersection.c plane_intersection.c rgb_calculations.c objects_shading.c objects_intersections.c cylinder_intersection.c 
+SRC = minirt.c read_map.c read_map_utils.c check_A_C_L_elements.c check_pl_sp_cy_elements.c check_elements_utils.c print_error_msg.c parse_elements_utils.c display.c vectors_opp.c fill_matrix.c matrix_opp.c cogo_manipulations.c sphere_intersection.c plane_intersection.c cylinder_intersection.c rgb_calculations.c objects_shading.c objects_intersections.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -28,7 +32,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/obeaj/miniRT2
+CURDIR := /Users/obeaj/miniRT_final
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 22)
@@ -48,15 +52,15 @@ NAME_LIBFT = libft.a
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd940033_9/T/vscode-ipc-1b7db93b-10df-4081-bc71-829f963d5e22.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd940033_9/T/vscode-ipc-b204ea02-a1b7-4b1f-9915-946b24bfc7b1.sock
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/obeaj/miniRT_final
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.VNVMYthy1J/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.1TmlDoSV46/Render
 # makefile (from `Makefile', line 20)
 INCLUDE_3 = ./includes/defines.h
 # environment
-PATH = /Users/obeaj/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /Users/obeaj/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 26)
@@ -68,13 +72,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.EMBAfYCe05/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.qA2xhRxFg0/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/obeaj/miniRT2
+PWD = /Users/obeaj/miniRT_final
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -83,6 +87,8 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 HOME = /Users/obeaj
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/obeaj/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
 # environment
@@ -104,7 +110,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 3
 # makefile (from `Makefile', line 30)
 CC = gcc
 # default
@@ -113,6 +119,8 @@ MAKE_VERSION := 3.81
 USER = obeaj
 # makefile
 .DEFAULT_GOAL := all
+# environment
+TERM_SESSION_ID = A7E7E854-5FBF-4CE2-9DB1-0A2BEB991D5A
 # makefile (from `Makefile', line 13)
 NAME = miniRT
 # makefile (from `Makefile', line 28)
@@ -127,6 +135,8 @@ PARSE_PATH = ./parsing/
 INCLUDE_1 = ./includes/minirt.h
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
 # environment
@@ -142,15 +152,19 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
+TERM_PROGRAM_VERSION = 421.2
+# environment
 NVM_DIR = /Users/obeaj/.nvm
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1272
+XPC_SERVICE_NAME = 0
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18D49:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # environment
@@ -165,6 +179,8 @@ PAGER = less
 LC_ALL = C
 # makefile (from `Makefile', line 19)
 INCLUDE_2 = ./includes/elements.h
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -173,14 +189,16 @@ SUFFIXES :=
 .INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
-# makefile (from `Makefile', line 59)
+# makefile (from `Makefile', line 60)
 M_OBJECTS = $(addprefix $(OBJECT_PATH), $(SRC:.c=.o))
 # environment
 LANG = C
 # environment
-VSCODE_PID = 21370
+TERM = xterm-256color
+# environment
+VSCODE_PID = 4557
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=3/133=2%
+# Load=92/1024=9%, Rehash=0, Collisions=3/143=2%
 
 # Pattern-specific Variable Values
 
@@ -188,28 +206,24 @@ VSCODE_PID = 21370
 
 # Directories
 
-# . (device 16777227, inode 5040953): 11 files, no impossibilities.
-# src/./display (device 16777227, inode 5041069): 12 files, no impossibilities so far.
-# includes (device 16777227, inode 5041017): 5 files, no impossibilities so far.
-# src (device 16777227, inode 5041068): 5 files, no impossibilities.
-# src/./parsing (device 16777227, inode 5041081): 9 files, no impossibilities.
+# . (device 16777227, inode 5115257): 9 files, no impossibilities.
 
-# 42 files, no impossibilities in 5 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 object_files/%.o: ./src/%.c ./includes/minirt.h ./includes/elements.h ./includes/defines.h
-#  commands to execute (from `Makefile', line 71):
+#  commands to execute (from `Makefile', line 72):
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 
 object_files/%.o: ./src/./parsing/%.c ./includes/minirt.h ./includes/elements.h ./includes/defines.h
-#  commands to execute (from `Makefile', line 74):
+#  commands to execute (from `Makefile', line 75):
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 
 object_files/%.o: ./src/./display/%.c ./includes/minirt.h ./includes/elements.h ./includes/defines.h
-#  commands to execute (from `Makefile', line 77):
+#  commands to execute (from `Makefile', line 78):
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 
@@ -217,72 +231,29 @@ object_files/%.o: ./src/./display/%.c ./includes/minirt.h ./includes/elements.h 
 
 # Files
 
-object_files/check_pl_sp_cy_elements.o: src/./parsing/check_pl_sp_cy_elements.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `check_pl_sp_cy_elements'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/sphere_intersection.o: src/./display/sphere_intersection.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `sphere_intersection'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+# Not a target:
+object_files/check_pl_sp_cy_elements.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./parsing/check_A_C_L_elements.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/plane_intersection.o: src/./display/plane_intersection.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `plane_intersection'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/read_map.o: src/./parsing/read_map.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `read_map'
- 
-#  Last modified 2022-05-30 15:04:37
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/sphere_intersection.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/objects_intersections.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:06:08
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/plane_intersection.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+object_files/read_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: miniRT
 #  Phony target (prerequisite of .PHONY).
@@ -290,56 +261,26 @@ all: miniRT
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/./display/objects_shading.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:13:27
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
 
 .PHONY: all bonus clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-object_files/objects_intersections.o: src/./display/objects_intersections.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `objects_intersections'
-#  Last modified 2022-05-30 15:08:31
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/objects_shading.o: src/./display/objects_shading.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `objects_shading'
-#  Last modified 2022-05-30 15:13:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+# Not a target:
+object_files/objects_intersections.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./parsing/print_error_msg.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/objects_shading.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -347,23 +288,15 @@ src/./parsing/print_error_msg.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-includes/minirt.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:02:31
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-miniRT: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/vectors_opp.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/objects_intersections.o object_files/cylinder_intersection.o /usr/local/include
+miniRT: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/vectors_opp.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/cylinder_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/objects_intersections.o /usr/local/include
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-30 15:43:56
+ 
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 66):
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
+#  commands to execute (from `Makefile', line 67):
 	@make -C $(LIBFT_PATH)
 	@printf "linking object files...\n"
 	@$(CC) $(CFLAGS) $(M_OBJECTS) $(LIBFT_PATH)/$(NAME_LIBFT) $(MLX) -o $(NAME)
@@ -372,7 +305,7 @@ miniRT: object_files object_files/minirt.o object_files/read_map.o object_files/
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:04:28
+#  Last modified 2022-06-03 11:46:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -380,72 +313,43 @@ Makefile:
 
 object_files:
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-30 15:43:56
+#  Implicit/static pattern stem: `'
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-#  commands to execute (from `Makefile', line 80):
+#  Needs to be updated (-q is set).
+# automatic
+# @ := object_files
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  commands to execute (from `Makefile', line 81):
 	@mkdir $@
 	
 
 # Not a target:
-src/./parsing/check_pl_sp_cy_elements.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/parse_elements_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/cylinder_intersection.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:43:54
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/./parsing/read_map.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/parse_elements_utils.o: src/./parsing/parse_elements_utils.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parse_elements_utils'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-# Not a target:
-includes/elements.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:57:56
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/cylinder_intersection.o: src/./display/cylinder_intersection.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `cylinder_intersection'
-#  Last modified 2022-05-30 15:43:56
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/cylinder_intersection.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 bonus:
 #  Phony target (prerequisite of .PHONY).
@@ -453,54 +357,21 @@ bonus:
 #  File does not exist.
 #  File has not been updated.
 
-# Not a target:
-src/./display/rgb_calculations.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 88):
+#  commands to execute (from `Makefile', line 89):
 	@make fclean -C $(LIBFT_PATH) 
 	@rm -rf $(NAME)
 	
 
 # Not a target:
-src/minirt.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/./display/display.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/rgb_calculations.o: src/./display/rgb_calculations.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `rgb_calculations'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/rgb_calculations.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -514,218 +385,85 @@ re: fclean all
 #  File does not exist.
 #  File has not been updated.
 
-object_files/display.o: src/./display/display.c includes/minirt.h includes/elements.h includes/defines.h
- 
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `display'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
 # Not a target:
-src/./display/vectors_opp.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 15:02:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/display.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 /usr/local/include:
-#  Implicit rule search has been done.
-#  Last modified 2021-12-05 15:39:17
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 83):
+#  commands to execute (from `Makefile', line 84):
 	@make clean -C $(LIBFT_PATH)
 	@rm -f $(OBJECTS)
 	@rm -rf $(FOBJ_SRC)
 	
 
-object_files/read_map_utils.o: src/./parsing/read_map_utils.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `read_map_utils'
-#  Last modified 2022-05-30 15:04:37
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+# Not a target:
+object_files/read_map_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./parsing/parse_elements_utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/check_elements_utils.o: src/./parsing/check_elements_utils.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `check_elements_utils'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/check_A_C_L_elements.o: src/./parsing/check_A_C_L_elements.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `check_A_C_L_elements'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/fill_matrix.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./parsing/check_elements_utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/vectors_opp.o: src/./display/vectors_opp.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `vectors_opp'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/check_elements_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/cogo_manipulations.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/check_A_C_L_elements.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/matrix_opp.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/vectors_opp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/sphere_intersection.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/cogo_manipulations.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./display/plane_intersection.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/cogo_manipulations.o: src/./display/cogo_manipulations.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `cogo_manipulations'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/matrix_opp.o: src/./display/matrix_opp.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `matrix_opp'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 77):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-object_files/print_error_msg.o: src/./parsing/print_error_msg.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `print_error_msg'
-#  Last modified 2022-05-30 15:04:38
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 74):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/matrix_opp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-includes/defines.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-object_files/minirt.o: src/minirt.c includes/minirt.h includes/elements.h includes/defines.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `minirt'
-#  Last modified 2022-05-30 15:04:37
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 71):
-	$(CC) $(CFLAGS) -o $@ -c $<
-	
+object_files/print_error_msg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/./parsing/read_map_utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-30 14:56:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+object_files/minirt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=51/1024=5%, Rehash=0, Collisions=2/282=1%
+# Load=31/1024=3%, Rehash=0, Collisions=4/75=5%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -737,6 +475,6 @@ src/./parsing/read_map_utils.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon May 30 21:43:45 2022
+# Finished Make data base on Fri Jun  3 11:46:47 2022
 
  
