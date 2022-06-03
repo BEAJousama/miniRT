@@ -59,9 +59,10 @@ void	update_cogo(t_elements *elem, double **m_pos)
         update_orient_element(&(elem->pl[i].orient), m_pos);
     }
     update_orient_element(&(elem->c->orient), m_pos);
+    update_cogo_element(&(elem->c->pos), m_pos);
 }
 
-void	move_origin_to_camera(t_elements *elem)
+void	move_reference_origin(t_elements *elem, t_cogo *v_orient, t_cogo v_pos)
 {
     double  **t_pos_y;
 	double  **t_pos_x;
@@ -76,14 +77,13 @@ void	move_origin_to_camera(t_elements *elem)
     m_pos = alloc_matrix(m_pos, 4);
     t_pos_y = alloc_matrix(t_pos_y, 4);
     t_pos_x = alloc_matrix(t_pos_x, 4);
-    fill_sub_matrix(elem, t_pos_y, t_pos_x);
+    fill_sub_matrix(elem, v_orient, t_pos_y, t_pos_x);
     fill_main_matrix(t_pos, t_pos_y, t_pos_x);
-    t_pos[0][3] = elem->c->pos.x;
-    t_pos[1][3] = elem->c->pos.y;
-    t_pos[2][3] = elem->c->pos.z; 
+    t_pos[0][3] = v_pos.x;
+    t_pos[1][3] = v_pos.y;
+    t_pos[2][3] = v_pos.z; 
     inverse_matrix(m_pos, t_pos, 4);
     update_cogo(elem, m_pos);
-    elem->c->pos = (t_cogo){};
     free(t_pos_y);
     free(t_pos_x);
     free(t_pos);

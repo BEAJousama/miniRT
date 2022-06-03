@@ -24,7 +24,7 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
     (void)elem;
     gfx->mlx = mlx_init();
 	gfx->win = mlx_new_window(gfx->mlx, 1000, 1000, NAME_W);
-	move_origin_to_camera(elem);
+	move_reference_origin(elem, &(elem->c->orient), elem->c->pos);
 	ray.x = -tan((elem->c->fov / 2) * (M_PI / 180));
 	ray.y = -ray.x;
 	ray.z = 1;

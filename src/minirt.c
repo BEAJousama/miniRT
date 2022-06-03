@@ -53,7 +53,6 @@ int	close_win_esc(int keycode, t_elements *elem)
 	return (0);
 }
 
-
 void	free_elements(t_elements *elem)
 {
 	free(elem->a);
