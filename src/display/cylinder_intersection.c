@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_intersection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:19:30 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/23 18:19:32 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:48:42 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/minirt.h"
 
@@ -61,18 +60,16 @@ double	disk_create(t_elements *elem, t_cogo ray, int index, t_cogo p_c)
 	return (t);
 }
 
-double	cylinder_intersection(t_elements *elem, t_cogo ray, int index, int isshadow)
+double	cylindre_inter(t_elements *elem, t_cogo ray, int index)
 {
-	// return (0);
 	double	t;
 	double	a,b,c,delta;
 	t_cogo	p_c;
 	t_cogo	tn;
 	t_cogo	p_c_cross;
-	t_cogo ray_cross;
+	t_cogo	ray_cross;
 
-	isshadow = 0;
-	add_sub_vectors(&p_c, elem->c->pos, elem->cy[index].pos, -1);
+	add_sub_vectors(&p_c, elem->origin, elem->cy[index].pos, -1);
 	p_c_cross = cross_product(p_c, elem->cy[index].orient);
 	ray_cross = cross_product(ray, elem->cy[index].orient);
 	a = pow(mag_vector(ray), 2) * pow(mag_vector(elem->cy[index].orient), 2)
@@ -97,5 +94,49 @@ double	cylinder_intersection(t_elements *elem, t_cogo ray, int index, int isshad
 		}
 	}
 	return (disk_create(elem, ray, index, p_c));
-	return (0);
+}
+
+double	cylindre_inter_shading(t_elements *elem, t_cogo ray, int index)
+{
+	double	t1,t2;
+	double	a,b,c,delta;
+	t_cogo	p_c,tn;
+	t_cogo	p_c_cross;
+	t_cogo ray_cross;
+	
+	add_sub_vectors(&p_c, elem->origin, elem->cy[index].pos, -1);
+	p_c_cross = cross_product(p_c, elem->cy[index].orient);
+	ray_cross = cross_product(ray, elem->cy[index].orient);
+	a = pow(mag_vector(ray), 2) * pow(mag_vector(elem->cy[index].orient), 2)
+		- pow(dot(ray, elem->cy[index].orient), 2);
+	b = 2 * (dot(p_c_cross, ray_cross));
+	c = pow(mag_vector(p_c), 2) * pow(mag_vector(elem->cy[index].orient), 2)
+		- pow(dot(p_c, elem->cy[index].orient), 2)
+		- pow(elem->cy[index].diameter / 2, 2)
+		* dot(elem->cy[index].orient, elem->cy[index].orient);
+	delta = pow(b, 2) - 4 * a * c ;;
+	if (delta >= 0)
+	{
+		t1 = (-b - sqrt(delta)) / (2 * a);
+		t2 = (-b + sqrt(delta)) / (2 * a);
+		if (t2 > -0.00001 && t2 < 1)
+		{
+			scaler_multiplication(&tn,ray, t1);
+			if (tn.y <= (elem->cy[index].pos.y + elem->cy[index].height / 2)
+				&& tn.y >= (elem->cy[index].pos.y - elem->cy[index].height / 2))
+			{
+				return (t2);
+			}
+		}
+		if(t1 > -0.00001 && t1 < 1)
+		{
+			scaler_multiplication(&tn,ray, t2);
+			if (tn.y <= (elem->cy[index].pos.y + elem->cy[index].height / 2)
+				&& tn.y >= (elem->cy[index].pos.y - elem->cy[index].height / 2))
+			{
+				return (t1);
+			}
+		}
+	}
+	return (-1);
 }

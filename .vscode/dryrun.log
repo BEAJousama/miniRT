@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/obeaj/miniRT2'
+make: Entering directory `/Users/obeaj/miniRT_final'
 mkdir object_files
 gcc -Wall -Wextra -Werror -o object_files/minirt.o -c src/minirt.c
 gcc -Wall -Wextra -Werror -o object_files/read_map.o -c src/./parsing/read_map.c
@@ -11,16 +11,17 @@ gcc -Wall -Wextra -Werror -o object_files/print_error_msg.o -c src/./parsing/pri
 gcc -Wall -Wextra -Werror -o object_files/parse_elements_utils.o -c src/./parsing/parse_elements_utils.c
 gcc -Wall -Wextra -Werror -o object_files/display.o -c src/./display/display.c
 gcc -Wall -Wextra -Werror -o object_files/vectors_opp.o -c src/./display/vectors_opp.c
+gcc -Wall -Wextra -Werror -o object_files/fill_matrix.o -c src/./display/fill_matrix.c
 gcc -Wall -Wextra -Werror -o object_files/matrix_opp.o -c src/./display/matrix_opp.c
 gcc -Wall -Wextra -Werror -o object_files/cogo_manipulations.o -c src/./display/cogo_manipulations.c
 gcc -Wall -Wextra -Werror -o object_files/sphere_intersection.o -c src/./display/sphere_intersection.c
 gcc -Wall -Wextra -Werror -o object_files/plane_intersection.o -c src/./display/plane_intersection.c
+gcc -Wall -Wextra -Werror -o object_files/cylinder_intersection.o -c src/./display/cylinder_intersection.c
 gcc -Wall -Wextra -Werror -o object_files/rgb_calculations.o -c src/./display/rgb_calculations.c
 gcc -Wall -Wextra -Werror -o object_files/objects_shading.o -c src/./display/objects_shading.c
 gcc -Wall -Wextra -Werror -o object_files/objects_intersections.o -c src/./display/objects_intersections.c
-gcc -Wall -Wextra -Werror -o object_files/cylinder_intersection.o -c src/./display/cylinder_intersection.c
 make -C ./libft
 printf "linking object files...\n"
-gcc -Wall -Wextra -Werror ./object_files/minirt.o ./object_files/read_map.o ./object_files/read_map_utils.o ./object_files/check_A_C_L_elements.o ./object_files/check_pl_sp_cy_elements.o ./object_files/check_elements_utils.o ./object_files/print_error_msg.o ./object_files/parse_elements_utils.o ./object_files/display.o ./object_files/vectors_opp.o ./object_files/matrix_opp.o ./object_files/cogo_manipulations.o ./object_files/sphere_intersection.o ./object_files/plane_intersection.o ./object_files/rgb_calculations.o ./object_files/objects_shading.o ./object_files/objects_intersections.o ./object_files/cylinder_intersection.o ./libft/libft.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o miniRT
-make: Leaving directory `/Users/obeaj/miniRT2'
+gcc -Wall -Wextra -Werror ./object_files/minirt.o ./object_files/read_map.o ./object_files/read_map_utils.o ./object_files/check_A_C_L_elements.o ./object_files/check_pl_sp_cy_elements.o ./object_files/check_elements_utils.o ./object_files/print_error_msg.o ./object_files/parse_elements_utils.o ./object_files/display.o ./object_files/vectors_opp.o ./object_files/fill_matrix.o ./object_files/matrix_opp.o ./object_files/cogo_manipulations.o ./object_files/sphere_intersection.o ./object_files/plane_intersection.o ./object_files/cylinder_intersection.o ./object_files/rgb_calculations.o ./object_files/objects_shading.o ./object_files/objects_intersections.o ./libft/libft.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o miniRT
+make: Leaving directory `/Users/obeaj/miniRT_final'
  

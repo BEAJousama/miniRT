@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cogo_manipulations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:08:22 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/21 09:08:24 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:15:20 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	update_cogo(t_elements *elem, double **m_pos)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
     {
 		update_cogo_element(&(elem->cy[i].pos), m_pos);
-        update_orient_element(&(elem->pl[i].orient), m_pos);
+        update_orient_element(&(elem->cy[i].orient), m_pos);
     }
     update_orient_element(&(elem->c->orient), m_pos);
     update_cogo_element(&(elem->c->pos), m_pos);

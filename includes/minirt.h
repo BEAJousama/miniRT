@@ -6,7 +6,7 @@
 /*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:23:29 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/03 11:56:52 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ void	inverse_matrix(double **adjoint, double **matrix, int size);
 int		check_intersection(t_elements *elem ,t_cogo ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	plane_intersection(t_elements *elem, t_cogo ray, size_t index);
-double	cylinder_intersection(t_elements *elem, t_cogo ray, int index, int isshadow);
+double	cylindre_inter(t_elements *elem, t_cogo ray, int index);
+double	cylindre_inter_shading(t_elements *elem, t_cogo ray, int index);
 int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
-int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
-
+int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray, t_cogo ray);
 int		multi_rgb(int rgb_o, int rgb_l, double ratio);
 int		add_rgb(int rgb_o, int rgb_l);
 
