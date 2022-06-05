@@ -72,8 +72,8 @@ void	check_map(t_elements *elem, char **map)
 	int		i;
 	char	iden;
 
-	i = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
 		iden = check_element(elem, map[i], 'x');
 		if (iden != 'x')
@@ -81,7 +81,6 @@ void	check_map(t_elements *elem, char **map)
 			free_2d(map);
 			map_invalid(iden);
 		}
-		i++;
 	}
 	if (check_double_elements_a_c_l(elem->elem_nbr, &iden)
 		|| !allocate_elements(elem))

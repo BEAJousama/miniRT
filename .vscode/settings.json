@@ -9,6 +9,8 @@
         "ios": "c",
         "memory": "c",
         "string": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "defines.h": "c",
+        "elements.h": "c"
     }
 }

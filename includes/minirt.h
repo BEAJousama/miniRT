@@ -30,18 +30,6 @@ typedef struct s_mlx_ptr
 	void		*mlx;
 }	t_mlx_ptr;
 
-typedef struct s_elements
-{
-	t_amb_light	*a;
-	t_camera	*c;
-	t_light		*l;
-	t_plane		*pl;
-	t_sphere	*sp;
-	t_cylinder	*cy;
-	t_elem_nbr	elem_nbr;
-	t_cogo		origin;
-}	t_elements;
-
 typedef	struct s_close_inter
 {
 	int		i;
@@ -88,15 +76,20 @@ void	resize_vec(t_cogo *vec, t_cogo v, double len);
 t_cogo	cross_product(t_cogo v1, t_cogo v2);
 t_cogo	vec_create(t_cogo a, t_cogo b);
 
-void    fill_sub_matrix(t_elements *elem, t_cogo v, double **t_y, double **t_x);
+double	**get_transf_matrix(t_cogo v_orient, t_cogo v_pos);
+void    fill_sub_matrix(t_cogo v, double **t_y, double **t_x);
 void    fill_main_matrix(double **t_pos, double **t_y, double **t_x);
 double  **alloc_matrix(double **matrix, int size);
 double  **select_matrix(double **r, int row, int col, int size);
 double	det_matrix(double **mtx, int size);
 void	trans_matrix(double **matrix, int size);
 void	inverse_matrix(double **adjoint, double **matrix, int size);
+void	update_cogo(t_elements *elem, double **m_pos);
+void	update_cogo_element(t_cogo *element, double **m_pos);
+void	update_orient_element(t_cogo *element, double **m_pos);
 
 int		check_intersection(t_elements *elem ,t_cogo ray);
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray);
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	plane_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	cylindre_inter(t_elements *elem, t_cogo ray, int index);
@@ -104,9 +97,23 @@ double	cylindre_inter_shading(t_elements *elem, t_cogo ray, int index);
 int		sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray, t_cogo ray);
-int		multi_rgb(int rgb_o, int rgb_l, double ratio);
-int		add_rgb(int rgb_o, int rgb_l);
+
+double  epsilon_sphere(t_elements *elem, size_t index);
+double  epsilon_plane(t_elements *elem, size_t index);
+double  epsilon_cylinder(t_elements *elem, size_t index);
+
+int		multi_rgb(int rgb1, int rgb2, double ratio);
+int		add_rgb(int rgb1, int rgb2);
+int		mean_rgb(int rgb1, int rgb2);
 
 double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
+
+
+double	cy_test(t_elements *elem, t_cogo ray, size_t index);
+double	cy_test_sh(t_elements *elem, t_cogo ray, size_t index);
+int		cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+double	mag_vector_2d(t_cogo vec);
+double	dot_2d(t_cogo	v_one, t_cogo v_two);
+void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
 
 #endif

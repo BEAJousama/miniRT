@@ -12,6 +12,7 @@
 
 #include "../../includes/minirt.h"
 
+
 double	dot(t_cogo	v_one, t_cogo v_two)
 {
 	return ((v_one.x * v_two.x) + (v_one.y * v_two.y) +(v_one.z * v_two.z));

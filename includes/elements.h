@@ -13,6 +13,10 @@
 #ifndef ELEMENTS_H
 # define ELEMENTS_H
 
+# include "./minirt.h"
+
+struct s_elements;
+
 typedef struct s_cogo
 {
 	double	x;
@@ -69,6 +73,7 @@ typedef struct s_cylinder
 {
 	t_cogo	pos;
 	t_cogo	orient;
+	double	**m_pos;
 	double	diameter;
 	double	height;
 	int		rgb;
@@ -81,5 +86,18 @@ typedef struct s_disk
 	int		rgb;
 	double	rayon;
 }	t_disk;
+
+typedef struct s_elements
+{
+	t_amb_light	*a;
+	t_camera	*c;
+	t_light		*l;
+	t_plane		*pl;
+	t_sphere	*sp;
+	t_cylinder	*cy;
+	double		**m_pos;
+	t_elem_nbr	elem_nbr;
+	t_cogo		origin;
+}	t_elements;
 
 #endif

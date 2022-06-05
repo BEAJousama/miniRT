@@ -42,6 +42,7 @@ SRC =  	minirt.c         		\
 		parse_elements_utils.c	\
 		display.c				\
 		vectors_opp.c			\
+		vectors_opp_2d.c		\
 		fill_matrix.c			\
 		matrix_opp.c			\
 		cogo_manipulations.c	\
@@ -50,7 +51,10 @@ SRC =  	minirt.c         		\
 		cylinder_intersection.c \
 		rgb_calculations.c		\
 		objects_shading.c		\
+		check_shadow_ray.c		\
+		get_epsilon_inter.c		\
 		objects_intersections.c \
+		cy_test.c	\
 
 		
 

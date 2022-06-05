@@ -74,6 +74,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		map_invalid(INVALID_N_ARGS);
 	read_map(&elem, av[1]);
+	gfx.mlx = mlx_init();
+	gfx.win = mlx_new_window(gfx.mlx, 1000, 1000, NAME_W);
 	display(&elem, &gfx);
 	print_info(elem);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);

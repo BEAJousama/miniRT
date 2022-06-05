@@ -13,34 +13,46 @@
 #include "../../includes/minirt.h"
 
 
-int multi_rgb(int rgb_o, int rgb_l, double ratio)
+int multi_rgb(int rgb1, int rgb2, double ratio)
 {
-    unsigned int    b_r;
-    unsigned int    g_r;
-    unsigned int    r_r;
+    unsigned int    b;
+    unsigned int    g;
+    unsigned int    r;
 
-    b_r = ((unsigned char)(rgb_o >> 16) * (unsigned char)(rgb_l >> 16) / 255);
-    g_r = ((unsigned char)(rgb_o >> 8) * (unsigned char)(rgb_l >> 8) / 255);
-    r_r = ((unsigned char)rgb_o * (unsigned char)rgb_l / 255);
-    b_r = b_r > 255 ? 255 : b_r;
-    g_r = g_r > 255 ? 255 : g_r;
-    r_r = r_r > 255 ? 255 : r_r;
-    return ((int)(r_r * ratio) | (int)(g_r * ratio) << 8 \
-    | (int)(b_r * ratio) << 16);
+    b = ((unsigned char)(rgb1 >> 16) * (unsigned char)(rgb2 >> 16) / 255);
+    g = ((unsigned char)(rgb1 >> 8) * (unsigned char)(rgb2 >> 8) / 255);
+    r = ((unsigned char)rgb1 * (unsigned char)rgb2 / 255);
+    b = b > 255 ? 255 : b;
+    g = g > 255 ? 255 : g;
+    r = r > 255 ? 255 : r;
+    return ((int)(r * ratio) | (int)(g * ratio) << 8 \
+    | (int)(b * ratio) << 16);
 }
 
 
-int add_rgb(int rgb_o, int rgb_l)
+int add_rgb(int rgb1, int rgb2)
 {
-    unsigned int    b_r;
-    unsigned int    g_r;
-    unsigned int    r_r;
+    unsigned int    b;
+    unsigned int    g;
+    unsigned int    r;
     
-    b_r = (unsigned char)(rgb_o >> 16) + (unsigned char)(rgb_l >> 16);
-    g_r = (unsigned char)(rgb_o >> 8) + (unsigned char)(rgb_l >> 8);
-    r_r = (unsigned char)rgb_o + (unsigned char)rgb_l;
-    b_r = b_r > 255 ? 255 : b_r;
-    g_r = g_r > 255 ? 255 : g_r;
-    r_r = r_r > 255 ? 255 : r_r;
-    return ((int)(r_r) | (int)(g_r) << 8 | (int)(b_r) << 16);
+    b = (unsigned char)(rgb1 >> 16) + (unsigned char)(rgb2 >> 16);
+    g = (unsigned char)(rgb1 >> 8) + (unsigned char)(rgb2 >> 8);
+    r = (unsigned char)rgb1 + (unsigned char)rgb2;
+    b = b > 255 ? 255 : b;
+    g = g > 255 ? 255 : g;
+    r = r > 255 ? 255 : r;
+    return ((int)(r) | (int)(g) << 8 | (int)(b) << 16);
+}
+
+int mean_rgb(int rgb1, int rgb2)
+{
+    unsigned int    b;
+    unsigned int    g;
+    unsigned int    r;
+
+    b = ((unsigned char)(rgb1 >> 16) + (unsigned char)(rgb2 >> 16)) / 2;
+    g = ((unsigned char)(rgb1 >> 8) + (unsigned char)(rgb2 >> 8)) / 2;
+    r = ((unsigned char)rgb1 + (unsigned char)rgb2) / 2;
+    return ((int)(r) | (int)(g) << 8 | (int)(b) << 16);
 }
