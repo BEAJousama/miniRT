@@ -75,3 +75,22 @@ int cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	}
 	return (rgb_h);
 }
+
+int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+{
+	int     rgb_h;
+
+	rgb_h = 0;
+	if (elem->a)
+		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
+	if (elem->elem_nbr.cy_nbr && check_shadow_ray(elem, sh_ray))
+	{
+		resize_vec(&sh_ray, sh_ray, 1);
+		resize_vec(&elem->cy[info->i].orient, elem->cy[info->i].orient, 1);
+		rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
+		fabs(dot(sh_ray, elem->cy[info->i].orient)) * elem->l->bright), rgb_h);
+		return (rgb_h);
+	}
+	return (rgb_h);
+}
+

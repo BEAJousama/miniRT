@@ -35,6 +35,8 @@ int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
         return (plane_shading(elem, info, sh_ray));
 	if (info->object == 'c')
 		return (cylinder_shadingg(elem, info, sh_ray));
+	if (info->object == 'd')
+		return (disk_cy_shading(elem, info, sh_ray));
 	return (0);
 }
 
@@ -54,6 +56,13 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		fill_info_obj(cy_test(elem, ray, (size_t)i), &info, i, 'c');
+	i = -1;
+	if (info.object != 'c')
+		while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		{
+			fill_info_obj(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
+			fill_info_obj(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
+		}
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem, ray));
 }

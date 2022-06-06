@@ -48,6 +48,21 @@ bool	check_sh_ray_cy(t_elements *elem, t_cogo sh_ray, size_t index)
 	return (1);
 }
 
+bool	check_sh_ray_cy_disk(t_elements *elem, t_cogo sh_ray, size_t index)
+{
+	double  t_hol;
+	double	epsilon;
+
+    epsilon = epsilon_cy_disk(elem, index);
+	t_hol = disk_cy_inter(elem, sh_ray, index, -1);
+	if (t_hol > epsilon && t_hol < 1)
+		return (0);
+	t_hol = disk_cy_inter(elem, sh_ray, index, 1);
+	if (t_hol > epsilon && t_hol < 1)
+		return (0);
+	return (1);
+}
+
 bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray)
 {
 	int i;
@@ -63,6 +78,10 @@ bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
         if (!check_sh_ray_cy(elem, sh_ray, (size_t)i))
+            return (0);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+        if (!check_sh_ray_cy_disk(elem, sh_ray, (size_t)i))
             return (0);
 	return (1);
 }

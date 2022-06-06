@@ -55,3 +55,15 @@ double  epsilon_cylinder(t_elements *elem, size_t index)
 		return (-0.00001);
 	return (0.00001);
 }
+
+double  epsilon_cy_disk(t_elements *elem, size_t index)
+{
+	t_cogo	c_c;
+	t_cogo	l_c;
+
+	add_sub_vectors(&c_c, elem->c->pos, elem->origin, -1);
+	add_sub_vectors(&l_c, elem->l->pos, elem->origin, -1);
+	if ((dot(c_c, elem->cy[index].orient) * dot(l_c, elem->cy[index].orient)) > 0)
+		return (0.00001);
+	return (-0.00001);
+}

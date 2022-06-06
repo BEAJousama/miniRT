@@ -101,6 +101,7 @@ int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray, t_co
 double  epsilon_sphere(t_elements *elem, size_t index);
 double  epsilon_plane(t_elements *elem, size_t index);
 double  epsilon_cylinder(t_elements *elem, size_t index);
+double  epsilon_cy_disk(t_elements *elem, size_t index);
 
 int		multi_rgb(int rgb1, int rgb2, double ratio);
 int		add_rgb(int rgb1, int rgb2);
@@ -115,5 +116,8 @@ int		cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	mag_vector_2d(t_cogo vec);
 double	dot_2d(t_cogo	v_one, t_cogo v_two);
 void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
+
+double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe);
+int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
 #endif

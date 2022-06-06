@@ -49,6 +49,7 @@ SRC =  	minirt.c         		\
 		sphere_intersection.c	\
 		plane_intersection.c    \
 		cylinder_intersection.c \
+		disk_cy_intersection.c	\
 		rgb_calculations.c		\
 		objects_shading.c		\
 		check_shadow_ray.c		\
