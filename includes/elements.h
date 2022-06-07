@@ -73,6 +73,8 @@ typedef struct s_cylinder
 {
 	t_cogo	pos;
 	t_cogo	orient;
+	t_cogo	o_c;
+	double	z_o;
 	double	**m_pos;
 	double	diameter;
 	double	height;

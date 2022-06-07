@@ -55,7 +55,6 @@ SRC =  	minirt.c         		\
 		check_shadow_ray.c		\
 		get_epsilon_inter.c		\
 		objects_intersections.c \
-		cy_test.c	\
 
 		
 

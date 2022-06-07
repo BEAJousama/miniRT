@@ -50,11 +50,20 @@ void	fill_position_matrix(t_elements *elem)
 	int	i;
 
 	i = -1;
+	t_cogo  o;
+	t_cogo  null;
+	null = (t_cogo){};
 	elem->m_pos = get_transf_matrix(elem->c->orient, elem->c->pos);
     update_cogo(elem, elem->m_pos);
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+	{
+		o = (t_cogo){};
 		elem->cy[i].m_pos = get_transf_matrix(elem->cy[i].orient,\
 		elem->cy[i].pos);
+		update_cogo_element(&o, elem->cy[i].m_pos);
+		add_sub_vectors_2d(&elem->cy[i].o_c, o, null, -1);
+		elem->cy[i].z_o = o.z;
+	}
 }
 
 void	init_ray(t_elements *elem, t_cogo *ray)
@@ -74,8 +83,8 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 	double	pixel_step;
 
     y = 0;
-	fill_position_matrix(elem);
 	init_ray(elem, &ray);
+	fill_position_matrix(elem);
 	pixel_step = fabs(ray.x * 2) / 1000;
 	x_ray_hol = ray.x;
 	while (y++ < 1000)

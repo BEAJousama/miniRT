@@ -107,7 +107,7 @@ int		multi_rgb(int rgb1, int rgb2, double ratio);
 int		add_rgb(int rgb1, int rgb2);
 int		mean_rgb(int rgb1, int rgb2);
 
-double	sphere_inter(t_elements *elem, t_cogo ray, size_t index);
+double	sphere_intersection_sh(t_elements *elem, t_cogo ray, size_t index);
 
 
 double	cy_test(t_elements *elem, t_cogo ray, size_t index);

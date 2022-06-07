@@ -18,7 +18,7 @@ bool	check_sh_ray_sp(t_elements *elem, t_cogo sh_ray, size_t index)
 	double	epsilon;
 
     epsilon = epsilon_sphere(elem, index);
-	t_hol = sphere_inter(elem, sh_ray, index);
+	t_hol = sphere_intersection_sh(elem, sh_ray, index);
 	if (t_hol > epsilon && t_hol < 1)
 		return (0);
     return (1);

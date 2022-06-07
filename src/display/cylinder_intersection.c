@@ -12,131 +12,124 @@
 
 #include "../../includes/minirt.h"
 
-double	disk_inter(t_disk disk, t_cogo ray, t_elements *elem)
-{
-	t_cogo	tn;
-	t_cogo	c_p;
-	t_cogo	v;
-	double	scaler;
 
-	if (disk.orient.x == 0 && disk.orient.y == 0
-		&& disk.orient.z == 0)
-		return (0);
-	else
+// double	cylinder_solution(t_elements *elem)
+// {
+
+// }
+
+// double	cy_test(t_elements *elem, t_cogo ray, size_t index)
+// {
+// 	double	delta;
+// 	double	t;
+
+// 	t = 0;
+//     update_orient_element(&ray, elem->cy[index].m_pos);
+// 	delta = pow(2 * dot_2d(ray, elem->cy[index].o_c), 2) - (4 * dot_2d(ray, ray)
+// 		* (dot_2d(elem->cy[index].o_c, elem->cy[index].o_c) - pow(elem->cy[index].diameter / 2, 2)));
+// 	if (delta >= 0)
+// 	{
+// 		if (mag_vector_2d(elem->cy[index].o_c) >= (elem->cy[index].diameter / 2))
+// 		{
+// 			t = ((-2 * dot_2d(ray, elem->cy[index].o_c)) - sqrt(delta)) / (2 * dot_2d(ray, ray));
+// 			if (fabs((t * ray.z) + elem->cy[index].z_o) < (elem->cy[index].height / 2))
+// 				return (t);
+// 			return (0);
+// 		}
+// 		// t = ((-2 * dot_2d(ray, elem->cy[index].o_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
+// 		// if (fabs((t * ray.z) + elem->cy[index].z_o) < (elem->cy[index].height / 2))
+// 		// 	return (t);
+// 	}
+// 	return (0);
+// }
+
+// double	cy_test(t_elements *elem, t_cogo ray, size_t index)
+// {
+// 	double	delta;
+// 	double	t1;
+// 	double	t2;
+
+// 	t1 = 0;
+// 	t2 = 0;
+// 	delta = 0;
+//     update_orient_element(&ray, elem->cy[index].m_pos);
+// 	delta = pow(2 * dot_2d(ray, elem->cy[index].o_c), 2) - (4 * dot_2d(ray, ray)
+// 		* (dot_2d(elem->cy[index].o_c, elem->cy[index].o_c) - pow(elem->cy[index].diameter / 2, 2)));
+// 	if (delta >= 0)
+// 	{
+// 		if (mag_vector_2d(elem->cy[index].o_c) >= (elem->cy[index].diameter / 2))
+// 		{
+// 			t1 = ((-2 * dot_2d(ray, elem->cy[index].o_c)) - sqrt(delta)) / (2 * dot_2d(ray, ray));
+// 			if (fabs((t1 * ray.z) + elem->cy[index].z_o) < (elem->cy[index].height / 2))
+// 				return (t1);
+// 			return (-1);
+// 		}
+// 		else
+// 		{
+// 			delta = (mag_vector(elem->cy[index].pos));
+// 			// usleep(0);
+// 			puts("ok\n");
+// 		}
+// 	}
+// 	// if (fabs((t2 * ray.z) + elem->cy[index].z_o) < (elem->cy[index].height / 2))
+// 	// 	return (t2);
+// 	return (0);
+// }
+
+double	cy_test(t_elements *elem, t_cogo ray, size_t index)
+{
+    t_cogo	p;
+    t_cogo  origin;
+    t_cogo  null;
+	double	delta;
+	double	t1;
+	// double	t2;
+
+	t1 = 0;
+	// t2 = 0;
+    null = (t_cogo){};
+    origin = elem->origin;
+    update_orient_element(&ray, elem->cy[index].m_pos);
+    update_cogo_element(&origin, elem->cy[index].m_pos);
+	// add_sub_vectors_2d(&p_c, origin, null, -1);
+	p = elem->cy[index].o_c;
+	delta = pow(2 * dot_2d(ray, elem->cy[index].o_c), 2) - (4 * dot_2d(ray, ray)
+		* (dot_2d(elem->cy[index].o_c, elem->cy[index].o_c) - pow(elem->cy[index].diameter / 2, 2)));
+	if (delta >= 0)
 	{
-		add_sub_vectors(&c_p, disk.pos, elem->origin, -1);
-		scaler = dot(c_p, disk.orient) / dot(ray,
-				disk.orient);
-		scaler_multiplication(&tn, ray, scaler);
-		v = vec_create(tn, disk.pos);
-		if (mag_vector(v) <= disk.rayon)
-			return (scaler);
+		if (mag_vector_2d(elem->cy[index].o_c) >= (elem->cy[index].diameter / 2))
+			t1 = ((-2 * dot_2d(ray, elem->cy[index].o_c)) - sqrt(delta)) / (2 * dot_2d(ray, ray));
+		// else
+		// 	t2 = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
 	}
+	if (fabs((t1 * ray.z) + origin.z) < (elem->cy[index].height / 2))
+		return (t1);
+	// if (t2 > 0.00001 && fabs((t1 * ray.z) + origin.z) < (elem->cy[index].height / 2))
+	// 	return (t2);
 	return (0);
 }
 
-double	disk_create(t_elements *elem, t_cogo ray, int index, t_cogo p_c)
+double	cy_test_sh(t_elements *elem, t_cogo ray, size_t index)
 {
-	t_disk	plan1;
-	t_disk	plan2;
+    t_cogo  origin;
+    t_cogo	p_c;
+    t_cogo  null;
+	double	delta;
 	double	t;
-	
-	(void)p_c;	
-	plan1.orient = elem->cy[index].orient;
-	plan2.orient = elem->cy[index].orient;
-	plan1.rgb = elem->cy[index].rgb;
-	plan2.rgb = elem->cy[index].rgb;
-	plan1.pos.y = elem->cy[index].pos.y + elem->cy[index].height / 2;
-	plan2.pos.y = elem->cy[index].pos.y - elem->cy[index].height / 2;
-	plan1.pos.x = elem->cy[index].pos.x;
-	plan2.pos.x = elem->cy[index].pos.x;
-	plan1.pos.z = elem->cy[index].pos.z;
-	plan2.pos.z = elem->cy[index].pos.z;
-	plan1.rayon = elem->cy[index].diameter / 2;
-	plan2.rayon = elem->cy[index].diameter / 2;
-	t = disk_inter(plan1, ray, elem);
-	if (t < disk_inter(plan2, ray, elem))
-		t = disk_inter(plan2, ray, elem);
-	return (t);
-}
 
-double	cylindre_inter(t_elements *elem, t_cogo ray, int index)
-{
-	double	t;
-	double	a,b,c,delta;
-	t_cogo	p_c;
-	t_cogo	tn;
-	t_cogo	p_c_cross;
-	t_cogo	ray_cross;
-
-	add_sub_vectors(&p_c, elem->origin, elem->cy[index].pos, -1);
-	p_c_cross = cross_product(p_c, elem->cy[index].orient);
-	ray_cross = cross_product(ray, elem->cy[index].orient);
-	a = pow(mag_vector(ray), 2) * pow(mag_vector(elem->cy[index].orient), 2)
-		- pow(dot(ray, elem->cy[index].orient), 2);
-	b = 2 * (dot(p_c_cross, ray_cross));
-	c = pow(mag_vector(p_c), 2) * pow(mag_vector(elem->cy[index].orient), 2)
-		- pow(dot(p_c, elem->cy[index].orient), 2)
-		- pow(elem->cy[index].diameter / 2, 2)
-		* dot(elem->cy[index].orient, elem->cy[index].orient);
-	delta = pow(b, 2) - 4 * a * c ;
+	t = 0;
+    null = (t_cogo){};
+    origin = elem->origin;
+    update_orient_element(&ray, elem->cy[index].m_pos);
+    update_cogo_element(&origin, elem->cy[index].m_pos);
+	add_sub_vectors_2d(&p_c, origin, null, -1);
+	delta = pow(2 * dot_2d(ray, p_c), 2) - (4 * dot_2d(ray, ray)
+		* (dot_2d(p_c, p_c) - pow(elem->cy[index].diameter / 2, 2)));
 	if (delta >= 0)
 	{
-		if (mag_vector(p_c) >= elem->cy[index].diameter / 2)
-			t = (-b - sqrt(delta)) / (2 * a);
-		else
-			t = (-b + sqrt(delta)) / (2 * a);
-		scaler_multiplication(&tn,ray, t);
-		if (tn.y < (elem->cy[index].pos.y + elem->cy[index].height / 2)
-			&& tn.y > (elem->cy[index].pos.y - elem->cy[index].height / 2))
-		{
-			return (t);
-		}
-	}
-	return (disk_create(elem, ray, index, p_c));
-}
-
-double	cylindre_inter_shading(t_elements *elem, t_cogo ray, int index)
-{
-	double	t1,t2;
-	double	a,b,c,delta;
-	t_cogo	p_c,tn;
-	t_cogo	p_c_cross;
-	t_cogo ray_cross;
-	
-	add_sub_vectors(&p_c, elem->origin, elem->cy[index].pos, -1);
-	p_c_cross = cross_product(p_c, elem->cy[index].orient);
-	ray_cross = cross_product(ray, elem->cy[index].orient);
-	a = pow(mag_vector(ray), 2) * pow(mag_vector(elem->cy[index].orient), 2)
-		- pow(dot(ray, elem->cy[index].orient), 2);
-	b = 2 * (dot(p_c_cross, ray_cross));
-	c = pow(mag_vector(p_c), 2) * pow(mag_vector(elem->cy[index].orient), 2)
-		- pow(dot(p_c, elem->cy[index].orient), 2)
-		- pow(elem->cy[index].diameter / 2, 2)
-		* dot(elem->cy[index].orient, elem->cy[index].orient);
-	delta = pow(b, 2) - 4 * a * c ;;
-	if (delta >= 0)
-	{
-		t1 = (-b - sqrt(delta)) / (2 * a);
-		t2 = (-b + sqrt(delta)) / (2 * a);
-		if (t2 > -0.00001 && t2 < 1)
-		{
-			scaler_multiplication(&tn,ray, t1);
-			if (tn.y <= (elem->cy[index].pos.y + elem->cy[index].height / 2)
-				&& tn.y >= (elem->cy[index].pos.y - elem->cy[index].height / 2))
-			{
-				return (t2);
-			}
-		}
-		if(t1 > -0.00001 && t1 < 1)
-		{
-			scaler_multiplication(&tn,ray, t2);
-			if (tn.y <= (elem->cy[index].pos.y + elem->cy[index].height / 2)
-				&& tn.y >= (elem->cy[index].pos.y - elem->cy[index].height / 2))
-			{
-				return (t1);
-			}
-		}
+		t = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
+        if (fabs((t * ray.z) + origin.z) < (elem->cy[index].height / 2))
+            return (t);
 	}
 	return (-1);
 }
