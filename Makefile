@@ -28,7 +28,7 @@ PARSE_PATH = ./parsing/
 DISPLAY_PATH = ./display/
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 
 # BSRC =  minirt_bonus.c     		\
 

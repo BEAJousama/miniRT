@@ -60,6 +60,7 @@ int cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	rgb_h = 0;
 	origin = elem->origin;
 	pos_cy = (t_cogo){};
+	p_c = (t_cogo){};
 	if (elem->a)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))

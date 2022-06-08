@@ -56,7 +56,7 @@ double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index)
     origin = elem->origin;
     update_orient_element(&ray, elem->cy[index].m_pos);
     update_cogo_element(&origin, elem->cy[index].m_pos);
-	add_sub_vectors_2d(&p_c, origin, null, -1);
+	p_c = add_sub_vectors_2d(origin, null, -1);
 	delta = pow(2 * dot_2d(ray, p_c), 2) - (4 * dot_2d(ray, ray)
 		* (dot_2d(p_c, p_c) - pow(elem->cy[index].diameter / 2, 2)));
 	if (delta >= 0)
