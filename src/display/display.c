@@ -72,6 +72,23 @@ void	init_ray(t_elements *elem, t_cogo *ray)
 	ray->y = -ray->x;
 	ray->z = 1;
 }
+void	fill_t_buf_i(t_buf_i *i, int endian)
+{
+	if (!endian)
+	{
+		i->i0 = 0;
+		i->i1 = 1;
+		i->i2 = 2;
+		i->i3 = 3;
+	}
+	else
+	{
+		i->i0 = 3;
+		i->i1 = 2;
+		i->i2 = 1;
+		i->i3 = 0;
+	}
+}
 
 void	display(t_elements *elem, t_mlx_ptr *gfx)
 {
@@ -81,13 +98,15 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 	t_cogo	ray;
 	double	x_ray_hol;
 	double	pixel_step;
+	t_buf_i i;
 	
     y = 0;
+	i = (t_buf_i){};
 	init_ray(elem, &ray);
 	fill_position_matrix(elem);
 	pixel_step = fabs(ray.x * 2) / 1000;
 	x_ray_hol = ray.x;
-
+	fill_t_buf_i(&i, gfx->endian);
 	while (y++ < 1000)
 	{
 		x = 0;
@@ -96,8 +115,12 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 		{
 			ray.x += pixel_step;
 			color = get_pixel_color(elem, ray, pixel_step, 1);
-			mlx_pixel_put (gfx->mlx , gfx->win, x, y, color);
+ 			gfx->buf[(y * gfx->l_bytes) + (x * 4) + i.i0] = (color) ;
+ 			gfx->buf[(y * gfx->l_bytes) + (x * 4) + i.i1] = (color >> 8);
+ 			gfx->buf[(y * gfx->l_bytes) + (x * 4) + i.i2] = (color >> 16);
+ 			gfx->buf[(y * gfx->l_bytes) + (x * 4) + i.i3] = (color >> 24);
 		}
 		ray.y = ray.y - pixel_step;
 	}
+	mlx_put_image_to_window(gfx->mlx, gfx->win, gfx->img, 0, 0);
 }

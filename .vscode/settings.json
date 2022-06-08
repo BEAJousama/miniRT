@@ -12,6 +12,7 @@
         "type_traits": "c",
         "defines.h": "c",
         "elements.h": "c",
-        "chrono": "c"
+        "chrono": "c",
+        "bit": "c"
     }
 }

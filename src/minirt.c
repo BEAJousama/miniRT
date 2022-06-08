@@ -82,6 +82,8 @@ int	main(int ac, char **av)
 	read_map(&elem, av[1]);
 	gfx.mlx = mlx_init();
 	gfx.win = mlx_new_window(gfx.mlx, 1000, 1000, NAME_W);
+	gfx.img = mlx_new_image(gfx.mlx, 1000, 1000);
+	gfx.buf = mlx_get_data_addr(gfx.img, &gfx.p_bits, &gfx.l_bytes, &gfx.endian);
 	display(&elem, &gfx);
 	// print_info(elem);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);

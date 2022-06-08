@@ -26,8 +26,13 @@
 
 typedef struct s_mlx_ptr
 {
-	void		*win;
-	void		*mlx;
+	void	*win;
+	void	*mlx;
+	void	*img;
+	char	*buf;
+	int		p_bits;
+	int		l_bytes;
+	int		endian;
 }	t_mlx_ptr;
 
 typedef	struct s_close_inter
@@ -38,6 +43,13 @@ typedef	struct s_close_inter
 	char	object;
 }	t_close_inter;
 
+typedef	struct s_buf_i
+{
+	char	i0;
+	char	i1;
+	char	i2;
+	char	i3;
+}	t_buf_i;
 
 void	free_2d(char **strs);
 void	free_elements(t_elements *elem);
