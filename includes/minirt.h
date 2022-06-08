@@ -117,6 +117,7 @@ int		cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	mag_vector_2d(t_cogo vec);
 double	dot_2d(t_cogo	v_one, t_cogo v_two);
 void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
+void	resize_vec_2d(t_cogo *vec, t_cogo v, double len);
 
 double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe);
 int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);

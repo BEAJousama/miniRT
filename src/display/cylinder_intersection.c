@@ -27,7 +27,6 @@ double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t i)
 	{
 		if (mag_vector_2d(elem->cy[i].o_c) >= (elem->cy[i].diameter / 2))
 		{
-			// printf("%.5f\n", dot_2d(ray, ray));
 			t = ((-2 * dot_2d(ray, elem->cy[i].o_c)) - sqrt(delta)) / \
 			(2 * dot_2d(ray, ray));
 			if (fabs((t * ray.z) + elem->cy[i].z_o) < (elem->cy[i].height / 2))
