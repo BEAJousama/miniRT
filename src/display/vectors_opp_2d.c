@@ -20,13 +20,10 @@ double	dot_2d(t_cogo	v_one, t_cogo v_two)
 	return (r);
 }
 
-t_cogo	add_sub_vectors_2d(t_cogo v_one, t_cogo v_two, int signe)
+void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe)
 {
-	t_cogo	v_res;
-
-	v_res.x = v_one.x + ((double)signe * v_two.x);
-	v_res.y = v_one.y + ((double)signe * v_two.y);
-	return (v_res);
+	v_res->x = v_one.x + (signe * v_two.x);
+	v_res->y = v_one.y + (signe * v_two.y);
 }
 
 double	mag_vector_2d(t_cogo vec)
