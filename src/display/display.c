@@ -81,12 +81,13 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 	t_cogo	ray;
 	double	x_ray_hol;
 	double	pixel_step;
-
+	
     y = 0;
 	init_ray(elem, &ray);
 	fill_position_matrix(elem);
 	pixel_step = fabs(ray.x * 2) / 1000;
 	x_ray_hol = ray.x;
+
 	while (y++ < 1000)
 	{
 		x = 0;

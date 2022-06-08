@@ -11,6 +11,7 @@
         "string": "c",
         "type_traits": "c",
         "defines.h": "c",
-        "elements.h": "c"
+        "elements.h": "c",
+        "chrono": "c"
     }
 }

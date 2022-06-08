@@ -12,6 +12,16 @@
 
 #include "../../includes/minirt.h"
 
+void    free_matrix(double **matrix, int size)
+{
+    int i;
+
+    i = -1;
+    while (++i < size)
+        free(matrix[i]);
+    free(matrix);
+}
+
 double  **alloc_matrix(double **matrix, int size)
 {
     int i;
@@ -23,10 +33,11 @@ double  **alloc_matrix(double **matrix, int size)
     while (++i < size)
     {
         matrix[i] = malloc(size * sizeof(double));
+        //attention!!!
         if (!matrix[i])
         {   while (i--)
                 free(matrix[i]);
-            return (NULL);
+            return (free(matrix), NULL);
         }
         ft_memset(matrix[i], 0, size * sizeof(double));
     }
@@ -80,7 +91,7 @@ double    det_matrix(double **mtx, int size)
         {
             m_sel = select_matrix(mtx, i, j, size);
             det += pow(-1, i + j + 2) * mtx[i][j] * det_matrix(m_sel, size - 1);
-            free(m_sel);
+            free_matrix(m_sel, 4);
         }
     }
     return (det);
@@ -124,7 +135,8 @@ void  inverse_matrix(double **adjoint, double **matrix, int size)
         adjoint[i][j] = (pow(-1, i + j + 2) * det_2) / det;
         if (++j == size && ++i)
             j = 0;
-        free(m_sel);
+        free_matrix(m_sel, 4);
     }
     trans_matrix(adjoint, size);
+
 }

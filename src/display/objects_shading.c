@@ -64,13 +64,12 @@ int cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{
-		update_cogo_element(&origin, elem->cy[info->i].m_pos);
 		update_orient_element(&sh_ray, elem->cy[info->i].m_pos);
-		add_sub_vectors_2d(&p_c, origin, pos_cy, -1);
+		p_c = elem->cy[info->i].o_c;
 		resize_vec(&p_c, p_c, 1);
 		resize_vec(&sh_ray, sh_ray, 1);
 		rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
-		(fabs(dot_2d(sh_ray, p_c))) * elem->l->bright), rgb_h);
+		(fabs(dot(sh_ray, p_c))) * elem->l->bright), rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
@@ -83,7 +82,7 @@ int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	rgb_h = 0;
 	if (elem->a)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
-	if (elem->elem_nbr.cy_nbr && check_shadow_ray(elem, sh_ray))
+	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{
 		resize_vec(&sh_ray, sh_ray, 1);
 		resize_vec(&elem->cy[info->i].orient, elem->cy[info->i].orient, 1);

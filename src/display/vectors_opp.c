@@ -15,7 +15,7 @@
 
 double	dot(t_cogo	v_one, t_cogo v_two)
 {
-	return ((v_one.x * v_two.x) + (v_one.y * v_two.y) +(v_one.z * v_two.z));
+	return ((v_one.x * v_two.x) + (v_one.y * v_two.y) + (v_one.z * v_two.z));
 }
 
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe)

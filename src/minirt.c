@@ -55,11 +55,17 @@ int	close_win_esc(int keycode, t_elements *elem)
 
 void	free_elements(t_elements *elem)
 {
+	int	i;
+
+	i = -1;
 	free(elem->a);
 	free(elem->c);
 	free(elem->l);
 	free(elem->sp);
-	free(elem->pl);
+	// free(elem->pl);
+	free_matrix(elem->m_pos, 4);
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		free_matrix(elem->cy[i].m_pos, 4);
 	free(elem->cy);
 }
 
@@ -77,7 +83,7 @@ int	main(int ac, char **av)
 	gfx.mlx = mlx_init();
 	gfx.win = mlx_new_window(gfx.mlx, 1000, 1000, NAME_W);
 	display(&elem, &gfx);
-	print_info(elem);
+	// print_info(elem);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
 	mlx_hook(gfx.win, 17, 0L, close_win, &elem);
 	mlx_loop(gfx.mlx);

@@ -65,21 +65,21 @@ bool	check_tuple(char *tuple, int type, bool signe, bool dot)
 
 	tuple_splited = ft_split(tuple, ',');
 	if (strlen_2d(tuple_splited) != 3)
-		return (free(tuple_splited), 1);
+		return (free_2d(tuple_splited), 1);
 	i = 0;
 	while (tuple_splited[i])
 	{
 		if (check_dot(tuple_splited[i], signe, dot))
-			return (free(tuple_splited), 1);
+			return (free_2d(tuple_splited), 1);
 		if (type == 0)
 			if (ft_atoi(tuple_splited[i]) > 255)
-				return (free(tuple_splited), 1);
+				return (free_2d(tuple_splited), 1);
 		if (type == 1)
 			if (check_limit(tuple_splited[i], -1, 1))
-				return (free(tuple_splited), 1);
+				return (free_2d(tuple_splited), 1);
 		i++;
 	}
-	return (free(tuple_splited), 0);
+	return (free_2d(tuple_splited), 0);
 }
 
 bool	check_three_null(t_cogo v)

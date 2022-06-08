@@ -80,6 +80,7 @@ double	**get_transf_matrix(t_cogo v_orient, t_cogo v_pos);
 void    fill_sub_matrix(t_cogo v, double **t_y, double **t_x);
 void    fill_main_matrix(double **t_pos, double **t_y, double **t_x);
 double  **alloc_matrix(double **matrix, int size);
+void    free_matrix(double **matrix, int size);
 double  **select_matrix(double **r, int row, int col, int size);
 double	det_matrix(double **mtx, int size);
 void	trans_matrix(double **matrix, int size);
@@ -110,8 +111,8 @@ int		mean_rgb(int rgb1, int rgb2);
 double	sphere_intersection_sh(t_elements *elem, t_cogo ray, size_t index);
 
 
-double	cy_test(t_elements *elem, t_cogo ray, size_t index);
-double	cy_test_sh(t_elements *elem, t_cogo ray, size_t index);
+double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t index);
+double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index);
 int		cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	mag_vector_2d(t_cogo vec);
 double	dot_2d(t_cogo	v_one, t_cogo v_two);

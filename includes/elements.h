@@ -81,14 +81,6 @@ typedef struct s_cylinder
 	int		rgb;
 }	t_cylinder;
 
-typedef struct s_disk
-{
-	t_cogo	pos;
-	t_cogo	orient;
-	int		rgb;
-	double	rayon;
-}	t_disk;
-
 typedef struct s_elements
 {
 	t_amb_light	*a;

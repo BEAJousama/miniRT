@@ -93,6 +93,7 @@ void	check_map(t_elements *elem, char **map)
 		iden = 'U';
 	if (iden)
 		return (free_2d(map), free_elements(elem), map_invalid(iden));
+	free_2d(map);
 }
 
 void	read_map(t_elements *elem, char *f_map)

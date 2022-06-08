@@ -42,7 +42,7 @@ bool	check_sh_ray_cy(t_elements *elem, t_cogo sh_ray, size_t index)
 	double	epsilon;
 
     epsilon = epsilon_cylinder(elem, index);
-	t_hol = cy_test_sh(elem, sh_ray, index);
+	t_hol = cylinder_intersection_sh(elem, sh_ray, index);
 	if (t_hol > epsilon && t_hol < 1)
 		return (0);
 	return (1);

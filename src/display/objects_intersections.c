@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-void	fill_info_obj(double t_hol, t_close_inter *info, int i, char obj)
+void	fill_info(double t_hol, t_close_inter *info, int i, char obj)
 {
 	if ((t_hol < info->t && t_hol > 0) || (!info->t && t_hol > 0))
 	{
@@ -49,19 +49,19 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 	info = (t_close_inter){};
 	elem->origin = elem->c->pos;
 	while ((size_t)++i < elem->elem_nbr.sp_nbr)
-		fill_info_obj(sphere_intersection(elem, ray, (size_t)i), &info, i, 's');
+		fill_info(sphere_intersection(elem, ray, (size_t)i), &info, i, 's');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
-		fill_info_obj(plane_intersection(elem, ray, (size_t)i), &info, i, 'p');
+		fill_info(plane_intersection(elem, ray, (size_t)i), &info, i, 'p');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		fill_info_obj(cy_test(elem, ray, (size_t)i), &info, i, 'c');
+		fill_info(cylinder_intersection(elem, ray, (size_t)i), &info, i, 'c');
 	i = -1;
 	if (info.object != 'c')
 		while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		{
-			fill_info_obj(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
-			fill_info_obj(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
+			fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
+			fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
 		}
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem, ray));

@@ -81,11 +81,11 @@ double	**get_transf_matrix(t_cogo v_orient, t_cogo v_pos)
     fill_main_matrix(t_pos, t_pos_y, t_pos_x);
     t_pos[0][3] = v_pos.x;
     t_pos[1][3] = v_pos.y;
-    t_pos[2][3] = v_pos.z; 
+    t_pos[2][3] = v_pos.z;
     inverse_matrix(m_pos, t_pos, 4);
-    free(t_pos_y);
-    free(t_pos_x);
-    free(t_pos);
+    free_matrix(t_pos_y, 4);
+    free_matrix(t_pos_x, 4);
+    free_matrix(t_pos, 4);
     return (m_pos);
 }
 
