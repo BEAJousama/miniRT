@@ -61,7 +61,7 @@ void	fill_position_matrix(t_elements *elem)
 		elem->cy[i].m_pos = get_transf_matrix(elem->cy[i].orient,\
 		elem->cy[i].pos);
 		update_cogo_element(&o, elem->cy[i].m_pos);
-		add_sub_vectors_2d(&elem->cy[i].o_c, o, null, -1);
+		elem->cy[i].o_c  = add_sub_vectors_2d(o, null, -1);
 		elem->cy[i].z_o = o.z;
 	}
 }

@@ -28,7 +28,7 @@ PARSE_PATH = ./parsing/
 DISPLAY_PATH = ./display/
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror  -fsanitize=float-divide-by-zero -fsanitize=alignment
 
 # BSRC =  minirt_bonus.c     		\
 
