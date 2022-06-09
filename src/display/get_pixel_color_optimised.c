@@ -12,39 +12,34 @@
 
 #include "../../includes/minirt.h"
 
-void	fill_color_buffer(t_mlx_ptr *gfx, int color, int x, int y)
+int recursion_condition(t_elements *elem, t_cogo ray, double pixel_step, bool depth)
 {
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i0] = (color) ;
- 	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i1] = (color >> 8);
- 	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = (color >> 16);
- 	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i3] = (color >> 24);
+    int color;
+
+    if (depth)
+		color = get_pixel_color(elem, ray, pixel_step / 2, 0);
+	else
+		color = check_intersection(elem, ray);
+    return (color);
 }
 
-void	display(t_elements *elem, t_mlx_ptr *gfx)
+int	get_pixel_color(t_elements *elem, t_cogo ray, double pixel_step, bool depth)
 {
-    int		x; 
-    int		y;
-	int		color;
-	t_cogo	ray;
-	double	x_ray_hol;
-	double	pixel_step;
-	
-    y = -1;
-	init_ray(elem, &ray);
-	fill_position_matrix(elem);
-	fill_t_buf_i(&gfx->i, gfx->endian);
-	pixel_step = fabs(ray.x * 2) / 1000;
-	x_ray_hol = ray.x;
-	while (++y < 1000)
-	{
-		x = -1;
-		ray.x = x_ray_hol;
-		while (++x < 1000)
-		{
-			ray.x += pixel_step;
-			color = get_pixel_color(elem, ray, pixel_step, 1);
-			fill_color_buffer(gfx, color, x, y);
-		}
-		ray.y = ray.y - pixel_step;
-	}
+	int	color;
+	int	color_h;
+
+	ray.x -= (pixel_step) / 4;
+	ray.y += (pixel_step) / 4;
+    color = recursion_condition(elem, ray, pixel_step, depth);
+	ray.x += (pixel_step) / 2;
+    color_h = recursion_condition(elem, ray, pixel_step, depth);
+	color = mean_rgb(color, color_h);
+	ray.x -= (pixel_step) / 2;
+	ray.y -= (pixel_step) / 2;
+    color_h = recursion_condition(elem, ray, pixel_step, depth);
+	color = mean_rgb(color, color_h);
+	ray.x += (pixel_step) / 2;
+    color_h = recursion_condition(elem, ray, pixel_step, depth);
+	color = mean_rgb(color, color_h);
+	return (color);
 }

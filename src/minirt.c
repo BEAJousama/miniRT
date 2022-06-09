@@ -62,7 +62,7 @@ void	free_elements(t_elements *elem)
 	free(elem->c);
 	free(elem->l);
 	free(elem->sp);
-	// free(elem->pl);
+	free(elem->pl);
 	free_matrix(elem->m_pos, 4);
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		free_matrix(elem->cy[i].m_pos, 4);
@@ -85,6 +85,7 @@ int	main(int ac, char **av)
 	gfx.img = mlx_new_image(gfx.mlx, 1000, 1000);
 	gfx.buf = mlx_get_data_addr(gfx.img, &gfx.p_bits, &gfx.l_bytes, &gfx.endian);
 	display(&elem, &gfx);
+	mlx_put_image_to_window(gfx.mlx, gfx.win, gfx.img, 0, 0);
 	// print_info(elem);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
 	mlx_hook(gfx.win, 17, 0L, close_win, &elem);

@@ -50,7 +50,7 @@ int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	return (rgb_h);
 }
 
-int cylinder_shadingg(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
 	t_cogo  p_c;
 	t_cogo  origin;

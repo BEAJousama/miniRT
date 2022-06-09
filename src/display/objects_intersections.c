@@ -34,7 +34,7 @@ int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
 	if (info->object == 'p')
         return (plane_shading(elem, info, sh_ray));
 	if (info->object == 'c')
-		return (cylinder_shadingg(elem, info, sh_ray));
+		return (cylinder_shading(elem, info, sh_ray));
 	if (info->object == 'd')
 		return (disk_cy_shading(elem, info, sh_ray));
 	return (0);

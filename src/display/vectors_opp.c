@@ -47,16 +47,6 @@ t_cogo	cross_product(t_cogo v1, t_cogo v2)
 	return (v);
 }
 
-t_cogo	vec_create(t_cogo a, t_cogo b)
-{
-	t_cogo	v;
-
-	v.x = b.x - a.x;
-	v.y = b.y - a.y;
-	v.z = b.z - a.z;
-	return (v);
-}
-
 void	resize_vec(t_cogo *vec, t_cogo v, double len)
 {
 	double	hol_mag;

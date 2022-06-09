@@ -41,6 +41,7 @@ SRC =  	minirt.c         		\
 		print_error_msg.c		\
 		parse_elements_utils.c	\
 		display.c				\
+		init_variables.c		\
 		vectors_opp.c			\
 		vectors_opp_2d.c		\
 		fill_matrix.c			\
@@ -56,21 +57,29 @@ SRC =  	minirt.c         		\
 		get_epsilon_inter.c		\
 		objects_intersections.c \
 
-		
+PIXEL = get_pixel_color.c
+PIXEL_OPT = get_pixel_color_optimised.c
 
 
-.PHONY : all bonus clean fclean re
+.PHONY : all bonus clean fclean re $(NAME)
 
 M_OBJECTS =  $(addprefix $(OBJECT_PATH), $(SRC:.c=.o))
+P_OBJECTS =  $(addprefix $(OBJECT_PATH), $(PIXEL:.c=.o))
+PO_OBJECTS =  $(addprefix $(OBJECT_PATH), $(PIXEL_OPT:.c=.o))
 # B_OBJECTS =  $(addprefix $(OBJECT_PATH), $(BSRC:.c=.o))
 
 all: $(NAME)
 
 
-$(NAME): $(FOBJ_SRC) $(M_OBJECTS) $(MLX_INCLUDE)
+$(NAME): $(FOBJ_SRC) $(M_OBJECTS) $(P_OBJECTS) $(MLX_INCLUDE)
 	@make -C $(LIBFT_PATH)
 	@printf "linking object files...\n"
-	@$(CC) $(CFLAGS) $(M_OBJECTS) $(LIBFT_PATH)/$(NAME_LIBFT) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(M_OBJECTS) $(P_OBJECTS) $(LIBFT_PATH)/$(NAME_LIBFT) $(MLX) -o $(NAME)
+
+optim: $(FOBJ_SRC) $(M_OBJECTS) $(PO_OBJECTS) $(MLX_INCLUDE)
+	@make -C $(LIBFT_PATH)
+	@printf "linking object files...\n"
+	@$(CC) $(CFLAGS) $(M_OBJECTS) $(PO_OBJECTS) $(LIBFT_PATH)/$(NAME_LIBFT) $(MLX) -o $(NAME)
 
 $(OBJECT_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -80,6 +89,7 @@ $(OBJECT_PATH)%.o: $(SRC_PATH)$(PARSE_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLU
 
 $(OBJECT_PATH)%.o: $(SRC_PATH)$(DISPLAY_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
 	$(CC) $(CFLAGS) -o $@ -c $<
+
 
 $(FOBJ_SRC) : 
 	@mkdir $@

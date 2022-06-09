@@ -32,6 +32,32 @@ void    comlete_rotation_x(double y, double z, double *ang)
         (*ang) =   M_PI - (*ang);
 }
 
+void  inverse_matrix(double **adjoint, double **matrix, int size)
+{
+    double  **m_sel;
+    double  det_2;
+    double  det;
+    int     i;
+    int     j;
+
+    i = 0;
+    j = 0;
+    i = 0;
+    j = 0;
+    det = det_matrix(matrix, 4);
+    while (i < size)
+    {
+        m_sel = select_matrix(matrix, i, j, size);
+        det_2 = det_matrix(m_sel, size - 1);
+        adjoint[i][j] = (pow(-1, i + j + 2) * det_2) / det;
+        if (++j == size && ++i)
+            j = 0;
+        free_matrix(m_sel, 4);
+    }
+    trans_matrix(adjoint, size);
+
+}
+
 void    fill_sub_matrix(t_cogo v, double **t_y, double **t_x)
 {
     double  teta=0;
