@@ -96,7 +96,6 @@ $(FOBJ_SRC) :
 
 clean:
 	@make clean -C $(LIBFT_PATH)
-	@rm -f $(OBJECTS)
 	@rm -rf $(FOBJ_SRC)
 
 fclean: clean
