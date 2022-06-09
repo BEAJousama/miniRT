@@ -11,6 +11,8 @@
 # **************************************************************************** #
 NAME = libft.a
 
+OBJECT_PATH = ../object_files/
+
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -59,19 +61,20 @@ SRC =   ft_memset.c     \
 		ft_lstiter.c	\
 		ft_lstmap.c
 
-OBJECTS = $(SRC:.c=.o)
+OBJECTS =  $(addprefix $(OBJECT_PATH), $(SRC:.c=.o))
 
 INCLUDE = libft.h
 
 .PHONY : all bonus clean fclean re
 
-all: $(NAME)
+all: $(NAME) 
 
 $(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+	@printf "creating static library : 'libft.a'...\n"
+	@ar rcs $(NAME) $(OBJECTS)
 
 
-%.o : %.c $(INCLUDE)
+$(OBJECT_PATH)%.o : %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

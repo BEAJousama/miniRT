@@ -12,17 +12,6 @@
 
 #include "../../includes/minirt.h"
 
-bool	check_double_elements_a_c_l(t_elem_nbr elem_nbr, char *iden)
-{
-	if ((elem_nbr.a_nbr) > 1)
-		return (*iden = 'N', 1);
-	if ((elem_nbr.c_nbr) > 1)
-		return (*iden = 'M', 1);
-	if ((elem_nbr.l_nbr) > 1)
-		return (*iden = 'o', 1);
-	return (0);
-}
-
 bool	check_limit(char *ratio, double min, double max)
 {
 	double	hol;
