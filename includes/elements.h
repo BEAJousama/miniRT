@@ -15,8 +15,6 @@
 
 # include "./minirt.h"
 
-struct s_elements;
-
 typedef struct s_cogo
 {
 	double	x;

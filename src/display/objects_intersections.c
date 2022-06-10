@@ -22,17 +22,16 @@ void	fill_info(double t_hol, t_close_inter *info, int i, char obj)
 	}
 }
 
-int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
+int	extract_color(t_close_inter *info, t_elements *elem)
 {
 	t_cogo	sh_ray;
-	(void)ray;
 
 	if (elem->elem_nbr.l_nbr)
 		add_sub_vectors(&sh_ray, elem->l->pos, elem->origin, -1);
 	if (info->object == 's')
-        return (sphere_shading(elem, info, sh_ray));
+		return (sphere_shading(elem, info, sh_ray));
 	if (info->object == 'p')
-        return (plane_shading(elem, info, sh_ray));
+		return (plane_shading(elem, info, sh_ray));
 	if (info->object == 'c')
 		return (cylinder_shading(elem, info, sh_ray));
 	if (info->object == 'd')
@@ -40,7 +39,7 @@ int	extract_color(t_close_inter *info, t_elements *elem, t_cogo ray)
 	return (0);
 }
 
-int	check_intersection(t_elements *elem ,t_cogo ray)
+int	check_intersection(t_elements *elem, t_cogo ray)
 {
 	int				i;
 	t_close_inter	info;
@@ -58,11 +57,13 @@ int	check_intersection(t_elements *elem ,t_cogo ray)
 		fill_info(cylinder_intersection(elem, ray, (size_t)i), &info, i, 'c');
 	i = -1;
 	if (info.object != 'c')
+	{
 		while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		{
 			fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
 			fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
 		}
+	}
 	scaler_multiplication(&elem->origin, ray, info.t);
-	return (extract_color(&info, elem, ray));
+	return (extract_color(&info, elem));
 }

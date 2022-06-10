@@ -12,7 +12,6 @@
 
 #include "../../includes/minirt.h"
 
-
 double	dot(t_cogo	v_one, t_cogo v_two)
 {
 	return ((v_one.x * v_two.x) + (v_one.y * v_two.y) + (v_one.z * v_two.z));
@@ -30,21 +29,11 @@ double	mag_vector(t_cogo vec)
 	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)));
 }
 
-void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler)
+void	scaler_multiplication(t_cogo *vec, t_cogo v, double scaler)
 {
 	vec->x = scaler * v.x;
 	vec->y = scaler * v.y;
 	vec->z = scaler * v.z;
-}
-
-t_cogo	cross_product(t_cogo v1, t_cogo v2)
-{
-	t_cogo	v;
-
-	v.x = (v1.y * v2.z) - (v1.z * v2.y);
-	v.y = (v2.x * v1.z) - (v1.x * v2.z);
-	v.z = (v1.x * v2.y) - (v1.y * v2.x);
-	return (v);
 }
 
 void	resize_vec(t_cogo *vec, t_cogo v, double len)

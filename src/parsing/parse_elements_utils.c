@@ -15,7 +15,7 @@
 int	calculate_0(char *str)
 {
 	int	i;
-	int nbr_0;
+	int	nbr_0;
 
 	i = 0;
 	nbr_0 = 0;

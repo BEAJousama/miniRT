@@ -12,10 +12,10 @@
 
 #include "../../includes/minirt.h"
 
-int sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+int	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	t_cogo  p_c;
-	int     rgb_h;
+	t_cogo	p_c;
+	int		rgb_h;
 
 	rgb_h = 0;
 	if (elem->a)
@@ -26,15 +26,15 @@ int sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 		add_sub_vectors(&p_c, elem->origin, elem->sp[info->i].pos, -1);
 		resize_vec(&p_c, p_c, 1);
 		rgb_h = add_rgb(multi_rgb(elem->sp[info->i].rgb, elem->l->rgb, \
-		fabs(dot(sh_ray, p_c) * elem->l->bright)), rgb_h);
+					fabs(dot(sh_ray, p_c) * elem->l->bright)), rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
 }
 
-int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+int	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	int     rgb_h;
+	int	rgb_h;
 
 	rgb_h = 0;
 	if (elem->a)
@@ -50,12 +50,12 @@ int plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	return (rgb_h);
 }
 
-int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+int	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	t_cogo  p_c;
-	t_cogo  origin;
-	t_cogo  pos_cy;
-	int     rgb_h;
+	t_cogo	p_c;
+	t_cogo	origin;
+	t_cogo	pos_cy;
+	int		rgb_h;
 
 	rgb_h = 0;
 	origin = elem->origin;
@@ -71,15 +71,15 @@ int cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 		resize_vec_2d(&p_c, p_c, 1);
 		resize_vec_2d(&sh_ray, sh_ray, 1);
 		rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
-		(fabs(dot_2d(sh_ray, p_c))) * elem->l->bright), rgb_h);
+					(fabs(dot_2d(sh_ray, p_c))) * elem->l->bright), rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
 }
 
-int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+int	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	int     rgb_h;
+	int	rgb_h;
 
 	rgb_h = 0;
 	if (elem->a)
@@ -94,4 +94,3 @@ int disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	}
 	return (rgb_h);
 }
-

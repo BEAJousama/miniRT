@@ -15,9 +15,9 @@
 int	get_pixel_color(t_elements *elem, t_cogo ray, double pixel_step, bool depth)
 {
 	int	color;
-	
-    color = check_intersection(elem, ray);
+
+	color = check_intersection(elem, ray);
 	return (color);
-    (void)pixel_step;
-    (void)depth;
+	(void)pixel_step;
+	(void)depth;
 }

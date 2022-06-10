@@ -24,7 +24,7 @@
 # include <math.h>
 # include "mlx.h"
 
-typedef	struct s_buf_i
+typedef struct s_buf_i
 {
 	char	i0;
 	char	i1;
@@ -40,11 +40,11 @@ typedef struct s_mlx_ptr
 	char	*buf;
 	int		p_bits;
 	int		l_bytes;
-	int		endian;
-	t_buf_i i;
+	int		endn;
+	t_buf_i	i;
 }	t_mlx_ptr;
 
-typedef	struct s_close_inter
+typedef struct s_close_inter
 {
 	int		i;
 	double	t;
@@ -92,8 +92,8 @@ double	dot_2d(t_cogo	v_one, t_cogo v_two);
 void	resize_vec(t_cogo *vec, t_cogo v, double len);
 void	resize_vec_2d(t_cogo *vec, t_cogo v, double len);
 void	add_sub_vectors(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
-void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int signe);
-void	scaler_multiplication(t_cogo *vec, t_cogo v,double scaler);
+void	add_sub_vectors_2d(t_cogo	*v_res, t_cogo v_one, t_cogo v_two, int s);
+void	scaler_multiplication(t_cogo *vec, t_cogo v, double scaler);
 
 int		multi_rgb(int rgb1, int rgb2, double ratio);
 int		add_rgb(int rgb1, int rgb2);
@@ -101,16 +101,16 @@ int		mean_rgb(int rgb1, int rgb2);
 
 void	fill_position_matrix(t_elements *elem);
 void	init_ray(t_elements *elem, t_cogo *ray);
-void	fill_t_buf_i(t_buf_i *i, int endian);
+void	fill_t_buf_i(t_buf_i *i, int endn);
 
 void	display(t_elements *elem, t_mlx_ptr *gfx);
-int		get_pixel_color(t_elements *elem, t_cogo ray, double pixel_step, bool depth);
+int		get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth);
 
-void    fill_sub_matrix(t_cogo v, double **t_y, double **t_x);
-void    fill_main_matrix(double **t_pos, double **t_y, double **t_x);
-double  **alloc_matrix(double **matrix, int size);
-void    free_matrix(double **matrix, int size);
-double  **select_matrix(double **r, int row, int col, int size);
+void	fill_sub_matrix(t_cogo v, double **t_y, double **t_x);
+void	fill_main_matrix(double **t_pos, double **t_y, double **t_x);
+double	**alloc_matrix(double **matrix, int size);
+void	free_matrix(double **matrix, int size);
+double	**select_matrix(double **r, int row, int col, int size);
 double	det_matrix(double **mtx, int size);
 void	trans_matrix(double **matrix, int size);
 double	**get_transf_matrix(t_cogo v_orient, t_cogo v_pos);
@@ -120,7 +120,7 @@ void	update_cogo(t_elements *elem, double **m_pos);
 void	update_cogo_element(t_cogo *element, double **m_pos);
 void	update_orient_element(t_cogo *element, double **m_pos);
 
-int		check_intersection(t_elements *elem ,t_cogo ray);
+int		check_intersection(t_elements *elem, t_cogo ray);
 bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray);
 
 double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index);
@@ -137,10 +137,9 @@ int		cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe);
 int		disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
-double  epsilon_sphere(t_elements *elem, size_t index);
-double  epsilon_plane(t_elements *elem, size_t index);
-double  epsilon_cylinder(t_elements *elem, size_t index);
-double  epsilon_cy_disk(t_elements *elem, size_t index);
-
+double	epsilon_sphere(t_elements *elem, size_t index);
+double	epsilon_plane(t_elements *elem, size_t index);
+double	epsilon_cylinder(t_elements *elem, size_t index);
+double	epsilon_cy_disk(t_elements *elem, size_t index);
 
 #endif
