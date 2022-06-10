@@ -53,14 +53,14 @@ t_rgb	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
 	t_cogo	p_c;
+	t_rgb	rgb_h;
 	t_cogo	origin;
 	t_cogo	pos_cy;
-	t_rgb	rgb_h;
 
-	rgb_h = (t_rgb){};
-	origin = elem->origin;
-	pos_cy = (t_cogo){};
 	p_c = (t_cogo){};
+	rgb_h = (t_rgb){};
+	pos_cy = (t_cogo){};
+	origin = elem->origin;
 	if (elem->a)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
