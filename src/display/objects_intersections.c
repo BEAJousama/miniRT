@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects_intersections.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/03 11:58:24 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/10 10:46:16 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fill_info(double t_hol, t_close_inter *info, int i, char obj)
 	}
 }
 
-int	extract_color(t_close_inter *info, t_elements *elem)
+t_rgb	extract_color(t_close_inter *info, t_elements *elem)
 {
 	t_cogo	sh_ray;
 
@@ -36,10 +36,10 @@ int	extract_color(t_close_inter *info, t_elements *elem)
 		return (cylinder_shading(elem, info, sh_ray));
 	if (info->object == 'd')
 		return (disk_cy_shading(elem, info, sh_ray));
-	return (0);
+	return ((t_rgb){});
 }
 
-int	check_intersection(t_elements *elem, t_cogo ray)
+t_rgb	check_intersection(t_elements *elem, t_cogo ray)
 {
 	int				i;
 	t_close_inter	info;
@@ -56,13 +56,10 @@ int	check_intersection(t_elements *elem, t_cogo ray)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		fill_info(cylinder_intersection(elem, ray, (size_t)i), &info, i, 'c');
 	i = -1;
-	if (info.object != 'c')
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 	{
-		while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		{
-			fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
-			fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
-		}
+		fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
+		fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
 	}
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem));

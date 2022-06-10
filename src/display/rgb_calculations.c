@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_calculations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:01:56 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/23 10:01:57 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:25:18 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,45 +19,38 @@ size_t	label_statement(size_t c)
 	return (c);
 }
 
-int	multi_rgb(int rgb1, int rgb2, double ratio)
+t_rgb	multi_rgb(t_rgb rgb1, t_rgb rgb2, double ratio)
 {
-	size_t	b;
-	size_t	g;
-	size_t	r;
+	t_rgb	r_rgb;
 
-	b = ((unsigned char)rgb1 >> 16 * (unsigned char)(rgb2 >> 16) / 255);
-	g = ((unsigned char)rgb1 >> 8 * (unsigned char)(rgb2 >> 8) / 255);
-	r = ((unsigned char)rgb1 * (unsigned char)rgb2 / 255);
-	b = label_statement(b);
-	g = label_statement(g);
-	r = label_statement(r);
-	return ((int)(r * ratio) | (int)(g * ratio) << 8 \
-			| (int)(b * ratio) << 16);
+	r_rgb.r = rgb1.r * (rgb2.r / 255) * ratio;
+	r_rgb.g = rgb1.g * (rgb2.g / 255) * ratio;
+	r_rgb.b = rgb1.b * (rgb2.b / 255) * ratio;
+	return (r_rgb);
 }
 
-int	add_rgb(int rgb1, int rgb2)
+t_rgb	add_rgb(t_rgb rgb1, t_rgb rgb2)
 {
-	size_t	b;
-	size_t	g;
-	size_t	r;
+	t_rgb			r_rgb;
+	unsigned int    b;
+    unsigned int    g;
+    unsigned int    r;
 
-	b = (unsigned char)(rgb1 >> 16) + (unsigned char)(rgb2 >> 16);
-	g = (unsigned char)(rgb1 >> 8) + (unsigned char)(rgb2 >> 8);
-	r = (unsigned char)rgb1 + (unsigned char)rgb2;
-	b = label_statement(b);
-	g = label_statement(g);
-	r = label_statement(r);
-	return ((int)(r) | (int)(g) << 8 | (int)(b) << 16);
+	r = rgb1.r + rgb2.r;
+	g = rgb1.g + rgb2.g;
+	b = rgb1.b + rgb2.b;
+	r_rgb.r = label_statement(r);
+	r_rgb.g = label_statement(g);
+	r_rgb.b = label_statement(b);
+	return (r_rgb);
 }
 
-int	mean_rgb(int rgb1, int rgb2)
+t_rgb	mean_rgb(t_rgb rgb1, t_rgb rgb2)
 {
-	size_t	b;
-	size_t	g;
-	size_t	r;
+	t_rgb	r_rgb;
 
-	b = ((unsigned char)(rgb1 >> 16) + (unsigned char)(rgb2 >> 16)) / 2;
-	g = ((unsigned char)(rgb1 >> 8) + (unsigned char)(rgb2 >> 8)) / 2;
-	r = ((unsigned char)rgb1 + (unsigned char)rgb2) / 2;
-	return ((int)(r) | (int)(g) << 8 | (int)(b) << 16);
+	r_rgb.r = (rgb1.r + rgb2.r) / 2;
+	r_rgb.g = (rgb1.g + rgb2.g) / 2;
+	r_rgb.b = (rgb1.b + rgb2.b) / 2;
+	return (r_rgb);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   get_pixel_color_optimised.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:15:20 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:45:58 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:10:37 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-int	recursion_condition(t_elements *elem, t_cogo ray, double p_stp, bool depth)
+t_rgb	recursion_condition(t_elements *elem, t_cogo ray, double p_stp, bool depth)
 {
-	int	color;
+	t_rgb	color;
 
 	if (depth)
 		color = get_pixel_color(elem, ray, p_stp / 2, 0);
@@ -23,23 +23,23 @@ int	recursion_condition(t_elements *elem, t_cogo ray, double p_stp, bool depth)
 	return (color);
 }
 
-int	get_pixel_color(t_elements *elem, t_cogo ray, double pixel_step, bool depth)
+t_rgb	get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth)
 {
-	int	color;
-	int	color_h;
+	t_rgb	color;
+	t_rgb	color_h;
 
-	ray.x -= (pixel_step) / 4;
-	ray.y += (pixel_step) / 4;
-	color = recursion_condition(elem, ray, pixel_step, depth);
-	ray.x += (pixel_step) / 2;
-	color_h = recursion_condition(elem, ray, pixel_step, depth);
+	ray.x -= (p_stp) / 4;
+	ray.y += (p_stp) / 4;
+	color = recursion_condition(elem, ray, p_stp, depth);
+	ray.x += (p_stp) / 2;
+	color_h = recursion_condition(elem, ray, p_stp, depth);
 	color = mean_rgb(color, color_h);
-	ray.x -= (pixel_step) / 2;
-	ray.y -= (pixel_step) / 2;
-	color_h = recursion_condition(elem, ray, pixel_step, depth);
+	ray.x -= (p_stp) / 2;
+	ray.y -= (p_stp) / 2;
+	color_h = recursion_condition(elem, ray, p_stp, depth);
 	color = mean_rgb(color, color_h);
-	ray.x += (pixel_step) / 2;
-	color_h = recursion_condition(elem, ray, pixel_step, depth);
+	ray.x += (p_stp) / 2;
+	color_h = recursion_condition(elem, ray, p_stp, depth);
 	color = mean_rgb(color, color_h);
 	return (color);
 }

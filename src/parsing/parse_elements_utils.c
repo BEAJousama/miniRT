@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elements_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:13:24 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/17 11:23:06 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:40:45 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ void	parse_ratio(char *ratio, double *var_ptr)
 	free_2d(ratio_splited);
 }
 
-void	parse_tuple_rgb(char *tuple, int *var_ptr)
+void	parse_tuple_rgb(char *tuple, t_rgb *rgb)
 {
 	char	**tuple_splited;
-	int		hol;
+	unsigned int		hol;
 
 	tuple_splited = ft_split(tuple, ',');
-	hol = ft_atoi(tuple_splited[2]);
-	*var_ptr = hol;
-	hol = ft_atoi(tuple_splited[1]);
-	*var_ptr += hol << 8;
 	hol = ft_atoi(tuple_splited[0]);
-	*var_ptr += hol << 16;
+	rgb->r = (unsigned char)hol & 0x0000ff;
+	hol = ft_atoi(tuple_splited[1]);
+	rgb->g = (unsigned char)hol & 0x0000ff;
+	hol = ft_atoi(tuple_splited[2]);
+	rgb->b = (unsigned char)hol & 0x0000ff;
 	free_2d(tuple_splited);
 }
 

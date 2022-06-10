@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:15:20 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:45:58 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:12:17 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-int	get_pixel_color(t_elements *elem, t_cogo ray, double pixel_step, bool depth)
+t_rgb	get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth)
 {
-	int	color;
+	t_rgb	color;
 
 	color = check_intersection(elem, ray);
 	return (color);
-	(void)pixel_step;
+	(void)p_stp;
 	(void)depth;
 }

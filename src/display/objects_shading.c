@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   objects_shading.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:49 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/03 11:57:28 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:06:47 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-int	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+t_rgb	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
 	t_cogo	p_c;
-	int		rgb_h;
+	t_rgb	rgb_h;
 
-	rgb_h = 0;
+	rgb_h = (t_rgb){};
 	if (elem->a)
 		rgb_h = multi_rgb(elem->sp[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
@@ -32,11 +32,11 @@ int	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	return (rgb_h);
 }
 
-int	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+t_rgb	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	int	rgb_h;
+	t_rgb	rgb_h;
 
-	rgb_h = 0;
+	rgb_h = (t_rgb){};
 	if (elem->a)
 		rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
@@ -50,14 +50,14 @@ int	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	return (rgb_h);
 }
 
-int	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
 	t_cogo	p_c;
 	t_cogo	origin;
 	t_cogo	pos_cy;
-	int		rgb_h;
+	t_rgb	rgb_h;
 
-	rgb_h = 0;
+	rgb_h = (t_rgb){};
 	origin = elem->origin;
 	pos_cy = (t_cogo){};
 	p_c = (t_cogo){};
@@ -77,11 +77,11 @@ int	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	return (rgb_h);
 }
 
-int	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
+t_rgb	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 {
-	int	rgb_h;
+	t_rgb	rgb_h;
 
-	rgb_h = 0;
+	rgb_h = (t_rgb){};
 	if (elem->a)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))

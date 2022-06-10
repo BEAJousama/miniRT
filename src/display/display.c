@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:15:20 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/22 14:45:58 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:57:48 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-void	fill_color_buffer(t_mlx_ptr *gfx, int color, int x, int y)
+void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
 {
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i0] = (color);
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i1] = (color >> 8);
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = (color >> 16);
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i3] = (color >> 24);
+	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i0] = (color.b);
+	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i1] = (color.g);
+	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = (color.r);
 }
 
 void	display(t_elements *elem, t_mlx_ptr *gfx)
@@ -25,8 +24,8 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 	int		x;
 	int		y;
 	t_cogo	ray;
-	double	x_ray_hol;
 	double	p_stp;
+	double	x_ray_hol;
 
 	y = -1;
 	init_ray(elem, &ray);
@@ -43,6 +42,6 @@ void	display(t_elements *elem, t_mlx_ptr *gfx)
 			ray.x += p_stp;
 			fill_color_buffer(gfx, get_pixel_color(elem, ray, p_stp, 1), x, y);
 		}
-		ray.y = ray.y - p_stp;
+		ray.y -= p_stp;
 	}
 }

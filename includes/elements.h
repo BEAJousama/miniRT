@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:59 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/05/17 11:42:58 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:39:31 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ typedef struct s_cogo
 	double	z;
 }	t_cogo;
 
+typedef struct s_rgb
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}	t_rgb;
+
+
 typedef struct s_elem_nbr
 {
 	size_t	a_nbr;
@@ -35,7 +43,7 @@ typedef struct s_elem_nbr
 typedef struct s_amb_light
 {
 	double	ratio;
-	int		rgb;
+	t_rgb	rgb;
 }	t_amb_light;
 
 typedef struct s_camera
@@ -43,20 +51,21 @@ typedef struct s_camera
 	t_cogo	pos;
 	t_cogo	orient;
 	double	fov;
+	t_rgb	rgb;
 }	t_camera;
 
 typedef struct s_light
 {
 	t_cogo	pos;
 	double	bright;
-	int		rgb;
+	t_rgb	rgb;
 }	t_light;
 
 typedef struct s_sphere
 {
 	t_cogo	pos;
 	double	diameter;
-	int		rgb;
+	t_rgb	rgb;
 }	t_sphere;
 
 typedef struct s_plane
@@ -64,7 +73,7 @@ typedef struct s_plane
 	t_cogo	pos;
 	t_cogo	orient;
 	t_cogo	limits;
-	int		rgb;
+	t_rgb	rgb;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -76,7 +85,7 @@ typedef struct s_cylinder
 	double	**m_pos;
 	double	diameter;
 	double	height;
-	int		rgb;
+	t_rgb	rgb;
 }	t_cylinder;
 
 typedef struct s_elements
