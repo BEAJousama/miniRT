@@ -6,17 +6,17 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 11:46:49 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/11 11:00:10 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include <stdbool.h> 
 # include "../libft/libft.h"
 # include "./elements.h"
 # include "./defines.h"
-# include <stdbool.h> 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -102,8 +102,10 @@ void	fill_position_matrix(t_elements *elem);
 void	init_ray(t_elements *elem, t_cogo *ray);
 void	fill_t_buf_i(t_buf_i *i, int endn);
 
+void    endncall_display_function(t_elements *elem, t_mlx_ptr *gfx);
 void	display(t_elements *elem, t_mlx_ptr *gfx);
 t_rgb	get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth);
+void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y);
 
 void	fill_sub_matrix(t_cogo v, double **t_y, double **t_x);
 void	fill_main_matrix(double **t_pos, double **t_y, double **t_x);

@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 10:18:35 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 11:44:47 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/11 10:28:24 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ void	free_elements(t_elements *elem)
 	int	i;
 
 	i = -1;
+	if (elem->m_pos)
+		free_matrix(elem->m_pos, 4);
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+		if (elem->cy[i].m_pos)
+			free_matrix(elem->cy[i].m_pos, 4);
 	free(elem->a);
 	free(elem->c);
 	free(elem->l);
 	free(elem->sp);
 	free(elem->pl);
-	free_matrix(elem->m_pos, 4);
-	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		free_matrix(elem->cy[i].m_pos, 4);
 	free(elem->cy);
 }
 
@@ -84,7 +86,7 @@ int	main(int ac, char **av)
 	gfx.img = mlx_new_image(gfx.mlx, 1000, 1000);
 	gfx.buf = mlx_get_data_addr(gfx.img, &gfx.p_bits, &gfx.l_bytes, &gfx.endn);
 	// print_info(elem);
-	display(&elem, &gfx);
+	endncall_display_function(&elem, &gfx);
 	mlx_put_image_to_window(gfx.mlx, gfx.win, gfx.img, 0, 0);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
 	mlx_hook(gfx.win, 17, 0L, close_win, &elem);

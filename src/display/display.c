@@ -6,18 +6,11 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:15:20 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 11:57:48 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/11 09:38:50 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-
-void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
-{
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i0] = (color.b);
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i1] = (color.g);
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = (color.r);
-}
 
 void	display(t_elements *elem, t_mlx_ptr *gfx)
 {

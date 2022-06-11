@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:49 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 11:06:47 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:55:28 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_rgb	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	t_rgb	rgb_h;
 
 	rgb_h = (t_rgb){};
-	if (elem->a)
+	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->sp[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{
@@ -27,6 +27,7 @@ t_rgb	sphere_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 		resize_vec(&p_c, p_c, 1);
 		rgb_h = add_rgb(multi_rgb(elem->sp[info->i].rgb, elem->l->rgb, \
 					fabs(dot(sh_ray, p_c) * elem->l->bright)), rgb_h);
+		// rgb_h = check_specular_light(rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
@@ -37,7 +38,7 @@ t_rgb	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	t_rgb	rgb_h;
 
 	rgb_h = (t_rgb){};
-	if (elem->a)
+	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->pl[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{
@@ -61,7 +62,7 @@ t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	rgb_h = (t_rgb){};
 	pos_cy = (t_cogo){};
 	origin = elem->origin;
-	if (elem->a)
+	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{
@@ -72,6 +73,7 @@ t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 		resize_vec_2d(&sh_ray, sh_ray, 1);
 		rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
 					(fabs(dot_2d(sh_ray, p_c))) * elem->l->bright), rgb_h);
+		// rgb_h = check_specular_light(rgb_h);
 		return (rgb_h);
 	}
 	return (rgb_h);
@@ -82,7 +84,7 @@ t_rgb	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray)
 	t_rgb	rgb_h;
 
 	rgb_h = (t_rgb){};
-	if (elem->a)
+	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->cy[info->i].rgb, elem->a->rgb, elem->a->ratio);
 	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_ray))
 	{

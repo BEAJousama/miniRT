@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:59 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 11:39:31 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/11 11:32:40 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ typedef struct s_amb_light
 {
 	double	ratio;
 	t_rgb	rgb;
+	bool	single;
 }	t_amb_light;
 
-typedef struct s_camera
+typedef struct s_camera 
 {
 	t_cogo	pos;
 	t_cogo	orient;
