@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 10:46:16 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 10:34:00 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_rgb	extract_color(t_close_inter *info, t_elements *elem)
 {
 	t_cogo	sh_ray;
 
+	sh_ray = (t_cogo){};
 	if (elem->elem_nbr.l_nbr)
 		add_sub_vectors(&sh_ray, elem->l->pos, elem->origin, -1);
 	if (info->object == 's')

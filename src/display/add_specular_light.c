@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendring_mandatory.c                               :+:      :+:    :+:   */
+/*   add_specular_light_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 09:33:32 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 11:31:21 by eabdelha         ###   ########.fr       */
+/*   Created: 2022/06/11 17:50:59 by eabdelha          #+#    #+#             */
+/*   Updated: 2022/06/13 10:00:17 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
+t_rgb   add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i)
 {
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i0] = color.b;
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i1] = color.g;
-	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = color.r;
+    return ((t_rgb){});
+    (void)elem;
+    (void)wi;
+    (void)i;
 }
 
-void    call_display_function(t_elements *elem, t_mlx_ptr *gfx)
+
+t_rgb   add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo)
 {
-    elem->a->single = 0;
-	display(elem, gfx);
+    return ((t_rgb){});
+    (void)elem;
+    (void)wi;
+    (void)wo;
+    (void)n;
 }

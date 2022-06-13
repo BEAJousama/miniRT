@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 10:18:35 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/11 10:28:24 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:31:21 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(int ac, char **av)
 	gfx.img = mlx_new_image(gfx.mlx, 1000, 1000);
 	gfx.buf = mlx_get_data_addr(gfx.img, &gfx.p_bits, &gfx.l_bytes, &gfx.endn);
 	// print_info(elem);
-	endncall_display_function(&elem, &gfx);
+	call_display_function(&elem, &gfx);
 	mlx_put_image_to_window(gfx.mlx, gfx.win, gfx.img, 0, 0);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
 	mlx_hook(gfx.win, 17, 0L, close_win, &elem);

@@ -6,7 +6,7 @@
 #    By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/06/11 10:18:33 by eabdelha         ###   ########.fr        #
+#    Updated: 2022/06/13 11:27:01 by eabdelha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,10 +59,12 @@ SRC =  	minirt.c         			\
 
 M_SRC = rendring_mandatory.c		\
 		check_double_a_c_l_man.c	\
+		add_specular_light.c	\
 
 
-B_SRC = rendring_bonus.c			\
-		check_double_a_c_l_bonus.c	\
+B_SRC = rendring_bonus.c				\
+		check_double_a_c_l_bonus.c		\
+		add_specular_light_bonus.c	\
 
 
 PIXEL = get_pixel_color.c
