@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:59 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/11 11:32:40 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:18:21 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_elem_nbr
 	size_t	sp_nbr;
 	size_t	pl_nbr;
 	size_t	cy_nbr;
+	size_t	co_nbr;
 }	t_elem_nbr;
 
 typedef struct s_amb_light
@@ -89,6 +90,16 @@ typedef struct s_cylinder
 	t_rgb	rgb;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	t_cogo	pos;
+	t_cogo	orient;
+	double	base;
+	double	height;
+	double	**m_pos;
+	t_rgb	rgb;
+}	t_cone;
+
 typedef struct s_elements
 {
 	t_amb_light	*a;
@@ -97,6 +108,7 @@ typedef struct s_elements
 	t_plane		*pl;
 	t_sphere	*sp;
 	t_cylinder	*cy;
+	t_cone		*co;
 	double		**m_pos;
 	t_elem_nbr	elem_nbr;
 	t_cogo		origin;

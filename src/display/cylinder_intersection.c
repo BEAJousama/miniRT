@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:19:30 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 08:33:21 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:12:25 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t i)
 	delta = pow(2 * dot_2d(ray, elem->cy[i].o_c), 2) - (4 * dot_2d(ray, ray)
 			* (dot_2d(elem->cy[i].o_c, elem->cy[i].o_c) - \
 				pow(elem->cy[i].diameter / 2, 2)));
-	if (delta >= 0)
+	if (delta > 0)
 	{
 		if (mag_vector_2d(elem->cy[i].o_c) >= (elem->cy[i].diameter / 2))
 		{
@@ -56,7 +56,7 @@ double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index)
 	add_sub_vectors_2d(&p_c, origin, null, -1);
 	delta = pow(2 * dot_2d(ray, p_c), 2) - (4 * dot_2d(ray, ray)
 			* (dot_2d(p_c, p_c) - pow(elem->cy[index].diameter / 2, 2)));
-	if (delta >= 0)
+	if (delta > 0)
 	{
 		t = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
 		if (fabs((t * ray.z) + origin.z) < (elem->cy[index].height / 2))

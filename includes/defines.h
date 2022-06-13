@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:17 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 08:38:58 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:20:40 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@
 # define CY_DIAMETER 'f'
 # define CY_HEIGHT 'g'
 # define CY_RGB 'h'
+
+# define CO_NBR_INFO 'k'
+# define CO_COGO 'K'
+# define CO_ORIENT 'Q'
+# define CO_DIAMETER 'R'
+# define CO_HEIGHT 'G'
+# define CO_RGB 'H'
 
 #endif

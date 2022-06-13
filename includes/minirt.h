@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 11:31:21 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:05:09 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	*get_next_line(int fd);
 void	free_2d(char **strs);
 
 void	read_map(t_elements *elem, char *f_map);
+char	check_element(t_elements *elem, char *element, char iden);
 void	map_invalid(char iden);
 
 bool	print_error_msg_map(char iden);
@@ -66,6 +67,7 @@ bool	print_error_msg_a_c(char iden);
 bool	print_error_msg_l_pl(char iden);
 bool	print_error_msg_sp_cy(char iden);
 bool	print_error_orient_vec(char iden);
+bool	print_error_cone(char iden);
 
 void	check_amb_light_element(t_elements *elem, char *iden, char **param);
 void	check_camera_element(t_elements *elem, char *iden, char **param);
@@ -73,6 +75,7 @@ void	check_light_element(t_elements *elem, char *iden, char **param);
 void	check_plane_element(t_elements *elem, char *iden, char **param);
 void	check_sphere_element(t_elements *elem, char *iden, char **param);
 void	check_cylinder_element(t_elements *elem, char *iden, char **param);
+void	check_cone_element(t_elements *elem, char *iden, char **param);
 
 bool	check_double_elements_a_c_l(t_elem_nbr elem_nbr, char *iden);
 bool	check_tuple(char *tuple, int type, bool signe, bool dot);
@@ -137,6 +140,8 @@ t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
 double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe);
 t_rgb	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+
+double	cone_intersection(t_elements *elem, t_cogo ray, size_t i);
 
 double	epsilon_sphere(t_elements *elem, size_t index);
 double	epsilon_plane(t_elements *elem, size_t index);
