@@ -6,7 +6,7 @@
 #    By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/06/14 14:16:17 by eabdelha         ###   ########.fr        #
+#    Updated: 2022/06/14 16:34:34 by eabdelha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,14 +53,15 @@ SRC =  	minirt.c         			\
 		disk_cy_intersection.c		\
 		rgb_calculations.c			\
 		objects_shading.c			\
-		check_shadow_ray.c			\
+		check_shadow_ray_elements.c	\
 		get_epsilon_inter.c			\
-		objects_intersections.c 	\
 
 M_SRC = rendring_mandatory.c		\
 		check_double_a_c_l_man.c	\
 		add_specular_light.c		\
 		check_element.c				\
+		objects_intersections.c 	\
+		check_shadow_ray.c			\
 
 
 B_SRC = rendring_bonus.c				\
@@ -71,6 +72,11 @@ B_SRC = rendring_bonus.c				\
 		check_cone_element_bonus.c		\
 		cone_intersection_bonus.c 		\
 		cone_shading_bonus.c			\
+		objects_intersections_bonus.c 	\
+		get_epsilon_bonus.c				\
+		check_shadow_ray_bonus.c		\
+
+		
 
 
 PIXEL = get_pixel_color.c

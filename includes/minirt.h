@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 14:24:01 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:13:31 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,10 +153,16 @@ double	cone_intersection(t_elements *elem, t_cogo ray, size_t i);
 double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i);
 t_rgb	cone_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	epsilon_cone(t_elements *elem, size_t index);
+double	epsilon_co_disk(t_elements *elem, size_t index);
 bool	check_sh_ray_co(t_elements *elem, t_cogo sh_ray, size_t index);
 double	disk_co_inter(t_elements *elem, t_cogo ray, size_t index);
 t_rgb	disk_co_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 bool	check_sh_ray_co_disk(t_elements *elem, t_cogo sh_ray, size_t index);
+
+bool	check_sh_ray_sp(t_elements *elem, t_cogo sh_ray, size_t index);
+bool	check_sh_ray_pl(t_elements *elem, t_cogo sh_ray, size_t index);
+bool	check_sh_ray_cy(t_elements *elem, t_cogo sh_ray, size_t index);
+bool	check_sh_ray_cy_disk(t_elements *elem, t_cogo sh_ray, size_t index);
 
 
 double	epsilon_sphere(t_elements *elem, size_t index);

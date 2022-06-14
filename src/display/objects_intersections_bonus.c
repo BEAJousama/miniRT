@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objects_intersections.c                            :+:      :+:    :+:   */
+/*   objects_intersections_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 15:46:05 by eabdelha         ###   ########.fr       */
+/*   Created: 2022/06/14 15:37:41 by eabdelha          #+#    #+#             */
+/*   Updated: 2022/06/14 15:53:41 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,26 @@ t_rgb	extract_color(t_close_inter *info, t_elements *elem)
 		return (cylinder_shading(elem, info, sh_ray));
 	if (info->object == 'd')
 		return (disk_cy_shading(elem, info, sh_ray));
+	if (info->object == 'o')
+		return (cone_shading(elem, info, sh_ray));
+	if (info->object == 'b')
+		return (disk_co_shading(elem, info, sh_ray));
 	return ((t_rgb){});
+}
+
+void    check_cone_intersection(t_elements *elem, 
+        t_cogo ray, 
+        t_close_inter *info)
+{
+	int i;
+
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		fill_info(cone_intersection(elem, ray, (size_t)i), info, i, 'o');
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		fill_info(disk_co_inter(elem, ray, (size_t)i), info, i, 'b');
+    
 }
 
 t_rgb	check_intersection(t_elements *elem, t_cogo ray)
@@ -62,6 +81,7 @@ t_rgb	check_intersection(t_elements *elem, t_cogo ray)
 		fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
 		fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
 	}
+    check_cone_intersection(elem, ray, &info);
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem));
 }
