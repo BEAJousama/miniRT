@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 10:57:13 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 07:41:18 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:35:51 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,45 @@
 double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe)
 {
 	t_cogo	origin;
-	t_cogo	disk1;
+	t_cogo	disk;
 	t_cogo	c_p;
 	double	t;
 
-	disk1 = (t_cogo){};
-	disk1.z = signe * elem->cy[index].height / 2;
+	disk = (t_cogo){};
+	disk.z = signe * elem->cy[index].height / 2;
 	origin = elem->origin;
 	update_orient_element(&ray, elem->cy[index].m_pos);
 	update_cogo_element(&origin, elem->cy[index].m_pos);
-	add_sub_vectors(&c_p, disk1, origin, -1);
+	add_sub_vectors(&c_p, disk, origin, -1);
 	if (ray.z)
 		t = c_p.z / ray.z;
 	else
 		return (-1);
 	if (pow((t * ray.x) + origin.x, 2) + pow((t * ray.y) + origin.y, 2) \
 			< pow(elem->cy[index].diameter / 2, 2))
+		return (t);
+	return (-1);
+}
+
+double	disk_co_inter(t_elements *elem, t_cogo ray, size_t index)
+{
+	t_cogo	origin;
+	t_cogo	disk;
+	t_cogo	c_p;
+	double	t;
+
+	disk = (t_cogo){};
+	disk.z = elem->co[index].hgt;
+	origin = elem->origin;
+	update_orient_element(&ray, elem->co[index].m_pos);
+	update_cogo_element(&origin, elem->co[index].m_pos);
+	add_sub_vectors(&c_p, disk, origin, -1);
+	if (ray.z)
+		t = c_p.z / ray.z;
+	else
+		return (-1);
+	if (pow((t * ray.x) + origin.x, 2) + pow((t * ray.y) + origin.y, 2) \
+			< pow(elem->co[index].base / 2, 2))
 		return (t);
 	return (-1);
 }

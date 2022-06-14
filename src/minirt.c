@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 10:18:35 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 15:29:42 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:43:26 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    print_info(t_elements elem)
         printf("cy: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d,%d,%d\n",elem.cy[i].pos.x, elem.cy[i].pos.y, elem.cy[i].pos.z,  elem.cy[i].orient.x, elem.cy[i].orient.y, elem.cy[i].orient.z, elem.cy[i].diameter, elem.cy[i].height,  elem.cy[i].rgb.r,elem.cy[i].rgb.g,elem.cy[i].rgb.b);
 	i = -1;
     while (++i < (int)elem.elem_nbr.co_nbr)
-        printf("co: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d,%d,%d\n",elem.co[i].pos.x, elem.co[i].pos.y, elem.co[i].pos.z,  elem.co[i].orient.x, elem.co[i].orient.y, elem.co[i].orient.z, elem.co[i].base, elem.co[i].height,  elem.co[i].rgb.r,elem.co[i].rgb.g,elem.co[i].rgb.b);
+        printf("co: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d,%d,%d\n",elem.co[i].pos.x, elem.co[i].pos.y, elem.co[i].pos.z,  elem.co[i].orient.x, elem.co[i].orient.y, elem.co[i].orient.z, elem.co[i].base, elem.co[i].hgt,  elem.co[i].rgb.r,elem.co[i].rgb.g,elem.co[i].rgb.b);
 }
 
 int	close_win(t_elements *elem)

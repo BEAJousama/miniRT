@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_cone_element.c                               :+:      :+:    :+:   */
+/*   check_cone_element_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:16:55 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 15:27:20 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:44:56 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	check_cone_element(t_elements *elem, char *iden, char **param)
 	parse_tuple_cogo(param[1], &(elem->co[index].pos));
 	parse_tuple_cogo(param[2], &(elem->co[index].orient));
 	parse_ratio(param[3], &(elem->co[index].base));
-	parse_ratio(param[4], &(elem->co[index].height));
+	parse_ratio(param[4], &(elem->co[index].hgt));
 	parse_tuple_rgb(param[5], &(elem->co[index].rgb));
 	index++;
 }

@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:08:22 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 07:41:44 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:02:01 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ void	update_cogo(t_elements *elem, double **m_pos)
 	{
 		update_cogo_element(&(elem->cy[i].pos), m_pos);
 		update_orient_element(&(elem->cy[i].orient), m_pos);
+	}
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+	{
+		update_cogo_element(&(elem->co[i].pos), m_pos);
+		update_orient_element(&(elem->co[i].orient), m_pos);
 	}
 	update_orient_element(&(elem->c->orient), m_pos);
 	update_cogo_element(&(elem->c->pos), m_pos);

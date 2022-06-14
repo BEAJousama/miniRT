@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 16:05:09 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:24:01 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ typedef struct s_close_inter
 	double	t_hol;
 	char	object;
 }	t_close_inter;
+
+typedef struct s_eq_comp
+{
+	double			delta;
+	double			a;
+	double			b;
+	double			c;
+	double			t;
+}	t_eq_comp;
 
 void	free_elements(t_elements *elem);
 char	*ft_strjoin2(char *s1, char *s2);
@@ -137,11 +146,18 @@ t_rgb	plane_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t index);
 double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index);
 t_rgb	cylinder_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
-
 double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe);
 t_rgb	disk_cy_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
 
 double	cone_intersection(t_elements *elem, t_cogo ray, size_t i);
+double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i);
+t_rgb	cone_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+double	epsilon_cone(t_elements *elem, size_t index);
+bool	check_sh_ray_co(t_elements *elem, t_cogo sh_ray, size_t index);
+double	disk_co_inter(t_elements *elem, t_cogo ray, size_t index);
+t_rgb	disk_co_shading(t_elements *elem, t_close_inter *info, t_cogo sh_ray);
+bool	check_sh_ray_co_disk(t_elements *elem, t_cogo sh_ray, size_t index);
+
 
 double	epsilon_sphere(t_elements *elem, size_t index);
 double	epsilon_plane(t_elements *elem, size_t index);

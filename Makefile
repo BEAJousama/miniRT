@@ -6,7 +6,7 @@
 #    By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/06/13 16:06:49 by eabdelha         ###   ########.fr        #
+#    Updated: 2022/06/14 14:16:17 by eabdelha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ B_SRC = rendring_bonus.c				\
 		check_element_bonus.c			\
 		print_error_cone_bonus.c		\
 		check_cone_element_bonus.c		\
-		cone_intersection_bonus.c 	\
+		cone_intersection_bonus.c 		\
+		cone_shading_bonus.c			\
 
 
 PIXEL = get_pixel_color.c

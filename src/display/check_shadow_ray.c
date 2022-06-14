@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:12:22 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/10 07:41:32 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:23:21 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		if (!check_sh_ray_cy_disk(elem, sh_ray, (size_t)i))
+			return (0);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		if (!check_sh_ray_co(elem, sh_ray, (size_t)i))
+			return (0);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		if (!check_sh_ray_co_disk(elem, sh_ray, (size_t)i))
 			return (0);
 	return (1);
 }

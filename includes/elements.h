@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:30:59 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 15:18:21 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:20:33 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,13 @@ typedef struct s_cylinder
 
 typedef struct s_cone
 {
-	t_cogo	pos;
 	t_cogo	orient;
+	t_cogo	m_p;
+	t_cogo	m_o;
+	t_cogo	pos;
+	t_cogo	o_c;
 	double	base;
-	double	height;
+	double	hgt;
 	double	**m_pos;
 	t_rgb	rgb;
 }	t_cone;

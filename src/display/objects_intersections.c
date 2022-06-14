@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 16:07:23 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:21:54 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ t_rgb	extract_color(t_close_inter *info, t_elements *elem)
 	if (info->object == 'd')
 		return (disk_cy_shading(elem, info, sh_ray));
 	if (info->object == 'o')
-		return ((t_rgb){155, 0, 0});
+		return (cone_shading(elem, info, sh_ray));
+	if (info->object == 'b')
+		return (disk_co_shading(elem, info, sh_ray));
 	return ((t_rgb){});
 }
 
@@ -67,6 +69,9 @@ t_rgb	check_intersection(t_elements *elem, t_cogo ray)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
 		fill_info(cone_intersection(elem, ray, (size_t)i), &info, i, 'o');
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		fill_info(disk_co_inter(elem, ray, (size_t)i), &info, i, 'b');
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem));
 }

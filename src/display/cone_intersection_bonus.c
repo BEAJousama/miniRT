@@ -6,7 +6,7 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:41:06 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 17:11:07 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:27:00 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,57 @@
 
 double	cone_intersection(t_elements *elem, t_cogo ray, size_t i)
 {
-	t_cogo o_c;
-	t_cogo o;
-    // double d;
-    double	delta;
-	double	teta;
-	double	a;
-	double	b;
-	double	c;
-	double	t;
+    const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
+	const t_cogo	o = elem->co[i].m_o;
+	t_cogo			o_c;
+	t_eq_comp		eq;
 
-	t = 0;
-    o = elem->co[i].orient;
-    add_sub_vectors(&o_c, elem->origin, elem->co[i].pos, -1);
-    teta = atan((elem->co[i].base / 2) / elem->co[i].height);
-
-    
-    a = pow(dot(ray, elem->co[i].orient), 2) - pow(cos(teta), 2);
-    b = 2 * ((dot(ray, elem->co[i].orient) * dot(o_c, elem->co[i].orient)) - (dot(ray, o_c) * pow(cos(teta), 2)));
-    c = pow(dot(o_c, elem->co[i].orient), 2) - (dot(o_c, o_c) * pow(cos(teta), 2));
-    
-    delta = pow(b, 2) - (4 * a * c);
-	if (delta > 0)
+    o_c = elem->co[i].o_c;
+	update_orient_element(&ray, elem->co[i].m_pos);
+    eq.a = dot(ray, ray) - (m * pow(dot(ray, o), 2)) - pow((dot(ray, o)), 2);
+    eq.b = 2 * (dot(ray, o_c) - (m * dot(ray, o) * dot(o_c, o)) - \
+	(dot(ray, o) * dot(o_c, o)));
+    eq.c = dot(o_c, o_c) - (m * pow(dot(o_c, o), 2)) - pow(dot(o_c, o), 2);
+    eq.delta = pow(eq.b, 2) - (4 * eq.a * eq.c);
+	if (eq.delta >= 0)
 	{
-	
-		t = (-b - sqrt(delta)) / (2 * a);
-        // scaler_multiplication(&ray, ray, t);
-        // add_sub_vectors(&ray, ray, elem->co[i].pos, -1);
-        // resize_vec(&ray, ray, 1);
-        // resize_vec(&o, o, 1);
-        // d = dot(ray, o);
-        // if (d > 0 && d < cos(teta))
-		    return (t);
+		resize_vec(&o_c, o_c, 1);
+		if (dot(o_c, o) < cos(atan((elem->co[i].base / 2) / elem->co[i].hgt)))
+			eq.t = (-eq.b - sqrt(eq.delta)) / (2 * eq.a);
+		else 
+			eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
+		scaler_multiplication(&ray, ray, eq.t);
+		add_sub_vectors(&ray, ray, elem->co[i].m_p, 1);
+        if ((dot(ray, o) > 0  && fabs(ray.z) < (elem->co[i].hgt)) || !ray.z)
+		    return (eq.t);
 	}
 	return (-1);
 }
 
-// double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t index)
-// {
-// 	t_cogo	origin;
-// 	t_cogo	p_c;
-// 	t_cogo	null;
-// 	double	delta;
-// 	double	t;
+double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i)
+{
+    const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
+	const t_cogo	o = elem->co[i].m_o;
+	t_cogo			origin;
+	t_cogo			o_c;
+	t_eq_comp		eq;
 
-// 	t = 0;
-// 	null = (t_cogo){};
-// 	origin = elem->origin;
-// 	update_orient_element(&ray, elem->cy[index].m_pos);
-// 	update_cogo_element(&origin, elem->cy[index].m_pos);
-// 	add_sub_vectors_2d(&p_c, origin, null, -1);
-// 	delta = pow(2 * dot_2d(ray, p_c), 2) - (4 * dot_2d(ray, ray)
-// 			* (dot_2d(p_c, p_c) - pow(elem->cy[index].diameter / 2, 2)));
-// 	if (delta > 0)
-// 	{
-// 		t = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
-// 		if (fabs((t * ray.z) + origin.z) < (elem->cy[index].height / 2))
-// 			return (t);
-// 	}
-// 	return (-1);
-// }
+	origin = elem->origin;
+	update_orient_element(&ray, elem->co[i].m_pos);
+	update_cogo_element(&origin, elem->co[i].m_pos);
+	add_sub_vectors(&o_c, origin, (t_cogo){}, -1);
+    eq.a = dot(ray, ray) - (m * pow(dot(ray, o), 2)) - pow((dot(ray, o)), 2);
+    eq.b = 2 * (dot(ray, o_c) - (m * dot(ray, o) * dot(o_c, o)) - \
+	(dot(ray, o) * dot(o_c, o)));
+    eq.c = dot(o_c, o_c) - (m * pow(dot(o_c, o), 2)) - pow(dot(o_c, o), 2);
+    eq.delta = pow(eq.b, 2) - (4 * eq.a * eq.c);
+	if (eq.delta > 0)
+	{
+		eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
+		scaler_multiplication(&ray, ray, eq.t);
+		add_sub_vectors(&ray, ray, origin, 1);
+        if ((dot(ray, o) > 0  && fabs(ray.z) < (elem->co[i].hgt)) || !ray.z)
+		    return (eq.t);
+	}
+	return (-1);
+}

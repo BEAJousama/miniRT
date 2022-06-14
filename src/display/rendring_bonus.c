@@ -6,11 +6,29 @@
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:36:46 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/13 11:31:21 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:18:52 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
+
+void	fill_m_pos_cone(t_elements *elem)
+{
+	int	i;
+	
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+	{
+		elem->co[i].m_pos = get_transf_matrix(elem->co[i].orient, \
+				elem->co[i].pos);
+		resize_vec(&elem->co[i].m_o, elem->co[i].orient, 1);
+		update_orient_element(&elem->co[i].m_o, elem->co[i].m_pos);
+		add_sub_vectors(&elem->co[i].o_c, elem->origin, elem->co[i].pos, -1);
+		update_orient_element(&elem->co[i].o_c, elem->co[i].m_pos);
+		elem->co[i].m_p = (t_cogo){};
+		update_cogo_element(&elem->co[i].m_p, elem->co[i].m_pos);
+	}
+}
 
 void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
 {
@@ -32,6 +50,8 @@ void    call_display_function(t_elements *elem, t_mlx_ptr *gfx)
 
     i = 0;
 	l_hol = elem->l;
+	fill_position_matrix(elem);
+	fill_m_pos_cone(elem);
 	elem->a->single = 0;
 	display(elem, gfx);
 	elem->a->single = 1;
