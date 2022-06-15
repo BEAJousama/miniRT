@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 10:18:35 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 10:43:26 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:18:33 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	free_elements(t_elements *elem)
 	if (elem->m_pos)
 		free_matrix(elem->m_pos, 4);
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		if (elem->cy[i].m_pos)
+		if (elem->cy && elem->cy[i].m_pos)
 			free_matrix(elem->cy[i].m_pos, 4);
 	free(elem->a);
 	free(elem->c);
