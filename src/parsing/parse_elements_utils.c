@@ -54,7 +54,7 @@ void	parse_ratio(char *ratio, double *var_ptr)
 void	parse_tuple_rgb(char *tuple, t_rgb *rgb)
 {
 	char	**tuple_splited;
-	unsigned int		hol;
+	size_t	hol;
 
 	tuple_splited = ft_split(tuple, ',');
 	hol = ft_atoi(tuple_splited[0]);

@@ -12,20 +12,19 @@
 
 #include "../../includes/minirt.h"
 
-t_rgb   add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i)
+t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i)
 {
-    return ((t_rgb){});
-    (void)elem;
-    (void)wi;
-    (void)i;
+	return ((t_rgb){});
+	(void)elem;
+	(void)wi;
+	(void)i;
 }
 
-
-t_rgb   add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo)
+t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo)
 {
-    return ((t_rgb){});
-    (void)elem;
-    (void)wi;
-    (void)wo;
-    (void)n;
+	return ((t_rgb){});
+	(void)elem;
+	(void)wi;
+	(void)wo;
+	(void)n;
 }

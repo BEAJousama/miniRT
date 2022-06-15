@@ -29,7 +29,6 @@ typedef struct s_rgb
 	unsigned char	b;
 }	t_rgb;
 
-
 typedef struct s_elem_nbr
 {
 	size_t	a_nbr;
@@ -48,7 +47,7 @@ typedef struct s_amb_light
 	bool	single;
 }	t_amb_light;
 
-typedef struct s_camera 
+typedef struct s_camera
 {
 	t_cogo	pos;
 	t_cogo	orient;

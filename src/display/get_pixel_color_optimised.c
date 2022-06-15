@@ -12,7 +12,8 @@
 
 #include "../../includes/minirt.h"
 
-t_rgb	recursion_condition(t_elements *elem, t_cogo ray, double p_stp, bool depth)
+t_rgb	recursion_condition(t_elements *elem,
+		t_cogo ray, double p_stp, bool depth)
 {
 	t_rgb	color;
 

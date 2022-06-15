@@ -114,7 +114,7 @@ void	fill_position_matrix(t_elements *elem);
 void	init_ray(t_elements *elem, t_cogo *ray);
 void	fill_t_buf_i(t_buf_i *i, int endn);
 
-void    call_display_function(t_elements *elem, t_mlx_ptr *gfx);
+void	call_display_function(t_elements *elem, t_mlx_ptr *gfx);
 void	display(t_elements *elem, t_mlx_ptr *gfx);
 t_rgb	get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth);
 void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y);
@@ -164,13 +164,12 @@ bool	check_sh_ray_pl(t_elements *elem, t_cogo sh_ray, size_t index);
 bool	check_sh_ray_cy(t_elements *elem, t_cogo sh_ray, size_t index);
 bool	check_sh_ray_cy_disk(t_elements *elem, t_cogo sh_ray, size_t index);
 
-
 double	epsilon_sphere(t_elements *elem, size_t index);
 double	epsilon_plane(t_elements *elem, size_t index);
 double	epsilon_cylinder(t_elements *elem, size_t index);
 double	epsilon_cy_disk(t_elements *elem, size_t index);
 
-t_rgb   add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
-t_rgb   add_specular_light_cy(t_elements *elem, t_cogo wi, size_t index);
+t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
+t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t index);
 
 #endif

@@ -36,6 +36,26 @@ void	update_orient_element(t_cogo *element, double **m_pos)
 	element->z = o.z - m_pos[2][3];
 }
 
+void	update_cogo_2(t_elements *elem, double **m_pos)
+{
+	int	i;
+
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.cy_nbr)
+	{
+		update_cogo_element(&(elem->cy[i].pos), m_pos);
+		update_orient_element(&(elem->cy[i].orient), m_pos);
+	}
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+	{
+		update_cogo_element(&(elem->co[i].pos), m_pos);
+		update_orient_element(&(elem->co[i].orient), m_pos);
+	}
+	update_orient_element(&(elem->c->orient), m_pos);
+	update_cogo_element(&(elem->c->pos), m_pos);
+}
+
 void	update_cogo(t_elements *elem, double **m_pos)
 {
 	int	i;
@@ -52,20 +72,7 @@ void	update_cogo(t_elements *elem, double **m_pos)
 		update_cogo_element(&(elem->pl[i].pos), m_pos);
 		update_orient_element(&(elem->pl[i].orient), m_pos);
 	}
-	i = -1;
-	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-	{
-		update_cogo_element(&(elem->cy[i].pos), m_pos);
-		update_orient_element(&(elem->cy[i].orient), m_pos);
-	}
-	i = -1;
-	while ((size_t)++i < elem->elem_nbr.co_nbr)
-	{
-		update_cogo_element(&(elem->co[i].pos), m_pos);
-		update_orient_element(&(elem->co[i].orient), m_pos);
-	}
-	update_orient_element(&(elem->c->orient), m_pos);
-	update_cogo_element(&(elem->c->pos), m_pos);
+	update_cogo_2(elem, m_pos);
 }
 
 double	**get_transf_matrix(t_cogo v_orient, t_cogo v_pos)

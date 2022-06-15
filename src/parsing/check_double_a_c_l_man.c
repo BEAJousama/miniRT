@@ -18,7 +18,7 @@ bool	check_double_elements_a_c_l(t_elem_nbr elem_nbr, char *iden)
 		return (*iden = 'N', 1);
 	if ((elem_nbr.c_nbr) > 1)
 		return (*iden = 'M', 1);
-    if ((elem_nbr.l_nbr) > 1)
+	if ((elem_nbr.l_nbr) > 1)
 		return (*iden = 'o', 1);
 	return (0);
 }

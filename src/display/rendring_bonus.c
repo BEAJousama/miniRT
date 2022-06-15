@@ -15,7 +15,7 @@
 void	fill_m_pos_cone(t_elements *elem)
 {
 	int	i;
-	
+
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
 	{
@@ -43,12 +43,12 @@ void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
 	gfx->buf[(y * gfx->l_bytes) + (x * 4) + gfx->i.i2] = color.r;
 }
 
-void    call_display_function(t_elements *elem, t_mlx_ptr *gfx)
+void	call_display_function(t_elements *elem, t_mlx_ptr *gfx)
 {
-    int		i;
-	t_light *l_hol;
+	int		i;
+	t_light	*l_hol;
 
-    i = 0;
+	i = 0;
 	l_hol = elem->l;
 	fill_position_matrix(elem);
 	fill_m_pos_cone(elem);

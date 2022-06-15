@@ -44,11 +44,10 @@ t_rgb	extract_color(t_close_inter *info, t_elements *elem)
 	return ((t_rgb){});
 }
 
-void    check_cone_intersection(t_elements *elem, 
-        t_cogo ray, 
-        t_close_inter *info)
+void	check_cone_intersection(t_elements *elem,
+		t_cogo ray, t_close_inter *info)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
@@ -56,7 +55,6 @@ void    check_cone_intersection(t_elements *elem,
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
 		fill_info(disk_co_inter(elem, ray, (size_t)i), info, i, 'b');
-    
 }
 
 t_rgb	check_intersection(t_elements *elem, t_cogo ray)
@@ -81,7 +79,7 @@ t_rgb	check_intersection(t_elements *elem, t_cogo ray)
 		fill_info(disk_cy_inter(elem, ray, (size_t)i, -1), &info, i, 'd');
 		fill_info(disk_cy_inter(elem, ray, (size_t)i, 1), &info, i, 'd');
 	}
-    check_cone_intersection(elem, ray, &info);
+	check_cone_intersection(elem, ray, &info);
 	scaler_multiplication(&elem->origin, ray, info.t);
 	return (extract_color(&info, elem));
 }

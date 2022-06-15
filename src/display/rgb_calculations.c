@@ -33,8 +33,8 @@ t_rgb	add_rgb(t_rgb rgb1, t_rgb rgb2)
 {
 	t_rgb	r_rgb;
 	size_t	b;
-    size_t	g;
-    size_t	r;
+	size_t	g;
+	size_t	r;
 
 	r = rgb1.r + rgb2.r;
 	g = rgb1.g + rgb2.g;

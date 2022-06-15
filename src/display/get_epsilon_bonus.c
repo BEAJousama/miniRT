@@ -12,20 +12,21 @@
 
 #include "../../includes/minirt.h"
 
-
 double	epsilon_cone(t_elements *elem, size_t index)
 {
 	t_cogo	o_c;
 	t_cogo	o;
 
 	o = elem->co[index].orient;
-    add_sub_vectors(&o_c, elem->c->pos, elem->co[index].pos, -1);
-    resize_vec(&o_c, o_c, 1);
-    resize_vec(&o, o, 1);
-	if (dot(o_c, o) < cos(atan((elem->co[index].base / 2) / elem->co[index].hgt)))
+	add_sub_vectors(&o_c, elem->c->pos, elem->co[index].pos, -1);
+	resize_vec(&o_c, o_c, 1);
+	resize_vec(&o, o, 1);
+	if (dot(o_c, o) < cos(atan((elem->co[index].base / 2) \
+					/ elem->co[index].hgt)))
 		return (0.00001);
 	return (-0.00001);
 }
+
 double	epsilon_co_disk(t_elements *elem, size_t index)
 {
 	t_cogo	c_c;

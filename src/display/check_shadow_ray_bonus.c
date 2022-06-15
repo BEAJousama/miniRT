@@ -15,8 +15,8 @@
 bool	check_shadow_ray_2(t_elements *elem, t_cogo sh_ray)
 {
 	int	i;
-    
-    i = -1;
+
+	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		if (!check_sh_ray_cy_disk(elem, sh_ray, (size_t)i))
 			return (0);
