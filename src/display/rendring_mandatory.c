@@ -22,6 +22,5 @@ void	fill_color_buffer(t_mlx_ptr *gfx, t_rgb color, int x, int y)
 void	call_display_function(t_elements *elem, t_mlx_ptr *gfx)
 {
 	fill_position_matrix(elem);
-	elem->a->single = 0;
 	display(elem, gfx);
 }

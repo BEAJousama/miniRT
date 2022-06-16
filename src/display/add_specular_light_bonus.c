@@ -12,16 +12,16 @@
 
 #include "../../includes/minirt.h"
 
-t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i)
+t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i, t_cogo o)
 {
 	t_rgb	rgb_s;
 	t_cogo	p_c;
 	t_cogo	wo;
 	t_cogo	n;
 
-	add_sub_vectors(&wo, elem->c->pos, elem->origin, -1);
+	add_sub_vectors(&wo, elem->c->pos, o, -1);
 	resize_vec(&wo, wo, 1);
-	add_sub_vectors(&p_c, elem->cy[i].pos, elem->origin, -1);
+	add_sub_vectors(&p_c, elem->cy[i].pos, o, -1);
 	resize_vec(&p_c, p_c, 1);
 	scaler_multiplication(&n, elem->cy[i].orient, dot(elem->cy[i].orient, p_c));
 	add_sub_vectors(&n, n, p_c, -1);

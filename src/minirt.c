@@ -64,7 +64,7 @@ void	free_elements(t_elements *elem)
 	if (elem->m_pos)
 		free_matrix(elem->m_pos, 4);
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		if (elem->cy && elem->cy[i].m_pos)
+		if (elem->cy[i].m_pos)
 			free_matrix(elem->cy[i].m_pos, 4);
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)

@@ -41,18 +41,16 @@ double	cone_intersection(t_elements *elem, t_cogo ray, size_t i)
 	return (-1);
 }
 
-double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i)
+double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 {
 	const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
 	const t_cogo	o = elem->co[i].m_o;
-	t_cogo			origin;
 	t_cogo			o_c;
 	t_eq_comp		eq;
 
-	origin = elem->origin;
 	update_orient_element(&ray, elem->co[i].m_pos);
-	update_cogo_element(&origin, elem->co[i].m_pos);
-	add_sub_vectors(&o_c, origin, (t_cogo){}, -1);
+	update_cogo_element(&osh, elem->co[i].m_pos);
+	add_sub_vectors(&o_c, osh, (t_cogo){}, -1);
 	eq.a = dot(ray, ray) - (m * pow(dot(ray, o), 2)) - pow((dot(ray, o)), 2);
 	eq.b = 2 * (dot(ray, o_c) - (m * dot(ray, o) * dot(o_c, o)) - \
 			(dot(ray, o) * dot(o_c, o)));
@@ -62,7 +60,7 @@ double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i)
 	{
 		eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
 		scaler_multiplication(&ray, ray, eq.t);
-		add_sub_vectors(&ray, ray, origin, 1);
+		add_sub_vectors(&ray, ray, osh, 1);
 		if ((dot(ray, o) > 0 && fabs(ray.z) < (elem->co[i].hgt)) || !ray.z)
 			return (eq.t);
 	}

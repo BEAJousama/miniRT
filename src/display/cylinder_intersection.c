@@ -40,9 +40,8 @@ double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t i)
 	return (-1);
 }
 
-double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index)
+double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o)
 {
-	t_cogo	origin;
 	t_cogo	p_c;
 	t_cogo	null;
 	double	delta;
@@ -50,16 +49,15 @@ double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index)
 
 	t = 0;
 	null = (t_cogo){};
-	origin = elem->origin;
-	update_orient_element(&ray, elem->cy[index].m_pos);
-	update_cogo_element(&origin, elem->cy[index].m_pos);
-	add_sub_vectors_2d(&p_c, origin, null, -1);
+	update_orient_element(&ray, elem->cy[i].m_pos);
+	update_cogo_element(&o, elem->cy[i].m_pos);
+	add_sub_vectors_2d(&p_c, o, null, -1);
 	delta = pow(2 * dot_2d(ray, p_c), 2) - (4 * dot_2d(ray, ray)
-			* (dot_2d(p_c, p_c) - pow(elem->cy[index].diameter / 2, 2)));
+			* (dot_2d(p_c, p_c) - pow(elem->cy[i].diameter / 2, 2)));
 	if (delta > 0)
 	{
 		t = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
-		if (fabs((t * ray.z) + origin.z) < (elem->cy[index].height / 2))
+		if (fabs((t * ray.z) + o.z) < (elem->cy[i].height / 2))
 			return (t);
 	}
 	return (-1);

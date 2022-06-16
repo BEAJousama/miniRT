@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-void	fill_m_pos_cone(t_elements *elem)
+void	fill_m_pos_cone(t_elements *elem, t_cogo o)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	fill_m_pos_cone(t_elements *elem)
 				elem->co[i].pos);
 		resize_vec(&elem->co[i].m_o, elem->co[i].orient, 1);
 		update_orient_element(&elem->co[i].m_o, elem->co[i].m_pos);
-		add_sub_vectors(&elem->co[i].o_c, elem->origin, elem->co[i].pos, -1);
+		add_sub_vectors(&elem->co[i].o_c, o, elem->co[i].pos, -1);
 		update_orient_element(&elem->co[i].o_c, elem->co[i].m_pos);
 		elem->co[i].m_p = (t_cogo){};
 		update_cogo_element(&elem->co[i].m_p, elem->co[i].m_pos);
@@ -51,10 +51,10 @@ void	call_display_function(t_elements *elem, t_mlx_ptr *gfx)
 	i = 0;
 	l_hol = elem->l;
 	fill_position_matrix(elem);
-	fill_m_pos_cone(elem);
-	elem->a->single = 0;
+	fill_m_pos_cone(elem, (t_cogo){});
 	display(elem, gfx);
-	elem->a->single = 1;
+	if (elem->a)
+		elem->a->single = 1;
 	(elem->l)++;
 	while ((size_t)++i < elem->elem_nbr.l_nbr)
 	{
