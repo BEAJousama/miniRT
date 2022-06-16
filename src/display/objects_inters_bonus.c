@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objects_intersections_bonus.c                      :+:      :+:    :+:   */
+/*   objects_inters_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,40 +24,40 @@ void	fill_info(double t_hol, t_close *info, int i, char obj)
 
 t_rgb	extract_color(t_close *info, t_elements *elem, t_cogo o)
 {
-	t_cogo	sh_ray;
+	t_cogo	sh_r;
 
-	sh_ray = (t_cogo){};
+	sh_r = (t_cogo){};
 	if (elem->elem_nbr.l_nbr)
-		add_sub_vectors(&sh_ray, elem->l->pos, o, -1);
+		add_sub_vectors(&sh_r, elem->l->pos, o, -1);
 	if (info->object == 's')
-		return (sphere_shading(elem, info, sh_ray, o));
+		return (sphere_shading(elem, info, sh_r, o));
 	if (info->object == 'p')
-		return (plane_shading(elem, info, sh_ray, o));
+		return (plane_shading(elem, info, sh_r, o));
 	if (info->object == 'c')
-		return (cylinder_shading(elem, info, sh_ray, o));
+		return (cylinder_shading(elem, info, sh_r, o));
 	if (info->object == 'd')
-		return (disk_cy_shading(elem, info, sh_ray, o));
+		return (disk_cy_shading(elem, info, sh_r, o));
 	if (info->object == 'o')
-		return (cone_shading(elem, info, sh_ray, o));
+		return (cone_shading(elem, info, sh_r, o));
 	if (info->object == 'b')
-		return (disk_co_shading(elem, info, sh_ray, o));
+		return (disk_co_shading(elem, info, sh_r, o));
 	return ((t_rgb){});
 }
 
-void	check_cone_intersection(t_elements *elem,
+void	check_cone_inter(t_elements *elem,
 		t_cogo ray, t_close *info, t_cogo o)
 {
 	int	i;
 
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
-		fill_info(cone_intersection(elem, ray, (size_t)i), info, i, 'o');
+		fill_info(cone_inter(elem, ray, (size_t)i), info, i, 'o');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
 		fill_info(disk_co_inter(elem, ray, (size_t)i, o), info, i, 'b');
 }
 
-t_rgb	check_intersection(t_elements *elem, t_cogo ray)
+t_rgb	check_inter(t_elements *elem, t_cogo ray)
 {
 	int				i;
 	t_cogo			o;
@@ -67,20 +67,17 @@ t_rgb	check_intersection(t_elements *elem, t_cogo ray)
 	info = (t_close){};
 	o = elem->c->pos;
 	while ((size_t)++i < elem->elem_nbr.sp_nbr)
-		fill_info(sphere_intersection(elem, ray, (size_t)i, o), &info, i, 's');
+		fill_info(sphere_inter(elem, ray, (size_t)i, o), &info, i, 's');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
-		fill_info(plane_intersection(elem, ray, (size_t)i, o), &info, i, 'p');
+		fill_info(plane_inter(elem, ray, (size_t)i, o), &info, i, 'p');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		fill_info(cylinder_intersection(elem, ray, (size_t)i), &info, i, 'c');
+		fill_info(cylinder_inter(elem, ray, (size_t)i), &info, i, 'c');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-	{
-		fill_info(disk_cy_inter(elem, ray, (size_t)i, -1, o), &info, i, 'd');
-		fill_info(disk_cy_inter(elem, ray, (size_t)i, 1, o), &info, i, 'd');
-	}
-	check_cone_intersection(elem, ray, &info, o);
+		fill_info(disk_cy_inter(elem, ray, (size_t)i, o), &info, i, 'd');
+	check_cone_inter(elem, ray, &info, o);
 	scaler_multiplication(&o, ray, info.t);
 	return (extract_color(&info, elem, o));
 }

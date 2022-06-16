@@ -16,7 +16,7 @@ t_rgb	get_pixel_color(t_elements *elem, t_cogo ray, double p_stp, bool depth)
 {
 	t_rgb	color;
 
-	color = check_intersection(elem, ray);
+	color = check_inter(elem, ray);
 	return (color);
 	(void)p_stp;
 	(void)depth;

@@ -12,40 +12,40 @@
 
 #include "../../includes/minirt.h"
 
-bool	check_shadow_ray_2(t_elements *elem, t_cogo sh_ray, t_cogo o)
+bool	check_shadow_ray_2(t_elements *elem, t_cogo sh_r, t_cogo o)
 {
 	int	i;
 
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		if (!check_sh_ray_cy_disk(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_cy_disk(elem, sh_r, (size_t)i, o))
 			return (0);
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
-		if (!check_sh_ray_co(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_co(elem, sh_r, (size_t)i, o))
 			return (0);
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.co_nbr)
-		if (!check_sh_ray_co_disk(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_co_disk(elem, sh_r, (size_t)i, o))
 			return (0);
 	return (1);
 }
 
-bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray, t_cogo o)
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o)
 {
 	int	i;
 
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.sp_nbr)
-		if (!check_sh_ray_sp(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_sp(elem, sh_r, (size_t)i, o))
 			return (0);
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.pl_nbr)
-		if (!check_sh_ray_pl(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_pl(elem, sh_r, (size_t)i, o))
 			return (0);
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		if (!check_sh_ray_cy(elem, sh_ray, (size_t)i, o))
+		if (!check_sh_r_cy(elem, sh_r, (size_t)i, o))
 			return (0);
-	return (check_shadow_ray_2(elem, sh_ray, o));
+	return (check_shadow_ray_2(elem, sh_r, o));
 }

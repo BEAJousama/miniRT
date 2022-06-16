@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cone_intersection_bonus.c                          :+:      :+:    :+:   */
+/*   cone_inter_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-double	cone_intersection(t_elements *elem, t_cogo ray, size_t i)
+double	cone_inter(t_elements *elem, t_cogo ray, size_t i)
 {
 	const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
 	const t_cogo	o = elem->co[i].m_o;
@@ -41,7 +41,7 @@ double	cone_intersection(t_elements *elem, t_cogo ray, size_t i)
 	return (-1);
 }
 
-double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
+double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 {
 	const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
 	const t_cogo	o = elem->co[i].m_o;

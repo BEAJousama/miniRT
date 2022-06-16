@@ -20,7 +20,7 @@ t_rgb	recursion_condition(t_elements *elem,
 	if (depth)
 		color = get_pixel_color(elem, ray, p_stp / 2, 0);
 	else
-		color = check_intersection(elem, ray);
+		color = check_inter(elem, ray);
 	return (color);
 }
 

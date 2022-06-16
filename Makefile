@@ -30,7 +30,6 @@ DISPLAY_PATH = ./display/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-# BSRC =  minirt_bonus.c     		\
 
 SRC =  	minirt.c         			\
 		read_map.c					\
@@ -47,10 +46,10 @@ SRC =  	minirt.c         			\
 		fill_matrix.c				\
 		matrix_opp.c				\
 		cogo_manipulations.c		\
-		sphere_intersection.c		\
-		plane_intersection.c    	\
-		cylinder_intersection.c 	\
-		disk_cy_intersection.c		\
+		sphere_inter.c				\
+		plane_inter.c    			\
+		cylinder_inter.c 			\
+		disks_inter.c				\
 		rgb_calculations.c			\
 		objects_shading.c			\
 		check_shadow_ray_elements.c	\
@@ -60,7 +59,7 @@ M_SRC = rendring_mandatory.c		\
 		check_double_a_c_l_man.c	\
 		add_specular_light.c		\
 		check_element.c				\
-		objects_intersections.c 	\
+		objects_inters.c 			\
 		check_shadow_ray.c			\
 
 
@@ -70,9 +69,9 @@ B_SRC = rendring_bonus.c				\
 		check_element_bonus.c			\
 		print_error_cone_bonus.c		\
 		check_cone_element_bonus.c		\
-		cone_intersection_bonus.c 		\
+		cone_inter_bonus.c 				\
 		cone_shading_bonus.c			\
-		objects_intersections_bonus.c 	\
+		objects_inters_bonus.c 			\
 		get_epsilon_bonus.c				\
 		check_shadow_ray_bonus.c		\
 

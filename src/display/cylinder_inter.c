@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder_intersection.c                            :+:      :+:    :+:   */
+/*   cylinder_inter.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t i)
+double	cylinder_inter(t_elements *elem, t_cogo ray, size_t i)
 {
 	double	delta;
 	double	t;
@@ -40,7 +40,7 @@ double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t i)
 	return (-1);
 }
 
-double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o)
+double	cylinder_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o)
 {
 	t_cogo	p_c;
 	t_cogo	null;

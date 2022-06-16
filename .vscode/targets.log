@@ -21,7 +21,7 @@ MLX_INCLUDE = /usr/local/include
 # makefile (from `Makefile', line 91)
 P_OBJECTS = $(addprefix $(OBJECT_PATH), $(PIXEL:.c=.o))
 # makefile (from `Makefile', line 35)
-SRC = minirt.c read_map.c read_map_utils.c check_A_C_L_elements.c check_pl_sp_cy_elements.c check_elements_utils.c print_error_msg.c parse_elements_utils.c display.c init_variables.c vectors_opp.c vectors_opp_2d.c fill_matrix.c matrix_opp.c cogo_manipulations.c sphere_intersection.c plane_intersection.c cylinder_intersection.c disk_cy_intersection.c rgb_calculations.c objects_shading.c check_shadow_ray_elements.c get_epsilon_inter.c 
+SRC = minirt.c read_map.c read_map_utils.c check_A_C_L_elements.c check_pl_sp_cy_elements.c check_elements_utils.c print_error_msg.c parse_elements_utils.c display.c init_variables.c vectors_opp.c vectors_opp_2d.c fill_matrix.c matrix_opp.c cogo_manipulations.c sphere_inter.c plane_inter.c cylinder_inter.c disk_cy_inter.c rgb_calculations.c objects_shading.c check_shadow_ray_elements.c get_epsilon_inter.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -159,11 +159,11 @@ XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
 # automatic
 +F = $(notdir $+)
 # makefile (from `Makefile', line 59)
-M_SRC = rendring_mandatory.c check_double_a_c_l_man.c add_specular_light.c check_element.c objects_intersections.c check_shadow_ray.c 
+M_SRC = rendring_mandatory.c check_double_a_c_l_man.c add_specular_light.c check_element.c objects_inters.c check_shadow_ray.c 
 # environment
 __CF_USER_TEXT_ENCODING = 0x18D49:0x0:0x0
 # makefile (from `Makefile', line 67)
-B_SRC = rendring_bonus.c check_double_a_c_l_bonus.c add_specular_light_bonus.c check_element_bonus.c print_error_cone_bonus.c check_cone_element_bonus.c cone_intersection_bonus.c cone_shading_bonus.c objects_intersections_bonus.c get_epsilon_bonus.c check_shadow_ray_bonus.c 
+B_SRC = rendring_bonus.c check_double_a_c_l_bonus.c add_specular_light_bonus.c check_element_bonus.c print_error_cone_bonus.c check_cone_element_bonus.c cone_inter_bonus.c cone_shading_bonus.c objects_inters_bonus.c get_epsilon_bonus.c check_shadow_ray_bonus.c 
 # environment
 COMMAND_MODE = unix2003
 # default
@@ -262,7 +262,7 @@ object_files/check_pl_sp_cy_elements.o: src/./parsing/check_pl_sp_cy_elements.c 
 
 # Not a target:
  
-src/./display/disk_cy_intersection.c:
+src/./display/disk_cy_inter.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-15 13:11:39
 #  File has been updated.
@@ -270,9 +270,9 @@ src/./display/disk_cy_intersection.c:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-object_files/sphere_intersection.o: src/./display/sphere_intersection.c includes/minirt.h includes/elements.h includes/defines.h
+object_files/sphere_inter.o: src/./display/sphere_inter.c includes/minirt.h includes/elements.h includes/defines.h
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `sphere_intersection'
+#  Implicit/static pattern stem: `sphere_inter'
 #  Last modified 2022-06-15 14:58:36
 #  File has been updated.
 #  Successfully updated.
@@ -291,9 +291,9 @@ src/./parsing/check_A_C_L_elements.c:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-object_files/plane_intersection.o: src/./display/plane_intersection.c includes/minirt.h includes/elements.h includes/defines.h
+object_files/plane_inter.o: src/./display/plane_inter.c includes/minirt.h includes/elements.h includes/defines.h
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `plane_intersection'
+#  Implicit/static pattern stem: `plane_inter'
 #  Last modified 2022-06-15 14:58:36
 #  File has been updated.
 #  Successfully updated.
@@ -345,9 +345,9 @@ object_files/get_epsilon_bonus.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-object_files/disk_cy_intersection.o: src/./display/disk_cy_intersection.c includes/minirt.h includes/elements.h includes/defines.h
+object_files/disk_cy_inter.o: src/./display/disk_cy_inter.c includes/minirt.h includes/elements.h includes/defines.h
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `disk_cy_intersection'
+#  Implicit/static pattern stem: `disk_cy_inter'
 #  Last modified 2022-06-15 14:58:36
 #  File has been updated.
 #  Successfully updated.
@@ -358,7 +358,7 @@ object_files/disk_cy_intersection.o: src/./display/disk_cy_intersection.c includ
 	
 
 # Not a target:
-object_files/objects_intersections.o:
+object_files/objects_inters.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -405,7 +405,7 @@ includes/minirt.h:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-miniRT: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/cylinder_intersection.o object_files/disk_cy_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_mandatory.o object_files/check_double_a_c_l_man.o object_files/add_specular_light.o object_files/check_element.o object_files/objects_intersections.o object_files/check_shadow_ray.o object_files/get_pixel_color.o /usr/local/include
+miniRT: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_inter.o object_files/plane_inter.o object_files/cylinder_inter.o object_files/disk_cy_inter.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_mandatory.o object_files/check_double_a_c_l_man.o object_files/add_specular_light.o object_files/check_element.o object_files/objects_inters.o object_files/check_shadow_ray.o object_files/get_pixel_color.o /usr/local/include
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -447,7 +447,7 @@ src/./parsing/check_pl_sp_cy_elements.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-src/./display/cylinder_intersection.c:
+src/./display/cylinder_inter.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-15 13:11:39
 #  File has been updated.
@@ -498,9 +498,9 @@ includes/elements.h:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-object_files/cylinder_intersection.o: src/./display/cylinder_intersection.c includes/minirt.h includes/elements.h includes/defines.h
+object_files/cylinder_inter.o: src/./display/cylinder_inter.c includes/minirt.h includes/elements.h includes/defines.h
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `cylinder_intersection'
+#  Implicit/static pattern stem: `cylinder_inter'
 #  Last modified 2022-06-15 14:58:36
 #  File has been updated.
 #  Successfully updated.
@@ -510,7 +510,7 @@ object_files/cylinder_intersection.o: src/./display/cylinder_intersection.c incl
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 
-bonus: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/cylinder_intersection.o object_files/disk_cy_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_bonus.o object_files/check_double_a_c_l_bonus.o object_files/add_specular_light_bonus.o object_files/check_element_bonus.o object_files/print_error_cone_bonus.o object_files/check_cone_element_bonus.o object_files/cone_intersection_bonus.o object_files/cone_shading_bonus.o object_files/objects_intersections_bonus.o object_files/get_epsilon_bonus.o object_files/check_shadow_ray_bonus.o object_files/get_pixel_color.o /usr/local/include
+bonus: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_inter.o object_files/plane_inter.o object_files/cylinder_inter.o object_files/disk_cy_inter.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_bonus.o object_files/check_double_a_c_l_bonus.o object_files/add_specular_light_bonus.o object_files/check_element_bonus.o object_files/print_error_cone_bonus.o object_files/check_cone_element_bonus.o object_files/cone_inter_bonus.o object_files/cone_shading_bonus.o object_files/objects_inters_bonus.o object_files/get_epsilon_bonus.o object_files/check_shadow_ray_bonus.o object_files/get_pixel_color.o /usr/local/include
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -695,7 +695,7 @@ clean:
 	
 
  
-boptim: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/cylinder_intersection.o object_files/disk_cy_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_bonus.o object_files/check_double_a_c_l_bonus.o object_files/add_specular_light_bonus.o object_files/check_element_bonus.o object_files/print_error_cone_bonus.o object_files/check_cone_element_bonus.o object_files/cone_intersection_bonus.o object_files/cone_shading_bonus.o object_files/objects_intersections_bonus.o object_files/get_epsilon_bonus.o object_files/check_shadow_ray_bonus.o object_files/get_pixel_color_optimised.o /usr/local/include
+boptim: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_inter.o object_files/plane_inter.o object_files/cylinder_inter.o object_files/disk_cy_inter.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_bonus.o object_files/check_double_a_c_l_bonus.o object_files/add_specular_light_bonus.o object_files/check_element_bonus.o object_files/print_error_cone_bonus.o object_files/check_cone_element_bonus.o object_files/cone_inter_bonus.o object_files/cone_shading_bonus.o object_files/objects_inters_bonus.o object_files/get_epsilon_bonus.o object_files/check_shadow_ray_bonus.o object_files/get_pixel_color_optimised.o /usr/local/include
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -850,7 +850,7 @@ src/./display/rendring_mandatory.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-object_files/cone_intersection_bonus.o:
+object_files/cone_inter_bonus.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -877,7 +877,7 @@ object_files/check_element.o:
 #  File has not been updated.
 
 # Not a target:
-src/./display/sphere_intersection.c:
+src/./display/sphere_inter.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-15 13:11:39
 #  File has been updated.
@@ -886,13 +886,13 @@ src/./display/sphere_intersection.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-object_files/objects_intersections_bonus.o:
+object_files/objects_inters_bonus.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/./display/plane_intersection.c:
+src/./display/plane_inter.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-15 13:11:39
 #  File has been updated.
@@ -949,7 +949,7 @@ object_files/print_error_msg.o: src/./parsing/print_error_msg.c includes/minirt.
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 
-optim: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_intersection.o object_files/plane_intersection.o object_files/cylinder_intersection.o object_files/disk_cy_intersection.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_mandatory.o object_files/check_double_a_c_l_man.o object_files/add_specular_light.o object_files/check_element.o object_files/objects_intersections.o object_files/check_shadow_ray.o object_files/get_pixel_color_optimised.o /usr/local/include
+optim: object_files object_files/minirt.o object_files/read_map.o object_files/read_map_utils.o object_files/check_A_C_L_elements.o object_files/check_pl_sp_cy_elements.o object_files/check_elements_utils.o object_files/print_error_msg.o object_files/parse_elements_utils.o object_files/display.o object_files/init_variables.o object_files/vectors_opp.o object_files/vectors_opp_2d.o object_files/fill_matrix.o object_files/matrix_opp.o object_files/cogo_manipulations.o object_files/sphere_inter.o object_files/plane_inter.o object_files/cylinder_inter.o object_files/disk_cy_inter.o object_files/rgb_calculations.o object_files/objects_shading.o object_files/check_shadow_ray_elements.o object_files/get_epsilon_inter.o object_files/rendring_mandatory.o object_files/check_double_a_c_l_man.o object_files/add_specular_light.o object_files/check_element.o object_files/objects_inters.o object_files/check_shadow_ray.o object_files/get_pixel_color_optimised.o /usr/local/include
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.

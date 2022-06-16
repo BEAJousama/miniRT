@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_intersection.c                               :+:      :+:    :+:   */
+/*   plane_inter.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-double	plane_intersection(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
+double	plane_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
 {
 	t_cogo	c_p;
 	double	t;

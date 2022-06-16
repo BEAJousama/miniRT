@@ -133,36 +133,36 @@ void	update_cogo(t_elements *elem, double **m_pos);
 void	update_cogo_element(t_cogo *element, double **m_pos);
 void	update_orient_element(t_cogo *element, double **m_pos);
 
-t_rgb	check_intersection(t_elements *elem, t_cogo ray);
-bool	check_shadow_ray(t_elements *elem, t_cogo sh_ray, t_cogo o);
+t_rgb	check_inter(t_elements *elem, t_cogo ray);
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o);
 
-double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
-double	sphere_intersection_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
-t_rgb	sphere_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
+double	sphere_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
+double	sphere_inter_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
+t_rgb	sphere_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 
-double	plane_intersection(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
-t_rgb	plane_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
+double	plane_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
+t_rgb	plane_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 
-double	cylinder_intersection(t_elements *elem, t_cogo ray, size_t index);
-double	cylinder_intersection_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
-t_rgb	cylinder_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
-double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t index, int signe, t_cogo o);
-t_rgb	disk_cy_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
+double	cylinder_inter(t_elements *elem, t_cogo ray, size_t i);
+double	cylinder_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
+t_rgb	cylinder_shading(t_elements *elem, t_close *inf, t_cogo sh_r, t_cogo o);
+double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
+t_rgb	disk_cy_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 
-double	cone_intersection(t_elements *elem, t_cogo ray, size_t i);
-double	cone_intersection_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
-t_rgb	cone_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
+double	cone_inter(t_elements *elem, t_cogo ray, size_t i);
+double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
+t_rgb	cone_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 double	epsilon_cone(t_elements *elem, size_t index);
 double	epsilon_co_disk(t_elements *elem, size_t index, t_cogo o);
-bool	check_sh_ray_co(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
+bool	check_sh_r_co(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o);
 double	disk_co_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
-t_rgb	disk_co_shading(t_elements *elem, t_close *info, t_cogo sh_ray, t_cogo o);
-bool	check_sh_ray_co_disk(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
+t_rgb	disk_co_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
+bool	check_sh_r_co_disk(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o);
 
-bool	check_sh_ray_sp(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
-bool	check_sh_ray_pl(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
-bool	check_sh_ray_cy(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
-bool	check_sh_ray_cy_disk(t_elements *elem, t_cogo sh_ray, size_t index, t_cogo o);
+bool	check_sh_r_sp(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o);
+bool	check_sh_r_pl(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o);
+bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o);
+bool	check_sh_r_cy_disk(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o);
 
 double	epsilon_sphere(t_elements *elem, size_t index);
 double	epsilon_plane(t_elements *elem, size_t index, t_cogo o);
@@ -170,6 +170,6 @@ double	epsilon_cylinder(t_elements *elem, size_t index);
 double	epsilon_cy_disk(t_elements *elem, size_t index, t_cogo o);
 
 t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
-t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t index, t_cogo o);
+t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i, t_cogo o);
 
 #endif

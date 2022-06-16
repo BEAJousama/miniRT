@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_intersection.c                              :+:      :+:    :+:   */
+/*   sphere_inter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
+double	sphere_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
 {
 	t_cogo	p_c;
 	double	delta;
@@ -38,7 +38,7 @@ double	sphere_intersection(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
 	return (-1);
 }
 
-double	sphere_intersection_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
+double	sphere_inter_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
 {
 	t_cogo	p_cs;
 	double	delta;
