@@ -94,5 +94,9 @@ int	check_valid_orient_vec(t_elements *elem)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		if (check_three_null(elem->cy->orient))
 			return (3);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		if (check_three_null(elem->co->orient))
+			return (4);
 	return (0);
 }

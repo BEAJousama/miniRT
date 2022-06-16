@@ -79,11 +79,11 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
+	double	**m_pos;
 	t_cogo	pos;
 	t_cogo	orient;
 	t_cogo	o_c;
 	double	z_o;
-	double	**m_pos;
 	double	diameter;
 	double	height;
 	t_rgb	rgb;
@@ -98,8 +98,8 @@ typedef struct s_cone
 	t_cogo	o_c;
 	double	base;
 	double	hgt;
-	double	**m_pos;
 	t_rgb	rgb;
+	double	**m_pos;
 }	t_cone;
 
 typedef struct s_elements
@@ -111,9 +111,9 @@ typedef struct s_elements
 	t_sphere	*sp;
 	t_cylinder	*cy;
 	t_cone		*co;
-	double		**m_pos;
 	t_elem_nbr	elem_nbr;
 	t_cogo		origin;
+	double		**m_pos;
 }	t_elements;
 
 #endif

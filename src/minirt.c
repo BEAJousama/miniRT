@@ -66,12 +66,17 @@ void	free_elements(t_elements *elem)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		if (elem->cy[i].m_pos)
 			free_matrix(elem->cy[i].m_pos, 4);
+	i = -1;
+	while ((size_t)++i < elem->elem_nbr.co_nbr)
+		if (elem->co[i].m_pos)
+			free_matrix(elem->co[i].m_pos, 4);
 	free(elem->a);
 	free(elem->c);
 	free(elem->l);
 	free(elem->sp);
 	free(elem->pl);
 	free(elem->cy);
+	free(elem->co);
 }
 
 int	main(int ac, char **av)

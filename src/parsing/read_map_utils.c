@@ -19,6 +19,7 @@ bool	alloc(void **ptr, size_t len)
 	*ptr = malloc(len);
 	if (!*ptr)
 		return (1);
+	ft_memset(*ptr, 0, len);
 	return (0);
 }
 
