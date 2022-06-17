@@ -18,8 +18,10 @@ bool	check_sh_r_sp(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 	double	epsilon;
 
 	epsilon = epsilon_sphere(elem, index);
+	if (!epsilon)
+		return (0);
 	t_hol = sphere_inter_sh(elem, sh_r, index, o);
-	if (t_hol > epsilon && t_hol < 1)
+	if (t_hol > epsilon)
 		return (0);
 	return (1);
 }
@@ -43,6 +45,8 @@ bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 
 	epsilon = epsilon_cylinder(elem, index);
 	t_hol = cylinder_inter_sh(elem, sh_r, index, o);
+	if (!epsilon)
+		return (0);
 	if (t_hol > epsilon && t_hol < 1)
 		return (0);
 	return (1);

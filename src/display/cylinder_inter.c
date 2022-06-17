@@ -56,7 +56,7 @@ double	cylinder_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o)
 			* (dot_2d(p_c, p_c) - pow(elem->cy[i].diameter / 2, 2)));
 	if (delta > 0)
 	{
-		t = ((-2 * dot_2d(ray, p_c)) - sqrt(delta)) / (2 * dot_2d(ray, ray));
+		t = ((-2 * dot_2d(ray, p_c)) + sqrt(delta)) / (2 * dot_2d(ray, ray));
 		if (fabs((t * ray.z) + o.z) < (elem->cy[i].height / 2))
 			return (t);
 	}

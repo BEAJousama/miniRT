@@ -58,7 +58,7 @@ double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 	eq.delta = pow(eq.b, 2) - (4 * eq.a * eq.c);
 	if (eq.delta > 0)
 	{
-		eq.t = (-eq.b - sqrt(eq.delta)) / (2 * eq.a);
+		eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
 		scaler_multiplication(&ray, ray, eq.t);
 		add_sub_vectors(&ray, ray, osh, 1);
 		if ((dot(ray, o) > 0 && fabs(ray.z) < (elem->co[i].hgt)) || !ray.z)

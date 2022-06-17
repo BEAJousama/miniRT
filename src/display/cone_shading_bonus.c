@@ -70,6 +70,8 @@ bool	check_sh_r_co(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o)
 	double	epsilon;
 
 	epsilon = epsilon_cone(elem, i);
+	if (!epsilon)
+		return (0);
 	t_hol = cone_inter_sh(elem, sh_r, i, o);
 	if (t_hol > epsilon && t_hol < 1)
 		return (0);
