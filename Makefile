@@ -74,6 +74,7 @@ B_SRC = rendring_bonus.c				\
 		objects_inters_bonus.c 			\
 		get_epsilon_bonus.c				\
 		check_shadow_ray_bonus.c		\
+		pthread_display_bonus.c			\
 
 		
 

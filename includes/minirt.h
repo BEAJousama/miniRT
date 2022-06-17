@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "./elements.h"
 # include "./defines.h"
+# include <pthread.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -59,6 +60,14 @@ typedef struct s_eq_comp
 	double			c;
 	double			t;
 }	t_eq_comp;
+
+typedef struct s_pth_ptr
+{
+	t_elements	*elem;
+	t_mlx_ptr	*gfx;
+	int			line;
+}	t_pth_ptr;
+
 
 void	free_elements(t_elements *elem);
 char	*ft_strjoin2(char *s1, char *s2);
@@ -171,5 +180,7 @@ double	epsilon_cy_disk(t_elements *elem, size_t index, t_cogo o);
 
 t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
 t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i, t_cogo o);
+
+void	create_thrads(t_elements *elem, t_mlx_ptr *gfx);
 
 #endif

@@ -50,15 +50,16 @@ void	call_display_function(t_elements *elem, t_mlx_ptr *gfx)
 
 	i = 0;
 	l_hol = elem->l;
+	fill_t_buf_i(&gfx->i, gfx->endn);
 	fill_position_matrix(elem);
 	fill_m_pos_cone(elem, (t_cogo){});
-	display(elem, gfx);
+	create_thrads(elem, gfx);
 	if (elem->a)
 		elem->a->single = 1;
 	(elem->l)++;
 	while ((size_t)++i < elem->elem_nbr.l_nbr)
 	{
-		display(elem, gfx);
+		create_thrads(elem, gfx);
 		(elem->l)++;
 	}
 	elem->l = l_hol;
