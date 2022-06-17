@@ -39,7 +39,6 @@ SRC =  	minirt.c         			\
 		check_elements_utils.c		\
 		print_error_msg.c			\
 		parse_elements_utils.c		\
-		display.c					\
 		init_variables.c			\
 		vectors_opp.c				\
 		vectors_opp_2d.c			\
@@ -64,6 +63,7 @@ M_SRC = rendring_mandatory.c		\
 
 
 B_SRC = rendring_bonus.c				\
+		pthread_display_bonus.c			\
 		check_double_a_c_l_bonus.c		\
 		add_specular_light_bonus.c		\
 		check_element_bonus.c			\
@@ -74,7 +74,6 @@ B_SRC = rendring_bonus.c				\
 		objects_inters_bonus.c 			\
 		get_epsilon_bonus.c				\
 		check_shadow_ray_bonus.c		\
-		pthread_display_bonus.c			\
 
 		
 
@@ -143,5 +142,3 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
-
-

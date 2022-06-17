@@ -32,7 +32,7 @@ double	epsilon_plane(t_elements *elem, size_t index, t_cogo o)
 	t_cogo	c_c;
 	t_cogo	l_c;
 
-	add_sub_vectors(&c_c, elem->c->pos, o , -1);
+	add_sub_vectors(&c_c, elem->c->pos, o, -1);
 	add_sub_vectors(&l_c, elem->l->pos, o, -1);
 	if ((dot(c_c, elem->pl[index].orient) * \
 				dot(l_c, elem->pl[index].orient)) > 0)

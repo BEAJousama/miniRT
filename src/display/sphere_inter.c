@@ -50,7 +50,7 @@ double	sphere_inter_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o)
 			* (dot(p_cs, p_cs) - pow(elem->sp[index].diameter / 2, 2)));
 	if (delta >= 0)
 	{
-		t = ((-2 * dot(ray, p_cs)) + sqrt(delta)) / (2 * dot(ray, ray));
+		t = ((-2 * dot(ray, p_cs)) - sqrt(delta)) / (2 * dot(ray, ray));
 		if (t < 1)
 			return (t);
 	}

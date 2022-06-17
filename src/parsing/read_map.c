@@ -12,25 +12,25 @@
 
 #include "../../includes/minirt.h"
 
-bool    allocate_elements(t_elements *elem)
+bool	allocate_elements(t_elements *elem)
 {
-    if (alloc((void **)&elem->a, sizeof(t_amb_light) * (elem->elem_nbr.a_nbr)))
-        return (0);
-    if (alloc((void **)&elem->c, sizeof(t_camera) * (elem->elem_nbr.c_nbr)))
-        return (free(elem->a), 0);
-    if (alloc((void **)&elem->l, sizeof(t_light) * (elem->elem_nbr.l_nbr)))
-        return (free(elem->a), free(elem->c), 0);
-    if (alloc((void **)&elem->sp, sizeof(t_sphere) * (elem->elem_nbr.sp_nbr)))
-        return (free(elem->a), free(elem->c), free(elem->l), 0);
-    if (alloc((void **)&elem->pl, sizeof(t_plane) * (elem->elem_nbr.pl_nbr)))
-        return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), 0);
-    if (alloc((void **)&elem->cy, sizeof(t_cylinder) * (elem->elem_nbr.cy_nbr)))
-        return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), \
-        free(elem->pl), 0);
-    if (alloc((void **)&elem->co, sizeof(t_cone) * (elem->elem_nbr.co_nbr)))
-        return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), \
-        free(elem->pl), free(elem->cy), 0);
-    return (1);
+	if (alloc((void **)&elem->a, sizeof(t_amb_light) * (elem->elem_nbr.a_nbr)))
+		return (0);
+	if (alloc((void **)&elem->c, sizeof(t_camera) * (elem->elem_nbr.c_nbr)))
+		return (free(elem->a), 0);
+	if (alloc((void **)&elem->l, sizeof(t_light) * (elem->elem_nbr.l_nbr)))
+		return (free(elem->a), free(elem->c), 0);
+	if (alloc((void **)&elem->sp, sizeof(t_sphere) * (elem->elem_nbr.sp_nbr)))
+		return (free(elem->a), free(elem->c), free(elem->l), 0);
+	if (alloc((void **)&elem->pl, sizeof(t_plane) * (elem->elem_nbr.pl_nbr)))
+		return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), 0);
+	if (alloc((void **)&elem->cy, sizeof(t_cylinder) * (elem->elem_nbr.cy_nbr)))
+		return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), \
+				free(elem->pl), 0);
+	if (alloc((void **)&elem->co, sizeof(t_cone) * (elem->elem_nbr.co_nbr)))
+		return (free(elem->a), free(elem->c), free(elem->l), free(elem->sp), \
+				free(elem->pl), free(elem->cy), 0);
+	return (1);
 }
 
 void	check_map(t_elements *elem, char **map)

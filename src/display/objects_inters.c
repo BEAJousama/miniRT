@@ -44,7 +44,7 @@ t_rgb	check_inter(t_elements *elem, t_cogo ray)
 {
 	int				i;
 	t_cogo			o;
-	t_close	info;
+	t_close			info;
 
 	i = -1;
 	info = (t_close){};
