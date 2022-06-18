@@ -44,9 +44,9 @@ bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 	double	epsilon;
 
 	epsilon = epsilon_cylinder(elem, index);
-	t_hol = cylinder_inter_sh(elem, sh_r, index, o);
 	if (!epsilon)
 		return (0);
+	t_hol = cylinder_inter_sh(elem, sh_r, index, o);
 	if (t_hol > epsilon && t_hol < 1)
 		return (0);
 	return (1);
@@ -54,12 +54,24 @@ bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 
 bool	check_sh_r_cy_disk(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o)
 {
+	t_cogo	o_h;
 	double	t_hol;
-	double	epsilon;
+	double	epsilon=0;
 
-	epsilon = epsilon_cy_disk(elem, i, o);
-	t_hol = disk_cy_inter(elem, sh_r, i, o);
-	if (t_hol > epsilon && t_hol < 1)
-		return (0);
+	o_h = o;
+	update_cogo_element(&o_h, elem->cy[i].m_pos);
+	if (o_h.z < 0)
+	{
+		epsilon = epsilon_cy_disk(elem, (int)i, o);
+		t_hol = disk_cy_sh_inter(elem, sh_r, (int)-i, o);
+		if (t_hol > epsilon && t_hol < 1)
+			return (0);
+	}
+	else
+	{
+		t_hol = disk_cy_sh_inter(elem, sh_r, i, o);
+		if (t_hol > epsilon && t_hol < 1)
+			return (0);
+	}
 	return (1);
 }

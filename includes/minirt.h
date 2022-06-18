@@ -155,7 +155,7 @@ t_rgb	plane_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 double	cylinder_inter(t_elements *elem, t_cogo ray, size_t i);
 double	cylinder_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
 t_rgb	cylinder_shading(t_elements *elem, t_close *inf, t_cogo sh_r, t_cogo o);
-double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t i, t_cogo o);
+double	disk_cy_inter(t_elements *elem, t_cogo ray, int i, t_cogo o);
 t_rgb	disk_cy_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o);
 
 double	cone_inter(t_elements *elem, t_cogo ray, size_t i);
@@ -180,5 +180,7 @@ double	epsilon_cy_disk(t_elements *elem, size_t index, t_cogo o);
 
 t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
 t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i, t_cogo o);
+
+double	disk_cy_sh_inter(t_elements *elem, t_cogo ray, int i, t_cogo o);
 
 #endif

@@ -25,28 +25,56 @@ double	disk_solution(t_cogo disk, t_cogo ray, t_cogo o, double d)
 	if (pow((t * ray.x) + o.x, 2) + pow((t * ray.y) + o.y, 2) \
 			< pow(d, 2))
 		return (t);
-	return (-1);
+	return (-2);
 }
 
-double	disk_cy_inter(t_elements *elem, t_cogo ray, size_t i, t_cogo o)
+double	disk_cy_inter(t_elements *elem, t_cogo ray, int i, t_cogo o)
 {
 	t_cogo	disk;
+	t_cogo	ref;
 	double	t;
-	double	t1;
 	double	t2;
 
 	t = -1;
 	disk = (t_cogo){};
+	ref = elem->cy[i].orient;
+	update_orient_element(&ref, elem->cy[i].m_pos);
 	update_orient_element(&ray, elem->cy[i].m_pos);
 	update_cogo_element(&o, elem->cy[i].m_pos);
 	disk.z = -elem->cy[i].height / 2;
-	t1 = disk_solution(disk, ray, o, elem->cy[i].diameter / 2);
-	if (t1 > 0)
-		t = t1;
+	t = disk_solution(disk, ray, o, elem->cy[i].diameter / 2);
 	disk.z = elem->cy[i].height / 2;
 	t2 = disk_solution(disk, ray, o, elem->cy[i].diameter / 2);
-	if (t2 > 0 && (t2 < t1 || t1 == -1))
+	if ((t2 < t && dot((t_cogo){0,0,1}, ref) <= 0) \
+	|| (t2 > t && dot((t_cogo){0,0,1}, ref) >= 0))
 		t = t2;
+	return (t);
+}
+
+double	disk_cy_sh_inter(t_elements *elem, t_cogo ray, int i, t_cogo o)
+{
+	t_cogo	disk;
+	double	t;
+	t_cogo	ref;
+	
+	ref = elem->cy[i].orient;
+
+	t = -1;
+	disk = (t_cogo){};
+	if (i < 0)
+	{
+		disk.z = -elem->cy[i].height / 2;
+		i = -i;
+	}
+	disk.z = elem->cy[i].height / 2;
+	update_orient_element(&ray, elem->cy[i].m_pos);
+	update_cogo_element(&o, elem->cy[i].m_pos);
+	if (dot((t_cogo){0,0,1}, ref) >= 0)
+	{
+		ray = (t_cogo){ray.x * -1, ray.y * -1, ray.z * -1};
+		o = (t_cogo){o.x * -1, o.y * -1, o.z * -1};
+	}
+	t = disk_solution(disk, ray, o, elem->cy[i].diameter / 2);
 	return (t);
 }
 

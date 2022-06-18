@@ -102,7 +102,7 @@ t_rgb	disk_cy_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 	{
 		resize_vec(&sh_r, sh_r, 1);
 		resize_vec(&elem->cy[info->i].orient, elem->cy[info->i].orient, 1);
-		rgb_h = add_rgb(multi_rgb(elem->cy[info->i].rgb, elem->l->rgb, \
+		rgb_h = add_rgb(multi_rgb((t_rgb){200,0,0}, elem->l->rgb, \
 		fabs(dot(sh_r, elem->cy[info->i].orient)) * elem->l->bright), rgb_h);
 		add_sub_vectors(&wo, elem->c->pos, o, -1);
 		rgb_s = add_specular_light(elem, sh_r, elem->cy[info->i].orient, wo);

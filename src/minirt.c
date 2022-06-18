@@ -12,33 +12,6 @@
 
 #include "../includes/minirt.h"
 
-void    print_info(t_elements elem)
-{
-    int i;
-
-    i = -1;
-    while (++i < (int)elem.elem_nbr.a_nbr)
-        printf(" A: %-10.5f %d,%d,%d\n", elem.a[i].ratio, elem.a[i].rgb.r, elem.a[i].rgb.g,elem.a[i].rgb.b);
-    i = -1;
-    while (++i < (int)elem.elem_nbr.c_nbr)
-        printf(" C: %.1f,%.1f,%-10.1f %.1f,%.1f,%.1f       %.1f\n", elem.c[i].pos.x, elem.c[i].pos.y, elem.c[i].pos.z,  elem.c[i].orient.x, elem.c[i].orient.y, elem.c[i].orient.z, elem.c[i].fov);
-    i = -1;
-    while (++i < (int)elem.elem_nbr.l_nbr)    
-        printf(" L: %.1f,%.1f,%-10.f %.5f               %d,%d,%d\n",elem.l[i].pos.x, elem.l[i].pos.y, elem.l[i].pos.z,   elem.l[i].bright, elem.l[i].rgb.r,elem.l[i].rgb.g,elem.l[i].rgb.b);
-    i = -1;
-    while (++i < (int)elem.elem_nbr.pl_nbr)
-        printf("pl: %.1f,%.1f,%-10.1f   %.1f,%.1f,%.1f       %d,%d,%d\n",  elem.pl[i].pos.x, elem.pl[i].pos.y, elem.pl[i].pos.z,  elem.pl[i].orient.x, elem.pl[i].orient.y, elem.pl[i].orient.z, elem.pl[i].rgb.r,elem.pl[i].rgb.g,elem.pl[i].rgb.b);
-    i = -1;
-    while (++i < (int)elem.elem_nbr.sp_nbr)
-        printf("sp: %.1f,%.1f,%-10.1f   %.1f              %d,%d,%d\n",    elem.sp[i].pos.x, elem.sp[i].pos.y, elem.sp[i].pos.z, elem.sp[i].diameter, elem.sp[i].rgb.r,elem.sp[i].rgb.g,elem.sp[i].rgb.b);
-    i = -1;
-    while (++i < (int)elem.elem_nbr.cy_nbr)
-        printf("cy: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d,%d,%d\n",elem.cy[i].pos.x, elem.cy[i].pos.y, elem.cy[i].pos.z,  elem.cy[i].orient.x, elem.cy[i].orient.y, elem.cy[i].orient.z, elem.cy[i].diameter, elem.cy[i].height,  elem.cy[i].rgb.r,elem.cy[i].rgb.g,elem.cy[i].rgb.b);
-	i = -1;
-    while (++i < (int)elem.elem_nbr.co_nbr)
-        printf("co: %.1f,%.1f,%-10.1f  %.1f,%.1f,%.1f       %.2f       %.2f       %d,%d,%d\n",elem.co[i].pos.x, elem.co[i].pos.y, elem.co[i].pos.z,  elem.co[i].orient.x, elem.co[i].orient.y, elem.co[i].orient.z, elem.co[i].base, elem.co[i].hgt,  elem.co[i].rgb.r,elem.co[i].rgb.g,elem.co[i].rgb.b);
-}
-
 int	close_win(t_elements *elem)
 {
 	free_elements(elem);
@@ -93,7 +66,6 @@ int	main(int ac, char **av)
 	gfx.win = mlx_new_window(gfx.mlx, 1000, 1000, NAME_W);
 	gfx.img = mlx_new_image(gfx.mlx, 1000, 1000);
 	gfx.buf = mlx_get_data_addr(gfx.img, &gfx.p_bits, &gfx.l_bytes, &gfx.endn);
-	print_info(elem);
 	call_display_function(&elem, &gfx);
 	mlx_put_image_to_window(gfx.mlx, gfx.win, gfx.img, 0, 0);
 	mlx_hook(gfx.win, 2, 0L, close_win_esc, &elem);
