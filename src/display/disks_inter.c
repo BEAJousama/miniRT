@@ -53,28 +53,27 @@ double	disk_cy_inter(t_elements *elem, t_cogo ray, int i, t_cogo o)
 
 double	disk_cy_sh_inter(t_elements *elem, t_cogo ray, int i, t_cogo o)
 {
-	t_cogo	disk;
+	t_cogo	disk1;
+	t_cogo	disk2;
 	double	t;
-	t_cogo	ref;
-	
-	ref = elem->cy[i].orient;
 
 	t = -1;
-	disk = (t_cogo){};
-	if (i < 0)
-	{
-		disk.z = -elem->cy[i].height / 2;
-		i = -i;
-	}
-	disk.z = elem->cy[i].height / 2;
+	disk2 = (t_cogo){0, 0, elem->cy[i].height / 2};
+	disk1 = (t_cogo){0, 0, -elem->cy[i].height / 2};
 	update_orient_element(&ray, elem->cy[i].m_pos);
 	update_cogo_element(&o, elem->cy[i].m_pos);
-	if (dot((t_cogo){0,0,1}, ref) >= 0)
+	if (o.z >= disk1.z)
 	{
-		ray = (t_cogo){ray.x * -1, ray.y * -1, ray.z * -1};
-		o = (t_cogo){o.x * -1, o.y * -1, o.z * -1};
+		t = disk_solution(disk1, ray, o, elem->cy[i].diameter / 2);
+		if (t < disk_solution(disk2, ray, o, elem->cy[i].diameter / 2))
+			t = disk_solution(disk2, ray, o, elem->cy[i].diameter / 2);
 	}
-	t = disk_solution(disk, ray, o, elem->cy[i].diameter / 2);
+	if (o.z < disk2.z)
+	{
+		t = disk_solution(disk2, ray, o, elem->cy[i].diameter / 2);
+		if (t < disk_solution(disk1, ray, o, elem->cy[i].diameter / 2))
+			t = disk_solution(disk1, ray, o, elem->cy[i].diameter / 2);
+	}
 	return (t);
 }
 

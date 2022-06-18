@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+         #
+#    By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 10:39:16 by eabdelha          #+#    #+#              #
-#    Updated: 2022/06/14 16:34:34 by eabdelha         ###   ########.fr        #
+#    Updated: 2022/06/18 22:31:36 by obeaj            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PARSE_PATH = ./parsing/
 DISPLAY_PATH = ./display/
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
 
 
 SRC =  	minirt.c         			\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cone_shading_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:34:41 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 16:07:35 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/18 23:09:36 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_rgb	cone_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 	rgb_h = (t_rgb){};
 	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->co[info->i].rgb, elem->a->rgb, elem->a->ratio);
-	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o))
+	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o, info->i))
 	{
 		add_sub_vectors(&p_c, o, elem->co[info->i].pos, -1);
 		resize_vec(&p_c, p_c, 1);
@@ -50,7 +50,7 @@ t_rgb	disk_co_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 	rgb_h = (t_rgb){};
 	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->co[info->i].rgb, elem->a->rgb, elem->a->ratio);
-	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o))
+	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o, info->i))
 	{
 		resize_vec(&sh_r, sh_r, 1);
 		resize_vec(&elem->co[info->i].orient, elem->co[info->i].orient, 1);

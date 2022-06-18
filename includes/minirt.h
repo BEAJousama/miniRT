@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 11:31:28 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 16:13:31 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/18 23:04:42 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	update_cogo_element(t_cogo *element, double **m_pos);
 void	update_orient_element(t_cogo *element, double **m_pos);
 
 t_rgb	check_inter(t_elements *elem, t_cogo ray);
-bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o);
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, int index);
 
 double	sphere_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
 double	sphere_inter_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o);

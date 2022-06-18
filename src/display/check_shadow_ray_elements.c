@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_shadow_ray_elements.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:11:34 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 16:11:48 by eabdelha         ###   ########.fr       */
+/*   Updated: 2022/06/18 20:45:08 by obeaj            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,13 @@ bool	check_sh_r_cy_disk(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o)
 {
 	t_cogo	o_h;
 	double	t_hol;
-	double	epsilon=0;
+	double	epsilon;
 
 	o_h = o;
 	update_cogo_element(&o_h, elem->cy[i].m_pos);
-	if (o_h.z < 0)
-	{
-		epsilon = epsilon_cy_disk(elem, (int)i, o);
-		t_hol = disk_cy_sh_inter(elem, sh_r, (int)-i, o);
-		if (t_hol > epsilon && t_hol < 1)
-			return (0);
-	}
-	else
-	{
-		t_hol = disk_cy_sh_inter(elem, sh_r, i, o);
-		if (t_hol > epsilon && t_hol < 1)
-			return (0);
-	}
+	epsilon = epsilon_cy_disk(elem, (int)i, o);
+	t_hol = disk_cy_sh_inter(elem, sh_r, i, o);
+	if (t_hol > epsilon && t_hol < 1)
+		return (0);
 	return (1);
 }

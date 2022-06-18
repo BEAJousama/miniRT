@@ -1,40 +1,8 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/obeaj/miniRt-last'
-mkdir object_files
-gcc -Wall -Wextra -Werror -o object_files/minirt.o -c src/minirt.c
-gcc -Wall -Wextra -Werror -o object_files/read_map.o -c src/./parsing/read_map.c
-gcc -Wall -Wextra -Werror -o object_files/read_map_utils.o -c src/./parsing/read_map_utils.c
-gcc -Wall -Wextra -Werror -o object_files/check_A_C_L_elements.o -c src/./parsing/check_A_C_L_elements.c
-gcc -Wall -Wextra -Werror -o object_files/check_pl_sp_cy_elements.o -c src/./parsing/check_pl_sp_cy_elements.c
-gcc -Wall -Wextra -Werror -o object_files/check_elements_utils.o -c src/./parsing/check_elements_utils.c
-gcc -Wall -Wextra -Werror -o object_files/print_error_msg.o -c src/./parsing/print_error_msg.c
-gcc -Wall -Wextra -Werror -o object_files/parse_elements_utils.o -c src/./parsing/parse_elements_utils.c
-gcc -Wall -Wextra -Werror -o object_files/display.o -c src/./display/display.c
-gcc -Wall -Wextra -Werror -o object_files/init_variables.o -c src/./display/init_variables.c
-gcc -Wall -Wextra -Werror -o object_files/vectors_opp.o -c src/./display/vectors_opp.c
-gcc -Wall -Wextra -Werror -o object_files/vectors_opp_2d.o -c src/./display/vectors_opp_2d.c
-gcc -Wall -Wextra -Werror -o object_files/fill_matrix.o -c src/./display/fill_matrix.c
-gcc -Wall -Wextra -Werror -o object_files/matrix_opp.o -c src/./display/matrix_opp.c
-gcc -Wall -Wextra -Werror -o object_files/cogo_manipulations.o -c src/./display/cogo_manipulations.c
- 
-gcc -Wall -Wextra -Werror -o object_files/sphere_inter.o -c src/./display/sphere_inter.c
-gcc -Wall -Wextra -Werror -o object_files/plane_inter.o -c src/./display/plane_inter.c
-gcc -Wall -Wextra -Werror -o object_files/cylinder_inter.o -c src/./display/cylinder_inter.c
-gcc -Wall -Wextra -Werror -o object_files/disk_cy_inter.o -c src/./display/disk_cy_inter.c
-gcc -Wall -Wextra -Werror -o object_files/rgb_calculations.o -c src/./display/rgb_calculations.c
- 
-gcc -Wall -Wextra -Werror -o object_files/objects_shading.o -c src/./display/objects_shading.c
-gcc -Wall -Wextra -Werror -o object_files/check_shadow_ray_elements.o -c src/./display/check_shadow_ray_elements.c
-gcc -Wall -Wextra -Werror -o object_files/get_epsilon_inter.o -c src/./display/get_epsilon_inter.c
-gcc -Wall -Wextra -Werror -o object_files/rendring_mandatory.o -c src/./display/rendring_mandatory.c
-gcc -Wall -Wextra -Werror -o object_files/check_double_a_c_l_man.o -c src/./parsing/check_double_a_c_l_man.c
-gcc -Wall -Wextra -Werror -o object_files/add_specular_light.o -c src/./display/add_specular_light.c
-gcc -Wall -Wextra -Werror -o object_files/check_element.o -c src/./parsing/check_element.c
-gcc -Wall -Wextra -Werror -o object_files/objects_inters.o -c src/./display/objects_inters.c
-gcc -Wall -Wextra -Werror -o object_files/check_shadow_ray.o -c src/./display/check_shadow_ray.c
-gcc -Wall -Wextra -Werror -o object_files/get_pixel_color.o -c src/./display/get_pixel_color.c
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/obeaj/miniRt-cy'
 make -C ./libft
 printf "linking object files...\n"
-gcc -Wall -Wextra -Werror ./object_files/minirt.o ./object_files/read_map.o ./object_files/read_map_utils.o ./object_files/check_A_C_L_elements.o ./object_files/check_pl_sp_cy_elements.o ./object_files/check_elements_utils.o ./object_files/print_error_msg.o ./object_files/parse_elements_utils.o ./object_files/display.o ./object_files/init_variables.o ./object_files/vectors_opp.o ./object_files/vectors_opp_2d.o ./object_files/fill_matrix.o ./object_files/matrix_opp.o ./object_files/cogo_manipulations.o ./object_files/sphere_inter.o ./object_files/plane_inter.o ./object_files/cylinder_inter.o ./object_files/disk_cy_inter.o ./object_files/rgb_calculations.o ./object_files/objects_shading.o ./object_files/check_shadow_ray_elements.o ./object_files/get_epsilon_inter.o ./object_files/rendring_mandatory.o ./object_files/check_double_a_c_l_man.o ./object_files/add_specular_light.o ./object_files/check_element.o ./object_files/objects_inters.o ./object_files/check_shadow_ray.o ./object_files/get_pixel_color.o ./libft/libft.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o miniRT
-make: Leaving directory `/Users/obeaj/miniRt-last'
+gcc -Wall -Wextra -Werror -O3 ./object_files/minirt.o ./object_files/read_map.o ./object_files/read_map_utils.o ./object_files/check_A_C_L_elements.o ./object_files/check_pl_sp_cy_elements.o ./object_files/check_elements_utils.o ./object_files/print_error_msg.o ./object_files/parse_elements_utils.o ./object_files/init_variables.o ./object_files/vectors_opp.o ./object_files/vectors_opp_2d.o ./object_files/fill_matrix.o ./object_files/matrix_opp.o ./object_files/cogo_manipulations.o ./object_files/sphere_inter.o ./object_files/plane_inter.o ./object_files/cylinder_inter.o ./object_files/disks_inter.o ./object_files/rgb_calculations.o ./object_files/objects_shading.o ./object_files/check_shadow_ray_elements.o ./object_files/get_epsilon_inter.o ./object_files/rendring_mandatory.o ./object_files/check_double_a_c_l_man.o ./object_files/add_specular_light.o ./object_files/check_element.o ./object_files/objects_inters.o ./object_files/check_shadow_ray.o ./object_files/get_pixel_color.o ./libft/libft.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o miniRT
+ 
+make: Leaving directory `/Users/obeaj/miniRt-cy'
  
