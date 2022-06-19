@@ -23,14 +23,14 @@ double	epsilon_cone(t_elements *elem, size_t i)
 	cof = cos(atan((elem->co[i].base / 2) / elem->co[i].hgt));
 	add_sub_vectors(&o_c, elem->c->pos, elem->co[i].pos, -1);
 	add_sub_vectors(&o_l, elem->l->pos, elem->co[i].pos, -1);
-	if (mag_vector(o_l) > elem->co[i].hgt || mag_vector(o_c) > elem->co[i].hgt)
-		return (0.00001);
 	resize_vec(&o_c, o_c, 1);
 	resize_vec(&o_l, o_l, 1);
 	resize_vec(&o, o, 1);
-	if ((dot(o_c, o) < cof && dot(o_l, o) < cof) \
+	if ((dot(o_c, o) < cof && dot(o_l, o) < cof \
+	&& mag_vector(o_l) < elem->co[i].hgt \
+	&& mag_vector(o_l) < elem->co[i].hgt) \
 	|| (dot(o_c, o) > cof && dot(o_l, o) > cof))
-		return (0.00001);
+		return (1);
 	return (0);
 }
 

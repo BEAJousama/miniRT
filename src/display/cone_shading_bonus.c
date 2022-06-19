@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cone_shading_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obeaj <obeaj@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:34:41 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/18 23:09:36 by obeaj            ###   ########.fr       */
+/*   Updated: 2022/06/14 16:07:35 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_rgb	cone_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 	rgb_h = (t_rgb){};
 	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->co[info->i].rgb, elem->a->rgb, elem->a->ratio);
-	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o, info->i))
+	if (elem->elem_nbr.l_nbr && epsilon_cone(elem, info->i) \
+	&& check_shadow_ray(elem, sh_r, o, info))
 	{
 		add_sub_vectors(&p_c, o, elem->co[info->i].pos, -1);
 		resize_vec(&p_c, p_c, 1);
@@ -50,7 +51,7 @@ t_rgb	disk_co_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 	rgb_h = (t_rgb){};
 	if (elem->a && !elem->a->single)
 		rgb_h = multi_rgb(elem->co[info->i].rgb, elem->a->rgb, elem->a->ratio);
-	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o, info->i))
+	if (elem->elem_nbr.l_nbr && check_shadow_ray(elem, sh_r, o, info))
 	{
 		resize_vec(&sh_r, sh_r, 1);
 		resize_vec(&elem->co[info->i].orient, elem->co[info->i].orient, 1);
@@ -67,13 +68,9 @@ t_rgb	disk_co_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 bool	check_sh_r_co(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o)
 {
 	double	t_hol;
-	double	epsilon;
 
-	epsilon = epsilon_cone(elem, i);
-	if (!epsilon)
-		return (0);
 	t_hol = cone_inter_sh(elem, sh_r, i, o);
-	if (t_hol > epsilon && t_hol < 1)
+	if (t_hol > 0)
 		return (0);
 	return (1);
 }

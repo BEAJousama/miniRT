@@ -41,6 +41,24 @@ double	cone_inter(t_elements *elem, t_cogo ray, size_t i)
 	return (-1);
 }
 
+double	cone_solution(t_eq_comp eq, t_cogo ray, t_cogo osh, t_elements *elem)
+{
+	if (eq.i < 0)
+	{
+		eq.i = -eq.i - 1;
+		eq.t = (-eq.b - sqrt(eq.delta)) / (2 * eq.a);
+	}
+	else
+		eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
+	scaler_multiplication(&ray, ray, eq.t);
+	add_sub_vectors(&ray, ray, osh, 1);
+	if ((dot(ray, elem->co[eq.i].m_o) > 0 \
+	&& fabs(ray.z) < elem->co[eq.i].hgt) || !ray.z)
+		return (eq.t);
+	return (-1);
+}
+
+
 double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 {
 	const double	m = pow(elem->co[i].base / 2, 2) / pow(elem->co[i].hgt, 2);
@@ -58,10 +76,13 @@ double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 	eq.delta = pow(eq.b, 2) - (4 * eq.a * eq.c);
 	if (eq.delta > 0)
 	{
-		eq.t = (-eq.b + sqrt(eq.delta)) / (2 * eq.a);
-		scaler_multiplication(&ray, ray, eq.t);
-		add_sub_vectors(&ray, ray, osh, 1);
-		if ((dot(ray, o) > 0 && fabs(ray.z) < (elem->co[i].hgt)) || !ray.z)
+		eq.i = i;
+		eq.t = cone_solution(eq, ray, osh, elem);
+		if (eq.t > 0.00000001 && eq.t < 1)
+			return (eq.t);
+		eq.i = -i - 1;
+		eq.t = cone_solution(eq, ray, osh, elem);
+		if (eq.t > 0.00000001 && eq.t < 1)
 			return (eq.t);
 	}
 	return (-1);

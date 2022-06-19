@@ -35,7 +35,7 @@ t_rgb	extract_color(t_close *info, t_elements *elem, t_cogo o)
 		return (plane_shading(elem, info, sh_r, o));
 	if (info->object == 'c')
 		return (cylinder_shading(elem, info, sh_r, o));
-	if (info->object == 'd')
+	if (info->object == 'D' || info->object == 'd')
 		return (disk_cy_shading(elem, info, sh_r, o));
 	if (info->object == 'o')
 		return (cone_shading(elem, info, sh_r, o));
@@ -76,7 +76,10 @@ t_rgb	check_inter(t_elements *elem, t_cogo ray)
 		fill_info(cylinder_inter(elem, ray, (size_t)i), &info, i, 'c');
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
-		fill_info(disk_cy_inter(elem, ray, (size_t)i, o), &info, i, 'd');
+	{
+		fill_info(disk_cy_inter(elem, ray, i, o), &info, i, 'D');
+		fill_info(disk_cy_inter(elem, ray, (int)-i - 1, o), &info, i, 'd');
+	}
 	check_cone_inter(elem, ray, &info, o);
 	scaler_multiplication(&o, ray, info.t);
 	return (extract_color(&info, elem, o));
