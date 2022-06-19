@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objects_inters.c                            :+:      :+:    :+:   */
+/*   objects_inters.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 12:44:05 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 15:46:05 by eabdelha         ###   ########.fr       */
+/*   Created: 2022/06/19 16:01:53 by eabdelha          #+#    #+#             */
+/*   Updated: 2022/06/19 16:01:56 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_rgb	check_inter(t_elements *elem, t_cogo ray)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 	{
 		fill_info(disk_cy_inter(elem, ray, i, o), &info, i, 'D');
-		fill_info(disk_cy_inter(elem, ray, (int)-i, o), &info, i, 'd');
+		fill_info(disk_cy_inter(elem, ray, (int)-i - 1, o), &info, i, 'd');
 	}
 	scaler_multiplication(&o, ray, info.t);
 	return (extract_color(&info, elem, o));

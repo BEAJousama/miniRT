@@ -12,14 +12,14 @@
 
 #include "../../includes/minirt.h"
 
-bool	check_shadow_ray2(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info)
+bool	check_shadow_ray2(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *inf)
 {
 	int	i;
 
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 	{
-		if (info->object == 'D' && info->i == i)
+		if (inf->object == 'D' && inf->i == i)
 			continue ;
 		if (!check_sh_r_cy_disk(elem, sh_r, i, o))
 			return (0);
@@ -27,7 +27,7 @@ bool	check_shadow_ray2(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info)
 	i = -1;
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 	{
-		if (info->object == 'd' && info->i == i)
+		if (inf->object == 'd' && inf->i == i)
 			continue ;
 		if (!check_sh_r_cy_disk(elem, sh_r, -i - 1, o))
 			return (0);
@@ -35,7 +35,7 @@ bool	check_shadow_ray2(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info)
 	return (1);
 }
 
-bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info)
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *inf)
 {
 	int	i;
 
@@ -51,5 +51,5 @@ bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info)
 	while ((size_t)++i < elem->elem_nbr.cy_nbr)
 		if (!check_sh_r_cy(elem, sh_r, (size_t)i, o))
 			return (0);
-	return (check_shadow_ray_2(elem, sh_r, o, info));
+	return (check_shadow_ray2(elem, sh_r, o, inf));
 }

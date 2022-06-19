@@ -36,8 +36,7 @@ t_rgb	cone_shading(t_elements *elem, t_close *info, t_cogo sh_r, t_cogo o)
 		rgb_h = add_rgb(multi_rgb(elem->co[info->i].rgb, elem->l->rgb, \
 					(fabs(dot(sh_r, n))) * elem->l->bright), rgb_h);
 		add_sub_vectors(&wo, elem->c->pos, o, -1);
-		rgb_h = add_rgb(add_specular_light(elem, sh_r, n, wo), rgb_h);
-		return (rgb_h);
+		return (add_rgb(add_specular_light(elem, sh_r, n, wo), rgb_h));
 	}
 	return (rgb_h);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cone_inter_bonus.c                          :+:      :+:    :+:   */
+/*   cone_inter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eabdelha <eabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 15:41:06 by eabdelha          #+#    #+#             */
-/*   Updated: 2022/06/14 13:27:00 by eabdelha         ###   ########.fr       */
+/*   Created: 2022/06/19 16:01:13 by eabdelha          #+#    #+#             */
+/*   Updated: 2022/06/19 16:01:15 by eabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ double	cone_solution(t_eq_comp eq, t_cogo ray, t_cogo osh, t_elements *elem)
 		return (eq.t);
 	return (-1);
 }
-
 
 double	cone_inter_sh(t_elements *elem, t_cogo ray, size_t i, t_cogo osh)
 {

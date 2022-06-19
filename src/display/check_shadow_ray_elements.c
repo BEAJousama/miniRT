@@ -43,7 +43,7 @@ bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 	double	t_hol;
 
 	t_hol = cylinder_inter_sh(elem, sh_r, index, o);
-	if (t_hol > 0.00001 && t_hol < 1)
+	if (t_hol > 0)
 		return (0);
 	return (1);
 }
@@ -51,7 +51,7 @@ bool	check_sh_r_cy(t_elements *elem, t_cogo sh_r, size_t index, t_cogo o)
 bool	check_sh_r_cy_disk(t_elements *elem, t_cogo sh_r, size_t i, t_cogo o)
 {
 	double	t_hol;
-	
+
 	t_hol = disk_cy_inter(elem, sh_r, i, o);
 	if (t_hol > 0 && t_hol < 1)
 		return (0);

@@ -144,7 +144,7 @@ void	update_cogo_element(t_cogo *element, double **m_pos);
 void	update_orient_element(t_cogo *element, double **m_pos);
 
 t_rgb	check_inter(t_elements *elem, t_cogo ray);
-bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *info);
+bool	check_shadow_ray(t_elements *elem, t_cogo sh_r, t_cogo o, t_close *inf);
 
 double	sphere_inter(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
 double	sphere_inter_sh(t_elements *elem, t_cogo ray, size_t index, t_cogo o);
@@ -181,7 +181,5 @@ double	epsilon_cy_disk(t_elements *elem, size_t index, t_cogo o);
 
 t_rgb	add_specular_light(t_elements *elem, t_cogo wi, t_cogo n, t_cogo wo);
 t_rgb	add_specular_light_cy(t_elements *elem, t_cogo wi, size_t i, t_cogo o);
-
-double	disk_cy_sh_inter(t_elements *elem, t_cogo ray, int i, t_cogo o);
 
 #endif

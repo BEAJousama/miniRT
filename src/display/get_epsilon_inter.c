@@ -50,12 +50,12 @@ double	epsilon_cylinder(t_elements *elem, size_t i)
 	update_orient_element(&c_c, elem->cy[i].m_pos);
 	update_orient_element(&l_c, elem->cy[i].m_pos);
 	if ((mag_vector_2d(c_c) < (elem->cy[i].diameter / 2) \
-				&& mag_vector_2d(l_c) < (elem->cy[i].diameter / 2) \
-				&& fabs(l_c.z) < elem->cy[i].height / 2 \
-				&& fabs(c_c.z) < elem->cy[i].height / 2)
+		&& mag_vector_2d(l_c) < (elem->cy[i].diameter / 2) \
+		&& fabs(l_c.z) < elem->cy[i].height / 2 \
+		&& fabs(c_c.z) < elem->cy[i].height / 2)
 		|| (mag_vector_2d(c_c) > (elem->cy[i].diameter / 2) \
-				&& mag_vector_2d(l_c) > (elem->cy[i].diameter / 2)))
-			return (1);
+		&& mag_vector_2d(l_c) > (elem->cy[i].diameter / 2)))
+		return (1);
 	return (0);
 }
 

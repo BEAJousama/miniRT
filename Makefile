@@ -61,7 +61,6 @@ M_SRC = rendring_mandatory.c		\
 		objects_inters.c 			\
 		check_shadow_ray.c			\
 
-
 B_SRC = rendring_bonus.c				\
 		pthread_display_bonus.c			\
 		check_double_a_c_l_bonus.c		\
@@ -74,9 +73,6 @@ B_SRC = rendring_bonus.c				\
 		objects_inters_bonus.c 			\
 		get_epsilon_bonus.c				\
 		check_shadow_ray_bonus.c		\
-
-		
-
 
 PIXEL = get_pixel_color.c
 PIXEL_OPT = get_pixel_color_optimised.c
@@ -93,8 +89,8 @@ PO_OBJECTS =  $(addprefix $(OBJECT_PATH), $(PIXEL_OPT:.c=.o))
 B_OBJECTS =  $(addprefix $(OBJECT_PATH), $(SRC:.c=.o))
 B_OBJECTS +=  $(addprefix $(OBJECT_PATH), $(B_SRC:.c=.o))
 
-all: $(NAME)
 
+all: $(NAME)
 
 $(NAME): $(FOBJ_SRC) $(M_OBJECTS) $(P_OBJECTS) $(MLX_INCLUDE)
 	@make -C $(LIBFT_PATH)
@@ -118,7 +114,6 @@ boptim: $(FOBJ_SRC) $(B_OBJECTS) $(PO_OBJECTS) $(MLX_INCLUDE)
 	@printf "linking object files...\n"
 	@$(CC) $(CFLAGS) $(B_OBJECTS) $(PO_OBJECTS) $(LIBFT_PATH)/$(NAME_LIBFT) $(MLX) -o $(NAME)
 
-	
 
 $(OBJECT_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE_1) $(INCLUDE_2) $(INCLUDE_3)
 	$(CC) $(CFLAGS) -o $@ -c $<
